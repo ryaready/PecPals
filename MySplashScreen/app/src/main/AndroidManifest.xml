@@ -25,7 +25,14 @@
 
         <!-- Main Activity -->
         <activity
-            android:name=".MainActivity">
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <!-- Bottom Nav Activity -->
+        <activity
+            android:name=".BottomNavActivity"
+            android:screenOrientation="portrait">
         </activity>
 
     </application>

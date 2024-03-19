@@ -1,11 +1,16 @@
 package com.example.mysplashscreen;
 
+import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SplashActivity extends AppCompatActivity {
+
+    //timer in miliseconds, 1000ms = 1s
+    private static final int SPLASH_TIME = 2000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +36,14 @@ public class SplashActivity extends AppCompatActivity {
 
         // Start the animation
         animationDrawable.start();
+
+        new Handler().postDelayed(new Runnable() {
+          @Override
+          public void run() {
+              Intent intent = new Intent(SplashActivity.this, BottomNavActivity.class);
+              startActivity(intent);
+          }
+      }, SPLASH_TIME);
     }
 }
 

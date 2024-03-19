@@ -1,0 +1,28 @@
+References (Links to tutorials / help found online):
+
+timer for splash screen transition to bottomNavActivity:
+https://stackoverflow.com/questions/42730086/launch-another-activity-rather-than-mainactivity-after-splash-screen
+
+reset spinner:
+https://stackoverflow.com/questions/20408285/how-do-i-reset-an-android-spinner
+
+set up spinner in fragment:
+https://stackoverflow.com/questions/48055423/spinner-in-a-fragment
+https://stackoverflow.com/questions/13377361/how-to-create-a-drop-down-list
+
+
+display bottomSheetDialogFragment:
+https://gist.github.com/rahultailor/1bd08d7399ca6fe8b51cdb156b54a488
+
+use enum for spinner:
+https://stackoverflow.com/questions/5469629/put-enum-values-to-android-spinner
+https://stackoverflow.com/questions/7182844/adding-enums-to-array-adapter-for-spinner-in-android
+
+
+BottomSheetDialog tutorial:
+https://www.youtube.com/watch?v=RzjCMa4GBD4
+https://www.youtube.com/watch?v=udo4lp5oLxY
+
+Bottom Navigation Bar tutorial:
+https://www.geeksforgeeks.org/bottom-navigation-bar-in-android/
+https://www.youtube.com/watch?v=0x5kmLY16qE
