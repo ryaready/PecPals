@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="true">
+    <!-- Frame 1 -->
+    <item android:drawable="@drawable/pos1" android:duration="100">
+        <bitmap
+            android:src="@drawable/pos1"
+            android:scaleX="5"
+            android:scaleY="5"/>
+    </item>
+
+    <!-- Frame 2 -->
+    <item android:drawable="@drawable/pos2" android:duration="100">
+        <bitmap
+            android:src="@drawable/pos2"
+            android:scaleX="5"
+            android:scaleY="5"/>
+    </item>
+
+    <item android:drawable="@drawable/pos3" android:duration="100">
+        <bitmap
+            android:src="@drawable/pos3"
+            android:scaleX="5"
+            android:scaleY="5"/>
+    </item>
+
+    <item android:drawable="@drawable/pos4" android:duration="100">
+        <bitmap
+            android:src="@drawable/pos4"
+            android:scaleX="5"
+            android:scaleY="5"/>
+    </item>
+
+    <item android:drawable="@drawable/pos5" android:duration="100">
+        <bitmap
+            android:src="@drawable/pos5"
+            android:scaleX="5"
+            android:scaleY="5"/>
+    </item>
+
+    <item android:drawable="@drawable/pos6" android:duration="100">
+        <bitmap
+            android:src="@drawable/pos6"
+            android:scaleX="5"
+            android:scaleY="5"/>
+    </item>
+
+    <item android:drawable="@drawable/pos7" android:duration="100">
+        <bitmap
+            android:src="@drawable/pos7"
+            android:scaleX="5"
+            android:scaleY="5"/>
+    </item>
+
+    <item android:drawable="@drawable/pos8" android:duration="100">
+        <bitmap
+            android:src="@drawable/pos8"
+            android:scaleX="5"
+            android:scaleY="5"/>
+    </item>
+
+    <item android:drawable="@drawable/pos9" android:duration="100">
+        <bitmap
+            android:src="@drawable/pos9"
+            android:scaleX="5"
+            android:scaleY="5"/>
+    </item>
+
+    <item android:drawable="@drawable/pos10" android:duration="100">
+        <bitmap
+            android:src="@drawable/pos10"
+            android:scaleX="5"
+            android:scaleY="5"/>
+    </item>
+
+    <item android:drawable="@drawable/pos11" android:duration="100">
+        <bitmap
+            android:src="@drawable/pos11"
+            android:scaleX="5"
+            android:scaleY="5"/>
+    </item>
+
+    <item android:drawable="@drawable/pos12" android:duration="100">
+        <bitmap
+            android:src="@drawable/pos12"
+            android:scaleX="5"
+            android:scaleY="5"/>
+    </item>
+
+    <item android:drawable="@drawable/pos13" android:duration="100">
+        <bitmap
+            android:src="@drawable/pos13"
+            android:scaleX="5"
+            android:scaleY="5"/>
+    </item>
+    <!-- Repeat for other frames -->
+
+</animation-list>
