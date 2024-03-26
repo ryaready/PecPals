@@ -1,5 +1,6 @@
 package com.example.mysplashscreen;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.os.Handler;
 import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
+@SuppressLint("CustomSplashScreen")
 public class SplashActivity extends AppCompatActivity {
 
     // Timer duration in milliseconds
@@ -38,14 +40,11 @@ public class SplashActivity extends AppCompatActivity {
         animationDrawable.start();
 
         // Using a Handler to delay the transition
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                // Start BottomNavActivity after SPLASH_TIME
-                Intent intent = new Intent(SplashActivity.this, SignupActivity.class);
-                startActivity(intent);
-                finish(); // Finish SplashActivity
-            }
+        new Handler().postDelayed(() -> {
+            // Start BottomNavActivity after SPLASH_TIME
+            Intent intent = new Intent(SplashActivity.this, SignupActivity.class);
+            startActivity(intent);
+            finish(); // Finish SplashActivity
         }, SPLASH_TIME);
     }
 }
