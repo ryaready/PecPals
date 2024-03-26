@@ -29,6 +29,11 @@
             android:screenOrientation="fullSensor">
         </activity>
 
+        <activity
+            android:name=".SignupActivity"
+            android:screenOrientation="fullSensor">
+        </activity>
+
         <!-- Main Activity -->
         <activity
             android:name=".MainActivity"
