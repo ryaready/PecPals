@@ -42,7 +42,7 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
                 // Start BottomNavActivity after SPLASH_TIME
-                Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+                Intent intent = new Intent(SplashActivity.this, SignupActivity.class);
                 startActivity(intent);
                 finish(); // Finish SplashActivity
             }
