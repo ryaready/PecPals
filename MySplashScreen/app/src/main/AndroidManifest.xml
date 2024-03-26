@@ -15,7 +15,7 @@
 
         <!-- Splash Screen Activity -->
         <activity
-            android:name="SplashActivity"
+            android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,16 +23,22 @@
             </intent-filter>
         </activity>
 
+        <!-- Login Activity -->
+        <activity
+            android:name=".LoginActivity"
+            android:screenOrientation="fullSensor">
+        </activity>
+
         <!-- Main Activity -->
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="fullSensor">
         </activity>
 
         <!-- Bottom Nav Activity -->
         <activity
             android:name=".BottomNavActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="fullSensor">
         </activity>
 
     </application>

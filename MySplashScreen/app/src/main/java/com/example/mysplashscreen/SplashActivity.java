@@ -9,8 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
-    //timer in miliseconds, 1000ms = 1s
-    private static final int SPLASH_TIME = 2000;
+    // Timer duration in milliseconds
+    private static final int SPLASH_TIME = 2000; // 2 seconds
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,13 +37,15 @@ public class SplashActivity extends AppCompatActivity {
         // Start the animation
         animationDrawable.start();
 
+        // Using a Handler to delay the transition
         new Handler().postDelayed(new Runnable() {
-          @Override
-          public void run() {
-              Intent intent = new Intent(SplashActivity.this, BottomNavActivity.class);
-              startActivity(intent);
-          }
-      }, SPLASH_TIME);
+            @Override
+            public void run() {
+                // Start BottomNavActivity after SPLASH_TIME
+                Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish(); // Finish SplashActivity
+            }
+        }, SPLASH_TIME);
     }
 }
-
