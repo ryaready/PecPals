@@ -26,3 +26,27 @@ https://www.youtube.com/watch?v=udo4lp5oLxY
 Bottom Navigation Bar tutorial:
 https://www.geeksforgeeks.org/bottom-navigation-bar-in-android/
 https://www.youtube.com/watch?v=0x5kmLY16qE
+
+RecyclerView with ScrollView:
+https://www.youtube.com/watch?v=CXfXFHuQIWo
+
+Constraint text to width of phone:
+https://stackoverflow.com/questions/4851659/how-to-wrap-text-in-textview-in-android
+
+Add paging to RecyclerView:
+https://medium.com/holler-developers/paging-image-gallery-with-recyclerview-f059d035b7e7
+
+
+Image Assets:
+https://www.flaticon.com/free-icons/coin - Coin icons created by Icongra - Flaticon
+https://www.flaticon.com/free-icons/coin - Coin icons created by Freepik - Flaticon
+
+Scrolling Indicator:
+https://stackoverflow.com/questions/33841363/how-to-make-a-page-indicator-for-horizontal-recyclerview
+
+changing the color of bottom navigation bar:
+https://stackoverflow.com/questions/66961142/change-the-icon-color-in-a-bottomnavigationview
+
+To get R.color assets:
+https://stackoverflow.com/questions/2002288/static-way-to-get-context-in-android
+https://stackoverflow.com/questions/45769879/how-to-add-a-color-from-android-resource-file-to-paint-object

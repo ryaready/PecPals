@@ -37,13 +37,19 @@ public class SplashActivity extends AppCompatActivity {
         // Start the animation
         animationDrawable.start();
 
-        new Handler().postDelayed(new Runnable() {
-          @Override
-          public void run() {
-              Intent intent = new Intent(SplashActivity.this, BottomNavActivity.class);
-              startActivity(intent);
-          }
-      }, SPLASH_TIME);
+        // make sure to hide this if the bottom portion is not commented
+        Intent intent = new Intent(SplashActivity.this, BottomNavActivity.class);
+        startActivity(intent);
+
+
+        // UNCOMMENT THIS HERE IF SPLASH SCREEN IS NEEDED --------
+//        new Handler().postDelayed(new Runnable() {
+//          @Override
+//          public void run() {
+//              Intent intent = new Intent(SplashActivity.this, BottomNavActivity.class);
+//              startActivity(intent);
+//          }
+//      }, SPLASH_TIME);
     }
 }
 

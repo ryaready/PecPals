@@ -4,5 +4,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="blue">#89CFF0</color>
     <color name="lavender">#8692f7</color>
-    
+    <color name="orange">#FF8637</color>
+    <color name="lightgrey">#E7E7E7</color>
+    <color name="darkgrey">#747474</color>
+
 </resources>
