@@ -1,17 +1,17 @@
 package com.example.mysplashscreen.home;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.example.mysplashscreen.CirclePagerIndicatorDecoration;
 import com.example.mysplashscreen.R;
@@ -31,6 +31,8 @@ public class MainFragment extends Fragment {
     SnapHelper helper;
 
     TextView creatureName;
+
+    Button taskButton;
 
     public MainFragment() {
         // Required empty public constructor
@@ -68,6 +70,8 @@ public class MainFragment extends Fragment {
 
         CreatureAdapter creatureAdapter = new CreatureAdapter(creatureList);
         creatureRecyclerView.setAdapter(creatureAdapter);
+
+//        taskButton = v.findViewById(R.id.taskButton);
 
         return v;
     }
