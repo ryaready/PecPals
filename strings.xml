@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">settingspage</string>
+    <string name="username">"@"chimkon</string>
+    <string name="email">chimkonnuggies@gmail.com</string>
+    <string name="account_settings">Account Settings</string>
+    <string name="billing_information">Billing Information</string>
+    <string name="notifications">Notifications</string>
+    <string name="profile">Profile</string>
+    <string name="preferences">Preferences</string>
+    <string name="log_out">Log Out</string>
+</resources>
