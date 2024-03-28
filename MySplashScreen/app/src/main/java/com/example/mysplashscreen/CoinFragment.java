@@ -1,4 +1,4 @@
-package com.example.store1;
+package com.example.mysplashscreen;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -28,7 +28,7 @@ public class CoinFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private ArrayList<CoinItems> coinItemsArrayList;
+    private ArrayList<com.example.mysplashscreen.CoinItems> coinItemsArrayList;
     private String[] coinDescription;
     private String[] coinPrice;
     private int[] imageResourceID;
@@ -81,7 +81,8 @@ public class CoinFragment extends Fragment {
         recyclerview = view.findViewById(R.id.recyclerview);
         recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerview.setHasFixedSize(true);
-        MyAdapter myAdapter = new MyAdapter(getContext(),coinItemsArrayList);
+        MyAdapter myAdapter;
+        myAdapter = new MyAdapter(getContext(),coinItemsArrayList);
         recyclerview.setAdapter(myAdapter);
         myAdapter.notifyDataSetChanged();
     }

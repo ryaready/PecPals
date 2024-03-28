@@ -1,4 +1,4 @@
-package com.example.store1;
+package com.example.mysplashscreen;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,6 +10,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.mysplashscreen.MyAdapter1;
+import com.example.mysplashscreen.R;
 
 import java.util.ArrayList;
 
@@ -26,13 +29,13 @@ public class RealFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-    private ArrayList<RealItems> realItemsArrayList;
-    private String[] rewardHeadings;
-    private String[] rewardDetails;
-    private int[] imageResourceID;
-    private RecyclerView recyclerview;
+    public String mParam1;
+    public String mParam2;
+    public ArrayList<RealItems> realItemsArrayList;
+    public String[] rewardHeadings;
+    public String[] rewardDetails;
+    public int[] imageResourceID;
+    public RecyclerView recyclerview;
 
     public RealFragment() {
         // Required empty public constructor
@@ -86,7 +89,7 @@ public class RealFragment extends Fragment {
         myAdapter.notifyDataSetChanged();
     }
 
-    private void dataInitialize() {
+    public void dataInitialize() {
 
         realItemsArrayList = new ArrayList<>();
 

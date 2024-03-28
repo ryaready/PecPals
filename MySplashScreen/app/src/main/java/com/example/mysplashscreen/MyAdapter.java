@@ -1,4 +1,4 @@
-package com.example.store1;
+package com.example.mysplashscreen;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     Context context;
-    ArrayList<CoinItems> coinItemsArrayList;
+    ArrayList<com.example.mysplashscreen.CoinItems> coinItemsArrayList;
 
     public MyAdapter(Context context, ArrayList<CoinItems> coinItemsArrayList) {
         this.context = context;

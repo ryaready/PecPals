@@ -1,4 +1,4 @@
-package com.example.store1;
+package com.example.mysplashscreen;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -15,13 +15,11 @@ import java.util.ArrayList;
 public class MyAdapter1 extends RecyclerView.Adapter<MyAdapter1.MyViewHolder> {
 
     Context context;
-    ArrayList<RealItems> realItemsArrayList;
+    ArrayList<com.example.mysplashscreen.RealItems> realItemsArrayList;
 
-    public MyAdapter1(Context context, ArrayList<RealItems> realItemsArrayList) {
-
-        this.context = context;
-        this.realItemsArrayList = realItemsArrayList;
+    public MyAdapter1(Context context, ArrayList<RealItems> coinItemsArrayList) {
     }
+
 
     @NonNull
     @Override
@@ -33,7 +31,7 @@ public class MyAdapter1 extends RecyclerView.Adapter<MyAdapter1.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        RealItems realitems = realItemsArrayList.get(position);
+        com.example.mysplashscreen.RealItems realitems = realItemsArrayList.get(position);
         holder.reward.setText(realitems.reward);
         holder.description.setText(realitems.rewarddescription);
         holder.image.setImageResource(realitems.rewardimage);

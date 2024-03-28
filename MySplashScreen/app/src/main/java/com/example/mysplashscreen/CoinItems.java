@@ -1,4 +1,4 @@
-package com.example.store1;
+package com.example.mysplashscreen;
 
 public class CoinItems {
 

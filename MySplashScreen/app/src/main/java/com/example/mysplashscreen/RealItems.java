@@ -1,11 +1,11 @@
-package com.example.store1;
+package com.example.mysplashscreen;
 
 public class RealItems {
 
-    String reward;
-    String rewarddescription;
+    public String reward;
+    public String rewarddescription;
 
-    int rewardimage;
+    public int rewardimage;
 
     public RealItems(String reward, String rewarddescription, int rewardimage) {
         this.reward = reward;
