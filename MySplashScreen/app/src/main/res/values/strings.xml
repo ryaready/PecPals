@@ -20,4 +20,14 @@
         theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum,
         "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
     </string>
+    <string name="bicepcurl_desc">2 sets of 15 repetitions. Take a short 30-second break in between rests. Equipment needed: 5kg dumbbells </string>
+    <string name="shoulderpress_desc">2 sets of 10 repetitions. Take a short 30-second break in between rests. Equipment needed: 5kg dumbbells</string>
+    <string name="bentoverrows_desc">2 sets of 15 repetitions. Take a short 30-second break in between rests. Equipment needed: 5kg dumbbells</string>
+    <string name="benchpress_desc">2 sets of 10 repetitions. Take a short 30-second break in between rests. Equipment needed: 5kg dumbbells</string>
+    <string name="pushup_desc">3 sets of 15 repetitions. Take a short 30-second break in between rests.</string>
+    <string name="bicepcurl_name">Bicep Curls</string>
+    <string name="shoulderpress_name">Shoulder Press</string>
+    <string name="bentoverrows_name">Bent Over Rows</string>
+    <string name="benchpress_name">Bench Press</string>
+    <string name="pushup_name">Push Ups</string>
 </resources>
