@@ -44,6 +44,11 @@
             android:screenOrientation="fullSensor">
         </activity>
 
+        <activity
+            android:name=".TaskActivity">
+
+        </activity>
+
     </application>
 
 </manifest>
