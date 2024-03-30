@@ -3,7 +3,6 @@ package com.example.mysplashscreen.home.adapters;
 import static com.example.mysplashscreen.BottomNavActivity.getAppContext;
 import static com.example.mysplashscreen.BottomNavActivity.startActivityWithIntent;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,7 +45,6 @@ public class CreatureAdapter extends RecyclerView.Adapter<CreatureAdapter.Creatu
             public void onClick(View v) {
                 startActivityWithIntent(getAppContext(), TaskActivity.class);
 
-                Log.d("button", "sdsd");
             }
         });
     }

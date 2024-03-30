@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">My Splash Screen</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="long_descrption_testing">
         Lorem Ipsum is simply dummy text of the printing and typesetting industry.
         Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s,
@@ -25,9 +24,50 @@
     <string name="bentoverrows_desc">2 sets of 15 repetitions. Take a short 30-second break in between rests. Equipment needed: 5kg dumbbells</string>
     <string name="benchpress_desc">2 sets of 10 repetitions. Take a short 30-second break in between rests. Equipment needed: 5kg dumbbells</string>
     <string name="pushup_desc">3 sets of 15 repetitions. Take a short 30-second break in between rests.</string>
+    
     <string name="bicepcurl_name">Bicep Curls</string>
     <string name="shoulderpress_name">Shoulder Press</string>
     <string name="bentoverrows_name">Bent Over Rows</string>
     <string name="benchpress_name">Bench Press</string>
     <string name="pushup_name">Push Ups</string>
+    
+    <string name = "coinshopbutton">Coin Shop</string>
+    <string name = "realshopbutton">Real Shop</string>
+
+    <string name = "item0">beige coloured</string>
+    <string name = "item1">yellow coloured</string>
+    <string name = "item2">blue coloured</string>
+    <string name = "item3">green coloured</string>
+
+    <string name = "price0">10 coins</string>
+    <string name = "price1">10 coins</string>
+    <string name = "price2">10 coins</string>
+    <string name = "price3">10 coins</string>
+
+    <string name = "buy">BUY</string>
+
+    <string name = "Gym0">ActiveSG Gym - 1 month scheme discount</string>
+    <string name = "Gym1">ActiveSG Gym - 6 months scheme discount</string>
+    <string name = "Gym2">ActiveSG Gym - 1 year scheme discount</string>
+    <string name = "Boost0">Boost Juice Bars - Drink discount</string>
+    <string name = "NTUC0">NTUC Fairprice - $5 discount</string>
+    <string name = "NTUC1">NTUC Fairprice - $10 discount</string>
+
+    <string name ="Gym0description">Can be redeemed after ___ level</string>
+    <string name ="Gym1description">Can be redeemed after ___ level</string>
+    <string name ="Gym2description">Can be redeemed after ___ level</string>
+    <string name ="Boost0description">Can be redeemed after ___ level</string>
+    <string name ="NTUC0description">Can be redeemed after ___ level</string>
+    <string name ="NTUC1description">Can be redeemed after ___ level</string>
+    
+    <string name="page_name">Settings Page</string>
+    <string name="username">"@"chimkon</string>
+    <string name="email">chimkonnuggies@gmail.com</string>
+    <string name="account_settings">Account Settings</string>
+    <string name="billing_information">Billing Information</string>
+    <string name="notifications">Notifications</string>
+    <string name="profile">Profile</string>
+    <string name="preferences">Preferences</string>
+    <string name="log_out">Log Out</string>
+
 </resources>

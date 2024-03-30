@@ -43,9 +43,8 @@ public class SplashActivity extends AppCompatActivity {
         // Using a Handler to delay the transition
         new Handler().postDelayed(() -> {
             // Start BottomNavActivity after SPLASH_TIME
-//            Intent intent = new Intent(SplashActivity.this, SignupActivity.class);
+//            Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
             Intent intent = new Intent(SplashActivity.this, BottomNavActivity.class);
-//            Intent intent = new Intent(SplashActivity.this, TaskActivity.class);
             startActivity(intent);
             finish(); // Finish SplashActivity
         }, SPLASH_TIME);

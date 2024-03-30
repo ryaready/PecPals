@@ -47,7 +47,7 @@ public class BottomNavActivity extends AppCompatActivity {
 
         // changes tab content when button is clicked with respective pages
         // this is for the navigation bar
-        replaceFragment(shopFragment);
+        replaceFragment(mainFragment);
         bottomNavigationView.setOnItemSelectedListener(item -> {
             if (item.getItemId() == R.id.shop) {
                 replaceFragment(shopFragment);

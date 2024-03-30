@@ -24,28 +24,28 @@
         <!-- Login Activity -->
         <activity
             android:name=".LoginActivity"
-            android:screenOrientation="fullSensor">
+            android:screenOrientation="portrait">
         </activity>
 
         <activity
             android:name=".SignupActivity"
-            android:screenOrientation="fullSensor">
+            android:screenOrientation="portrait">
         </activity>
 
         <!-- Main Activity -->
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="fullSensor">
+            android:screenOrientation="portrait">
         </activity>
 
         <!-- Bottom Nav Activity -->
         <activity
             android:name=".BottomNavActivity"
-            android:screenOrientation="fullSensor">
+            android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name="com.example.mysplashscreen.TaskActivity">
+            android:name=".TaskActivity">
         </activity>
 
     </application>
