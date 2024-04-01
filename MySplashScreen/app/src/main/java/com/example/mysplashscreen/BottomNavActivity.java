@@ -1,6 +1,7 @@
 package com.example.mysplashscreen;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.View;
@@ -21,7 +22,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
  */
 public class BottomNavActivity extends AppCompatActivity {
 
-    private static Context context;
+    public static Context context;
     BottomNavigationView bottomNavigationView;
     FloatingActionButton floatingActionButton;
 
@@ -46,7 +47,7 @@ public class BottomNavActivity extends AppCompatActivity {
 
         // changes tab content when button is clicked with respective pages
         // this is for the navigation bar
-        replaceFragment(shopFragment);
+        replaceFragment(mainFragment);
         bottomNavigationView.setOnItemSelectedListener(item -> {
             if (item.getItemId() == R.id.shop) {
                 replaceFragment(shopFragment);
@@ -82,6 +83,12 @@ public class BottomNavActivity extends AppCompatActivity {
 
     public static Context getAppContext() {
         return BottomNavActivity.context;
+    }
+
+    public static void startActivityWithIntent(Context first, Class second){
+        Intent intent = new Intent(first, second);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        first.startActivity(intent);
     }
 
 

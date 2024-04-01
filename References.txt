@@ -50,3 +50,6 @@ https://stackoverflow.com/questions/66961142/change-the-icon-color-in-a-bottomna
 To get R.color assets:
 https://stackoverflow.com/questions/2002288/static-way-to-get-context-in-android
 https://stackoverflow.com/questions/45769879/how-to-add-a-color-from-android-resource-file-to-paint-object
+
+How to implement child fragments by user Suragch:
+https://stackoverflow.com/questions/6672066/fragment-inside-fragment

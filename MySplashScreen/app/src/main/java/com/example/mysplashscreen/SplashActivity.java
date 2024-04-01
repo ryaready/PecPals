@@ -6,6 +6,7 @@ import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ImageView;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 @SuppressLint("CustomSplashScreen")
@@ -42,7 +43,8 @@ public class SplashActivity extends AppCompatActivity {
         // Using a Handler to delay the transition
         new Handler().postDelayed(() -> {
             // Start BottomNavActivity after SPLASH_TIME
-            Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+//            Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+            Intent intent = new Intent(SplashActivity.this, BottomNavActivity.class);
             startActivity(intent);
             finish(); // Finish SplashActivity
         }, SPLASH_TIME);

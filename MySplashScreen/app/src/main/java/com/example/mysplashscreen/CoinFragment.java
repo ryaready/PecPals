@@ -28,7 +28,7 @@ public class CoinFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private ArrayList<com.example.mysplashscreen.CoinItems> coinItemsArrayList;
+    private ArrayList<CoinItems> coinItemsArrayList;
     private String[] coinDescription;
     private String[] coinPrice;
     private int[] imageResourceID;

@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     Context context;
-    ArrayList<com.example.mysplashscreen.CoinItems> coinItemsArrayList;
+    ArrayList<CoinItems> coinItemsArrayList;
 
     public MyAdapter(Context context, ArrayList<CoinItems> coinItemsArrayList) {
         this.context = context;
