@@ -144,4 +144,4 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return sharedPreferences.getString("currentUserEmail", "");
     }
 }
-}
+
