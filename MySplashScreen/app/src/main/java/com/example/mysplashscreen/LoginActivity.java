@@ -1,5 +1,4 @@
 package com.example.mysplashscreen;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -40,6 +39,9 @@ public class LoginActivity extends AppCompatActivity {
                     Boolean checkCredentials = databaseHelper.checkEmailPassword(email, password);
 
                     if (checkCredentials) {
+                        // Update login streak
+                        databaseHelper.updateLoginStreak(email);
+
                         // Mark user as logged in
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putBoolean("isLoggedIn", true);
