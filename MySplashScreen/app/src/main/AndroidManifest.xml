@@ -44,9 +44,11 @@
             android:screenOrientation="portrait">
         </activity>
 
+        <!-- Task Activity -->
         <activity
             android:name=".TaskActivity">
         </activity>
+
 
     </application>
 

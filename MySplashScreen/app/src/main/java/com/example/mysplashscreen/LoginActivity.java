@@ -1,18 +1,18 @@
 package com.example.mysplashscreen;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
-
+import androidx.appcompat.app.AppCompatActivity;
 import com.example.mysplashscreen.databinding.ActivityLoginBinding;
 
 public class LoginActivity extends AppCompatActivity {
 
     ActivityLoginBinding binding;
     DatabaseHelper databaseHelper;
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +21,12 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         databaseHelper = new DatabaseHelper(this);
+        sharedPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
+
+        // Check if user is already logged in
+        if (sharedPreferences.getBoolean("isLoggedIn", false)) {
+            startHomeActivity();
+        }
 
         binding.loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -28,16 +34,20 @@ public class LoginActivity extends AppCompatActivity {
                 String email = binding.loginEmail.getText().toString();
                 String password = binding.loginPassword.getText().toString();
 
-                if(email.equals("")||password.equals(""))
+                if (email.equals("") || password.equals("")) {
                     Toast.makeText(LoginActivity.this, "All fields are mandatory", Toast.LENGTH_SHORT).show();
-                else{
+                } else {
                     Boolean checkCredentials = databaseHelper.checkEmailPassword(email, password);
 
-                    if(checkCredentials == true){
+                    if (checkCredentials) {
+                        // Mark user as logged in
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putBoolean("isLoggedIn", true);
+                        editor.apply();
+
                         Toast.makeText(LoginActivity.this, "Login Successfully!", Toast.LENGTH_SHORT).show();
-                        Intent intent  = new Intent(getApplicationContext(), BottomNavActivity.class);
-                        startActivity(intent);
-                    }else{
+                        startHomeActivity();
+                    } else {
                         Toast.makeText(LoginActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -51,5 +61,11 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private void startHomeActivity() {
+        Intent intent = new Intent(LoginActivity.this, BottomNavActivity.class);
+        startActivity(intent);
+        finish(); // Finish LoginActivity to prevent going back to it when pressing back from HomeActivity
     }
 }
