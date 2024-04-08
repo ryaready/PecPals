@@ -3,7 +3,6 @@ package com.example.mysplashscreen;
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -46,21 +45,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public Boolean checkEmail(String email) {
         SQLiteDatabase MyDatabase = this.getWritableDatabase();
-        @SuppressLint("Recycle") Cursor cursor = MyDatabase.rawQuery("Select * from users where email = ?", new String[]{email});
+        Cursor cursor = MyDatabase.rawQuery("Select * from users where email = ?", new String[]{email});
 
         return cursor.getCount() > 0;
     }
 
     public Boolean checkUsername(String username) {
         SQLiteDatabase MyDatabase = this.getWritableDatabase();
-        @SuppressLint("Recycle") Cursor cursor = MyDatabase.rawQuery("Select * from users where username= ?", new String[]{username});
+        Cursor cursor = MyDatabase.rawQuery("Select * from users where username= ?", new String[]{username});
 
         return cursor.getCount() > 0;
     }
 
     public Boolean checkEmailPassword(String emailOrUsername, String password) {
         SQLiteDatabase MyDatabase = this.getWritableDatabase();
-        @SuppressLint("Recycle") Cursor cursor = MyDatabase.rawQuery("Select * from users where (email = ? or username = ?) and password = ?", new String[]{emailOrUsername, emailOrUsername, password});
+        Cursor cursor = MyDatabase.rawQuery("Select * from users where (email = ? or username = ?) and password = ?", new String[]{emailOrUsername, emailOrUsername, password});
 
         return cursor.getCount() > 0;
     }
@@ -69,36 +68,36 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase MyDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
-        // Get current time in milliseconds
         long currentTimeMillis = System.currentTimeMillis();
 
-        // Get user's last login time
         long lastLoginTime = getLastLoginTime(email);
 
-        // Get current date and time
         Calendar currentCalendar = Calendar.getInstance();
         currentCalendar.setTimeInMillis(currentTimeMillis);
 
-        // Get date and time of last login
         Calendar lastLoginCalendar = Calendar.getInstance();
         lastLoginCalendar.setTimeInMillis(lastLoginTime);
 
-        // Check if current login is within 24 hours of last login
+
         if (currentCalendar.get(Calendar.DAY_OF_YEAR) == lastLoginCalendar.get(Calendar.DAY_OF_YEAR)
                 && currentCalendar.get(Calendar.YEAR) == lastLoginCalendar.get(Calendar.YEAR)) {
-            // If it's the same day, increment login streak
-            int currentStreak = getLoginStreak(email);
+
+            int currentStreak = User.getInstance().getLoginStreak();
             contentValues.put("login_streak", currentStreak + 1);
         } else {
-            // If it's a new day, reset login streak to 1
+
             contentValues.put("login_streak", 1);
         }
 
         // Update last login time
         contentValues.put("last_login_time", currentTimeMillis);
 
-        int rowsAffected = MyDatabase.update("users", contentValues, "email=?", new String[]{email});
+        MyDatabase.update("users", contentValues, "email=?", new String[]{email});
+
+        // Update User instance with updated login streak
+        User.getInstance().setLoginStreak(contentValues.getAsInteger("login_streak"));
     }
+
 
     private long getLastLoginTime(String email) {
         SQLiteDatabase MyDatabase = this.getReadableDatabase();
@@ -138,10 +137,95 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return loginStreak;
     }
 
-    public String getCurrentUserEmail(Context context) {
-        // Replace this with your own logic to retrieve the current user's email
-        SharedPreferences sharedPreferences = context.getSharedPreferences("userPrefs", Context.MODE_PRIVATE);
-        return sharedPreferences.getString("currentUserEmail", "");
+    public User getUserByEmail(String email) {
+        SQLiteDatabase MyDatabase = this.getReadableDatabase();
+        Cursor cursor = MyDatabase.rawQuery("SELECT * FROM users WHERE email=?", new String[]{email});
+
+        User user = null;
+        if (cursor.moveToFirst()) {
+            @SuppressLint("Range") String username = cursor.getString(cursor.getColumnIndex("username"));
+
+            user = new User();
+
+        }
+
+        cursor.close();
+        return user;
     }
+
+    // Method to get user by username (if needed)
+    public User getUserByUsername(String username) {
+        SQLiteDatabase MyDatabase = this.getReadableDatabase();
+        Cursor cursor = MyDatabase.rawQuery("SELECT * FROM users WHERE username=?", new String[]{username});
+
+        User user = null;
+        if (cursor.moveToFirst()) {
+            @SuppressLint("Range") String email = cursor.getString(cursor.getColumnIndex("email"));
+
+             user = new User();
+
+        }
+
+        cursor.close();
+        return user;
+    }
+    @SuppressLint("Range")
+    public int getXPByEmail(String email) {
+        SQLiteDatabase MyDatabase = this.getReadableDatabase();
+        Cursor cursor = MyDatabase.rawQuery("SELECT XP FROM users WHERE email=?", new String[]{email});
+
+        int xp = 0;
+        if (cursor.moveToFirst()) {
+            xp = cursor.getInt(cursor.getColumnIndex("XP"));
+        }
+
+        cursor.close();
+
+        // Update User instance with XP
+        User.getInstance().setXp(xp);
+
+        return xp;
+    }
+
+
+    @SuppressLint("Range")
+    public int getCoinsByEmail(String email) {
+        SQLiteDatabase MyDatabase = this.getReadableDatabase();
+        Cursor cursor = MyDatabase.rawQuery("SELECT coins FROM users WHERE email=?", new String[]{email});
+
+        int coins = 0;
+        if (cursor.moveToFirst()) {
+            coins = cursor.getInt(cursor.getColumnIndex("coins"));
+        }
+
+        cursor.close();
+
+        // Update User instance with coins
+        User.getInstance().setCoins(coins);
+
+        return coins;
+    }
+
+    @SuppressLint("Range")
+    public int getLoginStreakByEmail(String email) {
+        SQLiteDatabase MyDatabase = this.getReadableDatabase();
+        Cursor cursor = MyDatabase.rawQuery("SELECT login_streak FROM users WHERE email=?", new String[]{email});
+
+        int loginStreak = 0;
+        if (cursor.moveToFirst()) {
+            loginStreak = cursor.getInt(cursor.getColumnIndex("login_streak"));
+        }
+
+        cursor.close();
+
+        // Update User instance with login streak
+        User.getInstance().setLoginStreak(loginStreak);
+
+        return loginStreak;
+    }
+
 }
+
+
+
 

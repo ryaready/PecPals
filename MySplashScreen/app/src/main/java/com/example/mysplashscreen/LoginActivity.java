@@ -4,7 +4,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.mysplashscreen.databinding.ActivityLoginBinding;
 
 public class LoginActivity extends AppCompatActivity {
@@ -22,7 +24,7 @@ public class LoginActivity extends AppCompatActivity {
         databaseHelper = new DatabaseHelper(this);
         sharedPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
 
-        // Check if user is already logged in
+
         if (sharedPreferences.getBoolean("isLoggedIn", false)) {
             startHomeActivity();
         }
@@ -39,16 +41,15 @@ public class LoginActivity extends AppCompatActivity {
                     Boolean checkCredentials = databaseHelper.checkEmailPassword(email, password);
 
                     if (checkCredentials) {
-                        // Update login streak
+
                         databaseHelper.updateLoginStreak(email);
 
-                        // Mark user as logged in
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putBoolean("isLoggedIn", true);
                         editor.apply();
 
                         Toast.makeText(LoginActivity.this, "Login Successfully!", Toast.LENGTH_SHORT).show();
-                        startHomeActivity();
+                        finish(); // Finish LoginActivity to prevent going back to it when pressing back from HomeActivity
                     } else {
                         Toast.makeText(LoginActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
                     }
@@ -68,6 +69,6 @@ public class LoginActivity extends AppCompatActivity {
     private void startHomeActivity() {
         Intent intent = new Intent(LoginActivity.this, BottomNavActivity.class);
         startActivity(intent);
-        finish(); // Finish LoginActivity to prevent going back to it when pressing back from HomeActivity
+        finish();
     }
 }
