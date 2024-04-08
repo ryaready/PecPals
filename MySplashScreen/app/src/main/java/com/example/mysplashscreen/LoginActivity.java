@@ -1,4 +1,5 @@
 package com.example.mysplashscreen;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -34,6 +35,8 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String email = binding.loginEmail.getText().toString();
                 String password = binding.loginPassword.getText().toString();
+
+
 
                 if (email.equals("") || password.equals("")) {
                     Toast.makeText(LoginActivity.this, "All fields are mandatory", Toast.LENGTH_SHORT).show();

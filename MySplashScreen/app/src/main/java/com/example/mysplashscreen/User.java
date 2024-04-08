@@ -9,7 +9,7 @@ public class User {
     private int loginStreak;
 
   
-    User() {}
+    private User() {}
 
     // Static method to obtain the singleton instance
     public static synchronized User getInstance() {

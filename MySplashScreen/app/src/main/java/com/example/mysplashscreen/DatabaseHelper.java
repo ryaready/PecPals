@@ -145,7 +145,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             @SuppressLint("Range") String username = cursor.getString(cursor.getColumnIndex("username"));
 
-            user = new User();
+            //user = new User();
 
         }
 
@@ -162,7 +162,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             @SuppressLint("Range") String email = cursor.getString(cursor.getColumnIndex("email"));
 
-             user = new User();
+             //user = new User();
 
         }
 
