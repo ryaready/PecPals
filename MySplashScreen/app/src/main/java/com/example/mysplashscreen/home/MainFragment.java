@@ -63,7 +63,9 @@ public class MainFragment extends Fragment {
         TextView usernameTextView = v.findViewById(R.id.userName);
 
 
-        String username = user.getEmail();
+        User user = User.getInstance();
+
+        String username = user.getInstance().getEmail();
 
         usernameTextView.setText("Hello " + username + "!");
 
