@@ -55,14 +55,13 @@ public class MainFragment extends Fragment {
                              Bundle savedInstanceState) {
         helper = new LinearSnapHelper();
 
-
-
-        // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_main, container, false);
 
         TextView usernameTextView = v.findViewById(R.id.userName);
 
-        String username = User.getInstance().getUsername();
+        User user = User.getInstance();
+
+        String username = user.getInstance().getEmail();
 
         usernameTextView.setText("Hello " + username + "!");
 
