@@ -20,7 +20,7 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/creatureName"
+        android:id="@+id/creatureName2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -46,7 +46,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/creatureName" />
+        app:layout_constraintTop_toBottomOf="@+id/creatureName2" />
 
     <TableLayout
         android:layout_width="wrap_content"
@@ -71,7 +71,7 @@
                 android:src="@drawable/xp" />
 
             <TextView
-                android:id="@+id/creatureXP"
+                android:id="@+id/creatureXP2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/dotgothic16"

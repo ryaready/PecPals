@@ -1,4 +1,5 @@
 package com.example.mysplashscreen;
+
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,10 +17,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     Context context;
     ArrayList<CoinItems> coinItemsArrayList;
+    private static RecyclerViewClickListener itemListener;
 
-    public MyAdapter(Context context, ArrayList<CoinItems> coinItemsArrayList) {
+    public MyAdapter(Context context, ArrayList<CoinItems> coinItemsArrayList, RecyclerViewClickListener itemListener) {
         this.context = context;
         this.coinItemsArrayList = coinItemsArrayList;
+        this.itemListener = itemListener;
     }
 
     @NonNull
@@ -58,9 +61,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 @Override
                 public void onClick(View v) {
                     Log.d("button", "onClick user wants to buy" + description );
-
+                    itemListener.recyclerViewListClicked(v, getLayoutPosition());
                 }
             });
         }
     }
 }
+

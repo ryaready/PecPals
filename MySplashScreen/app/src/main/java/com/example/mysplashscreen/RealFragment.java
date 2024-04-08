@@ -1,7 +1,6 @@
 package com.example.mysplashscreen;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -85,8 +84,6 @@ public class RealFragment extends Fragment {
         MyAdapter1 myAdapter = new MyAdapter1(getContext(), realItemsArrayList);
         recyclerview.setAdapter(myAdapter);
         myAdapter.notifyDataSetChanged();
-
-        Log.d("RealFragment", "why u no work");
     }
 
     public void dataInitialize() {

@@ -1,6 +1,5 @@
 package com.example.mysplashscreen;
 
-import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -22,8 +21,8 @@ import androidx.recyclerview.widget.RecyclerView;
 */
 public class CirclePagerIndicatorDecoration extends RecyclerView.ItemDecoration {
 
-    private int colorActive = ContextCompat.getColor(BottomNavActivity.getAppContext(), R.color.black);
-    private int colorInactive = ContextCompat.getColor(BottomNavActivity.getAppContext(), R.color.darkgrey);
+    private int colorActive = ContextCompat.getColor(BottomNavActivity.getAppContext(), R.color.dark_pink);
+    private int colorInactive = ContextCompat.getColor(BottomNavActivity.getAppContext(), R.color.dark_grey);
 
     private static final float DP = Resources.getSystem().getDisplayMetrics().density;
 
@@ -44,7 +43,7 @@ public class CirclePagerIndicatorDecoration extends RecyclerView.ItemDecoration 
     /**
      * Padding between indicators.
      */
-    private final float mIndicatorItemPadding = mIndicatorHeight;
+    private final float mIndicatorItemPadding = mIndicatorHeight + 1;
 
     /**
      * Some more natural animation interpolation
@@ -52,6 +51,7 @@ public class CirclePagerIndicatorDecoration extends RecyclerView.ItemDecoration 
     private final Interpolator mInterpolator = (Interpolator) new AccelerateDecelerateInterpolator();
 
     private final Paint mPaint = new Paint();
+    private final Paint mPaintInactive = new Paint();
 
     // starPaint is here in the event we want to do different types of scroll indicators
     // to serve as a reminder for the users
@@ -62,6 +62,9 @@ public class CirclePagerIndicatorDecoration extends RecyclerView.ItemDecoration 
         mPaint.setStrokeWidth(mIndicatorStrokeWidth);
         mPaint.setStyle(Paint.Style.FILL);
         mPaint.setAntiAlias(true);
+        mPaintInactive.setStrokeWidth(mIndicatorStrokeWidth);
+        mPaintInactive.setStyle(Paint.Style.STROKE);
+        mPaintInactive.setAntiAlias(true);
     }
 
     @Override
@@ -77,7 +80,8 @@ public class CirclePagerIndicatorDecoration extends RecyclerView.ItemDecoration 
         float indicatorStartX = (parent.getWidth() - indicatorTotalWidth) / 2F;
 
         // set indicator to be at the top
-        float indicatorPosY = 100;
+//        float indicatorPosY = 100;
+        float indicatorPosY = parent.getHeight() - mIndicatorHeight / 2F;
 
         drawInactiveIndicators(c, indicatorStartX, indicatorPosY, itemCount);
 
@@ -101,7 +105,7 @@ public class CirclePagerIndicatorDecoration extends RecyclerView.ItemDecoration 
     }
 
     private void drawInactiveIndicators(Canvas c, float indicatorStartX, float indicatorPosY, int itemCount) {
-        mPaint.setColor(colorInactive);
+        mPaintInactive.setColor(colorInactive);
 
         // width of item indicator including padding
         final float itemWidth = mIndicatorItemLength + mIndicatorItemPadding;
@@ -109,7 +113,7 @@ public class CirclePagerIndicatorDecoration extends RecyclerView.ItemDecoration 
         float start = indicatorStartX;
         for (int i = 0; i < itemCount; i++) {
             // draw circle for every item
-            c.drawCircle(start, indicatorPosY,mIndicatorHeight/2F,mPaint);
+            c.drawCircle(start, indicatorPosY,mIndicatorHeight/2.5F,mPaintInactive);
             start += itemWidth;
         }
     }

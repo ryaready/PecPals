@@ -2,9 +2,7 @@ package com.example.mysplashscreen;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -42,8 +40,10 @@ public class BottomNavActivity extends AppCompatActivity {
 
         // get button components
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        floatingActionButton = findViewById(R.id.homePage);
+//        floatingActionButton = findViewById(R.id.homePage);
         bottomNavigationView.setBackground(null);
+        bottomNavigationView.setSelectedItemId(R.id.homepage);
+
 
         // changes tab content when button is clicked with respective pages
         // this is for the navigation bar
@@ -53,21 +53,14 @@ public class BottomNavActivity extends AppCompatActivity {
                 replaceFragment(shopFragment);
             } else if (item.getItemId() == R.id.userProfile) {
                 replaceFragment(profileFragment);
+            } else if (item.getItemId() == R.id.homepage) {
+                replaceFragment(new MainFragment());
+
+                // TODO: if possible, try to find a way to recycle mainFragment instead of creating a new one everytime
+//                replaceFragment(mainFragment);
+//                MainFragment.UpdateUIForFirstItem();
             }
-
-
-            floatingActionButton.setImageTintList(ColorStateList.valueOf(getColor(R.color.darkgrey)));
-
             return true;
-        });
-
-        // changes tab content when the floating action button is clicked
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                replaceFragment(mainFragment);
-                floatingActionButton.setImageTintList(ColorStateList.valueOf(getColor(R.color.black)));
-            }
         });
 
         BottomNavActivity.context = getApplicationContext();
@@ -90,7 +83,5 @@ public class BottomNavActivity extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         first.startActivity(intent);
     }
-
-
 
 }
