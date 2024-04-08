@@ -38,7 +38,6 @@ public class SignupActivity extends AppCompatActivity {
                         if(insert){
                             Toast.makeText(SignupActivity.this, "Signup Successfully!", Toast.LENGTH_SHORT).show();
                             User user = User.getInstance();
-                            user.setEmail(email);
                             user.setCoins(0);
                             user.setXp(0);
                             user.setLoginStreak(1);

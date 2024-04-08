@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
 import com.example.mysplashscreen.CirclePagerIndicatorDecoration;
+import com.example.mysplashscreen.DatabaseHelper;
 import com.example.mysplashscreen.R;
 import com.example.mysplashscreen.User;
 import com.example.mysplashscreen.home.adapters.CreatureAdapter;
@@ -33,6 +34,8 @@ public class MainFragment extends Fragment {
 
     private static RecyclerView creatureRecyclerView;
     private RecyclerView creatureInfoRV;
+
+    DatabaseHelper databaseHelper;
     SnapHelper helper;
 
     List<Creature> creatureTasksList = new ArrayList<>();
@@ -59,8 +62,11 @@ public class MainFragment extends Fragment {
 
         TextView usernameTextView = v.findViewById(R.id.userName);
 
+
         User user = User.getInstance();
+
         String username = user.getInstance().getEmail();
+
         usernameTextView.setText("Hello " + username + "!");
 
 

@@ -1,11 +1,15 @@
 package com.example.mysplashscreen;
 
+
 public class User {
     private static User instance;
     private String email;
+    private String username;
     private int xp;
     private int coins;
     private int loginStreak;
+
+    DatabaseHelper databaseHelper;
 
   
     private User() {}
@@ -23,11 +27,17 @@ public class User {
         this.email = email;
     }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public void setXp(int xp) {
+        databaseHelper.updateXp(email, xp);
         this.xp = xp;
     }
 
     public void setCoins(int coins) {
+        databaseHelper.updateCoins(email, coins);
         this.coins = coins;
     }
 
@@ -38,6 +48,10 @@ public class User {
     // Getters for fields
     public String getEmail() {
         return email;
+    }
+
+    public String getUsername() {
+        return username;
     }
 
     public int getXp() {

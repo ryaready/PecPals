@@ -69,4 +69,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Log.d("checkEmailPassword", cursor.getString(0));
         return cursor.getString(0);
     }
+
+
+    public boolean updateXp(String email, int xp) {
+        SQLiteDatabase MyDatabase = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("XP", xp);
+        long result = MyDatabase.update("users", contentValues, "email=?", new String[]{email});
+
+        return result != -1;
+    }
+
+    public boolean updateCoins(String email, int coins) {
+        SQLiteDatabase MyDatabase = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("coins", coins);
+        long result = MyDatabase.update("users", contentValues, "email=?", new String[]{email});
+
+        return result != -1;
+    }
+
+
 }

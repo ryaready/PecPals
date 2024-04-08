@@ -23,6 +23,12 @@ public class ProfileFragment extends Fragment {
         binding = FragmentProfileBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
+        User user = User.getInstance();
+
+        String username = user.getInstance().getEmail();
+
+
+
 
         // Set click listener for the logout button
         binding.logoutButton.setOnClickListener(new View.OnClickListener() {
