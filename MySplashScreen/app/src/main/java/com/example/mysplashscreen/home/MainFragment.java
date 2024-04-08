@@ -41,6 +41,7 @@ public class MainFragment extends Fragment {
     List<Creature> creatureTasksList = new ArrayList<>();
     List<Tasks> tasksList = new ArrayList<>();
     TaskAdapter taskAdapter;
+    TextView tasktodo;
     private User User;
 
     public MainFragment() {
@@ -59,7 +60,7 @@ public class MainFragment extends Fragment {
         helper = new LinearSnapHelper();
 
         View v = inflater.inflate(R.layout.fragment_main, container, false);
-
+        tasktodo = v.findViewById(R.id.taskstodo);
         TextView usernameTextView = v.findViewById(R.id.userName);
 
 
@@ -113,6 +114,7 @@ public class MainFragment extends Fragment {
 
                 // activePosition = 0 -> page 1
                 if(activePosition == 0){
+                    tasktodo.setVisibility(View.VISIBLE);
                     tasksList.clear();
                     tasksList.add(new Tasks(50, "Task 5"));
                     tasksList.add(new Tasks(60, "Task 6"));
@@ -122,6 +124,7 @@ public class MainFragment extends Fragment {
                 // if page 2
                 // add in more conditions here to represent each page/creature
                 else{
+                    tasktodo.setVisibility(View.INVISIBLE);
                     UpdateTasks(tasksList);
                     taskAdapter.notifyDataSetChanged();
                 }
