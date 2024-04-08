@@ -28,16 +28,16 @@ public class LoginActivity extends AppCompatActivity {
                 String email = binding.loginEmail.getText().toString();
                 String password = binding.loginPassword.getText().toString();
 
-                if(email.equals("")||password.equals(""))
+                if (email.equals("") || password.equals(""))
                     Toast.makeText(LoginActivity.this, "All fields are mandatory", Toast.LENGTH_SHORT).show();
-                else{
+                else {
                     Boolean checkCredentials = databaseHelper.checkEmailPassword(email, password);
 
-                    if(checkCredentials == true){
+                    if (checkCredentials == true) {
                         Toast.makeText(LoginActivity.this, "Login Successfully!", Toast.LENGTH_SHORT).show();
-                        Intent intent  = new Intent(getApplicationContext(), BottomNavActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), BottomNavActivity.class);
                         startActivity(intent);
-                    }else{
+                    } else {
                         Toast.makeText(LoginActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
                     }
                 }

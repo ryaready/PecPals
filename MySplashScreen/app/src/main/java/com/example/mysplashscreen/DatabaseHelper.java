@@ -17,7 +17,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase MyDatabase) {
-        MyDatabase.execSQL("create Table users(username TEXT primary key, password TEXT)");
+        MyDatabase.execSQL("create Table users(email TEXT primary key, password TEXT)");
     }
 
     @Override
@@ -25,10 +25,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         MyDB.execSQL("drop Table if exists users");
     }
 
-    public Boolean insertData(String username, String password){
+    public Boolean insertData(String email, String password){
         SQLiteDatabase MyDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("username", username);
+        contentValues.put("email", email);
         contentValues.put("password", password);
         long result = MyDatabase.insert("users", null, contentValues);
 
@@ -39,9 +39,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public Boolean checkUserName(String username){
+    public Boolean checkEmail(String email){
         SQLiteDatabase MyDatabase = this.getWritableDatabase();
-        Cursor cursor = MyDatabase.rawQuery("Select * from users where username = ?", new String[]{username});
+        Cursor cursor = MyDatabase.rawQuery("Select * from users where email = ?", new String[]{email});
 
         if(cursor.getCount() > 0) {
             return true;
@@ -49,9 +49,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return false;
         }
     }
-    public Boolean checkEmailPassword(String username, String password){
+    public Boolean checkEmailPassword(String email, String password){
         SQLiteDatabase MyDatabase = this.getWritableDatabase();
-        Cursor cursor = MyDatabase.rawQuery("Select * from users where username = ? and password = ?", new String[]{username, password});
+        Cursor cursor = MyDatabase.rawQuery("Select * from users where email = ? and password = ?", new String[]{email, password});
 
         if (cursor.getCount() > 0) {
             return true;
