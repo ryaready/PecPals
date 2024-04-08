@@ -1,7 +1,5 @@
 package com.example.mysplashscreen;
 
-import static android.content.Context.MODE_PRIVATE;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -25,17 +23,12 @@ public class ProfileFragment extends Fragment {
         binding = FragmentProfileBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
-        // Initialize SharedPreferences
-        sharedPreferences = requireActivity().getSharedPreferences("loginPrefs", MODE_PRIVATE);
 
         // Set click listener for the logout button
         binding.logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Mark user as logged out
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putBoolean("isLoggedIn", false);
-                editor.apply();
 
                 // Redirect to Login Activity
                 Intent intent = new Intent(requireActivity(), LoginActivity.class);
