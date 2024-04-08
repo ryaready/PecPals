@@ -71,23 +71,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public boolean updateXp(String email, int xp) {
-        SQLiteDatabase MyDatabase = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("XP", xp);
-        long result = MyDatabase.update("users", contentValues, "email=?", new String[]{email});
-
-        return result != -1;
-    }
-
-    public boolean updateCoins(String email, int coins) {
-        SQLiteDatabase MyDatabase = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("coins", coins);
-        long result = MyDatabase.update("users", contentValues, "email=?", new String[]{email});
-
-        return result != -1;
-    }
+//    public void updateXp(String email, int xp) {
+//        SQLiteDatabase MyDatabase = this.getWritableDatabase();
+//        ContentValues contentValues = new ContentValues();
+//        contentValues.put("XP", xp);
+//        MyDatabase.update("users", contentValues, "email=" +email, null);
+//
+//    }
+//
+//    public void updateCoins(String email, int coins) {
+//        SQLiteDatabase MyDatabase = this.getWritableDatabase();
+//        ContentValues contentValues = new ContentValues();
+//        contentValues.put("coins", coins);
+//        MyDatabase.update("users", contentValues, "email="+email, null);
+//
+//    }
 
 
 }

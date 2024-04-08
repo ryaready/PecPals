@@ -43,7 +43,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="@string/username"
+                    android:text="@+id/usernameTextView"
                     android:textSize="25sp"
                     android:textStyle="bold" />
 
@@ -52,7 +52,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="@string/email" />
+                    android:text="@+id/coinTextView" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button"

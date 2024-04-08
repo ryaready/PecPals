@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
@@ -15,7 +16,6 @@ public class ProfileFragment extends Fragment {
 
     private FragmentProfileBinding binding;
     private SharedPreferences sharedPreferences;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -23,10 +23,19 @@ public class ProfileFragment extends Fragment {
         binding = FragmentProfileBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
+        TextView usernameTextView = view.findViewById(R.id.textView);
+
         User user = User.getInstance();
 
         String username = user.getInstance().getEmail();
 
+        usernameTextView.setText("@" + username);
+
+        TextView coinTextView = view.findViewById(R.id.textView2);
+
+        String coins = String.valueOf(user.getInstance().getCoins());
+
+        coinTextView.setText("coins: "+ coins);
 
 
 

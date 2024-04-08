@@ -32,12 +32,10 @@ public class User {
     }
 
     public void setXp(int xp) {
-        databaseHelper.updateXp(email, xp);
         this.xp = xp;
     }
 
     public void setCoins(int coins) {
-        databaseHelper.updateCoins(email, coins);
         this.coins = coins;
     }
 
