@@ -31,7 +31,7 @@
                     android:id="@+id/userName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Hi USERNAME"
+                    android:text="@+id/usernameTextView"
                     android:textSize="34sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />

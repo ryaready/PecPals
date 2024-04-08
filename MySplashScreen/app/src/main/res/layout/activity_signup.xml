@@ -25,6 +25,19 @@
             <EditText
                 android:layout_width="350dp"
                 android:layout_height="60dp"
+                android:id="@+id/signup_username"
+                android:background="@drawable/lavender_border"
+                android:layout_marginTop="30dp"
+                android:padding="8dp"
+                android:hint="Email"
+                android:drawableLeft="@drawable/baseline_email_24"
+                android:drawablePadding="8dp"/>
+
+
+
+            <EditText
+                android:layout_width="350dp"
+                android:layout_height="60dp"
                 android:id="@+id/signup_email"
                 android:background="@drawable/lavender_border"
                 android:layout_marginTop="30dp"
