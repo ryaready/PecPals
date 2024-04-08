@@ -3,7 +3,6 @@ package com.example.mysplashscreen;
 public class User {
     private static User instance;
     private String email;
-    private String username;
     private int xp;
     private int coins;
     private int loginStreak;
@@ -24,10 +23,6 @@ public class User {
         this.email = email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     public void setXp(int xp) {
         this.xp = xp;
     }
@@ -43,10 +38,6 @@ public class User {
     // Getters for fields
     public String getEmail() {
         return email;
-    }
-
-    public String getUsername() {
-        return username;
     }
 
     public int getXp() {
