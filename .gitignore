@@ -27,7 +27,7 @@ Thumbs.db
 *.iml
 .idea
 #.idea/workspace.xml - remove # and delete .idea if it better suit your needs.
-!.gradle/
+.gradle/
 gradle
 **/.gradle/
 build/
@@ -42,7 +42,7 @@ obj/
 
 *.lock
 *.probe
-MySplashScreen/.gradle/config.properties
+!MySplashScreen/.gradle/config.properties
 MySplashScreen/app/build.gradle.kts
 MySplashScreen/app/src/main/AndroidManifest.xml
 MySplashScreen/local.properties
