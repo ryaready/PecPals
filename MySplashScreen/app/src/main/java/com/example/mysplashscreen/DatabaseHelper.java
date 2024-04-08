@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+
 import androidx.annotation.Nullable;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
@@ -58,5 +60,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }else {
             return false;
         }
+    }
+
+    public String fetchUsername(String email) {
+        SQLiteDatabase MyDatabase = this.getWritableDatabase();
+        Cursor cursor = MyDatabase.rawQuery("Select * from users where email = ?", new String[]{email});
+        cursor.moveToFirst();
+        Log.d("checkEmailPassword", cursor.getString(0));
+        return cursor.getString(0);
     }
 }
