@@ -17,7 +17,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String databaseName = "SignLog.db";
 
     public DatabaseHelper(@Nullable Context context) {
-        super(context, databaseName, null, 1);
+        super(context, "SignLog.db", null, 1);
     }
 
     @Override
@@ -30,38 +30,39 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         MyDB.execSQL("drop Table if exists users");
     }
 
-    public Boolean insertData(String username, String email, String password) {
+    public Boolean insertData(String email, String password){
         SQLiteDatabase MyDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-
-        contentValues.put("username", username);
         contentValues.put("email", email);
         contentValues.put("password", password);
-
         long result = MyDatabase.insert("users", null, contentValues);
 
-        return result != -1;
+        if (result == -1) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
-    public Boolean checkEmail(String email) {
+    public Boolean checkEmail(String email){
         SQLiteDatabase MyDatabase = this.getWritableDatabase();
         Cursor cursor = MyDatabase.rawQuery("Select * from users where email = ?", new String[]{email});
 
-        return cursor.getCount() > 0;
+        if(cursor.getCount() > 0) {
+            return true;
+        }else {
+            return false;
+        }
     }
-
-    public Boolean checkUsername(String username) {
+    public Boolean checkEmailPassword(String email, String password){
         SQLiteDatabase MyDatabase = this.getWritableDatabase();
-        Cursor cursor = MyDatabase.rawQuery("Select * from users where username= ?", new String[]{username});
+        Cursor cursor = MyDatabase.rawQuery("Select * from users where email = ? and password = ?", new String[]{email, password});
 
-        return cursor.getCount() > 0;
-    }
-
-    public Boolean checkEmailPassword(String emailOrUsername, String password) {
-        SQLiteDatabase MyDatabase = this.getWritableDatabase();
-        Cursor cursor = MyDatabase.rawQuery("Select * from users where (email = ? or username = ?) and password = ?", new String[]{emailOrUsername, emailOrUsername, password});
-
-        return cursor.getCount() > 0;
+        if (cursor.getCount() > 0) {
+            return true;
+        }else {
+            return false;
+        }
     }
 
     public void updateLoginStreak(String email) {
@@ -97,7 +98,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // Update User instance with updated login streak
         User.getInstance().setLoginStreak(contentValues.getAsInteger("login_streak"));
     }
-
 
     private long getLastLoginTime(String email) {
         SQLiteDatabase MyDatabase = this.getReadableDatabase();
@@ -162,7 +162,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             @SuppressLint("Range") String email = cursor.getString(cursor.getColumnIndex("email"));
 
-             user = new User();
+            user = new User();
 
         }
 
@@ -225,7 +225,5 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 }
-
-
 
 
