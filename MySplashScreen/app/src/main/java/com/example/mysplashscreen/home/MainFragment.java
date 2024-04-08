@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.SnapHelper;
 
 import com.example.mysplashscreen.CirclePagerIndicatorDecoration;
 import com.example.mysplashscreen.R;
+import com.example.mysplashscreen.User;
 import com.example.mysplashscreen.home.adapters.CreatureAdapter;
 import com.example.mysplashscreen.home.adapters.TaskAdapter;
 import com.example.mysplashscreen.home.models.Creature;
@@ -36,6 +38,8 @@ public class MainFragment extends Fragment {
     List<Creature> creatureTasksList = new ArrayList<>();
     List<Tasks> tasksList = new ArrayList<>();
     TaskAdapter taskAdapter;
+    private User User;
+
     public MainFragment() {
         // Required empty public constructor
     }
@@ -51,8 +55,17 @@ public class MainFragment extends Fragment {
                              Bundle savedInstanceState) {
         helper = new LinearSnapHelper();
 
+
+
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_main, container, false);
+
+        TextView usernameTextView = v.findViewById(R.id.userName);
+
+        String username = User.getInstance().getUsername();
+
+        usernameTextView.setText("Hello " + username + "!");
+
 
         creatureRecyclerView = v.findViewById(R.id.creatureRecyclerView);
         creatureInfoRV = v.findViewById(R.id.creatureInfo);
