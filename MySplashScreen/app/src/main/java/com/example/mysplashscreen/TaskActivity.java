@@ -1,7 +1,9 @@
 package com.example.mysplashscreen;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +14,7 @@ import java.util.ArrayList;
 public class TaskActivity extends AppCompatActivity {
     ViewPager2 viewPager2;
     ArrayList<ViewPagerItem> viewPagerItemArrayList;
+    CountDownTimer countDownTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +51,20 @@ public class TaskActivity extends AppCompatActivity {
 
         viewPager2.getChildAt(0).setOverScrollMode(View.OVER_SCROLL_NEVER);
 
+        TextView mTextField = findViewById(R.id.timer);
+        /*
+        https://developer.android.com/reference/android/os/CountDownTimer
+         */
+        countDownTimer = new CountDownTimer(60000, 1000) {
 
+            public void onTick(long millisUntilFinished) {
+                mTextField.setText("seconds remaining: " + millisUntilFinished / 1000);
+            }
+
+            public void onFinish() {
+                mTextField.setText("Time's Up!");
+            }
+        }.start();
 
     }
 
@@ -56,5 +72,15 @@ public class TaskActivity extends AppCompatActivity {
         int i = viewPager2.getCurrentItem();
         viewPager2.setCurrentItem(i+1);
         Toast.makeText(getApplicationContext(), "Well Done!", Toast.LENGTH_SHORT).show();
+        resetTimer(60000, 1000);
+        if (i == viewPager2.getAdapter().getItemCount()-1){
+            BottomNavActivity.startActivityWithIntent(this.getApplicationContext(), BottomNavActivity.class);
+        }
     }
+
+    void resetTimer(long ms, long interval){
+        countDownTimer.cancel();
+        countDownTimer.start();
+    }
+
 }

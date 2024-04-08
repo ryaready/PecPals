@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,7 +19,7 @@ import java.util.ArrayList;
  * Use the {@link CoinFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CoinFragment extends Fragment {
+public class CoinFragment extends Fragment implements RecyclerViewClickListener{
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -82,7 +83,7 @@ public class CoinFragment extends Fragment {
         recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerview.setHasFixedSize(true);
         MyAdapter myAdapter;
-        myAdapter = new MyAdapter(getContext(),coinItemsArrayList);
+        myAdapter = new MyAdapter(getContext(),coinItemsArrayList, this);
         recyclerview.setAdapter(myAdapter);
         myAdapter.notifyDataSetChanged();
     }
@@ -114,5 +115,16 @@ public class CoinFragment extends Fragment {
             coinItemsArrayList.add(coinitems);
         }
 
+    }
+
+    // listener for button clicks in the shop
+    @Override
+    public void recyclerViewListClicked(View v, int pos) {
+        // pos represents each item with 0 being the 1st item
+        switch (pos){
+            case 0: Toast.makeText(getActivity().getApplicationContext(), "Purchased!", Toast.LENGTH_SHORT).show();
+            break;
+            case 1: Toast.makeText(getActivity().getApplicationContext(), "Not Purchasable Yet!", Toast.LENGTH_SHORT).show();
+        }
     }
 }

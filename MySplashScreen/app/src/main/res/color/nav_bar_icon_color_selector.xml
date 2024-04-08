@@ -3,6 +3,6 @@
 <!--Implementation is taken from StackOverFlow user Henry Twist:
 https://stackoverflow.com/questions/66961142/change-the-icon-color-in-a-bottomnavigationview-->
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_checked="true" android:color="@color/black" />
-    <item android:color="@color/darkgrey" android:state_checked="false"/>
+    <item android:state_checked="true" android:color="@color/dark_pink" />
+    <item android:color="@color/black" android:state_checked="false" />
 </selector>

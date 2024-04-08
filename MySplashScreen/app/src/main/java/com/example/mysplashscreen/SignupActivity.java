@@ -1,10 +1,10 @@
 package com.example.mysplashscreen;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mysplashscreen.databinding.ActivitySignupBinding;
 
@@ -22,32 +22,33 @@ public class SignupActivity extends AppCompatActivity {
         databaseHelper = new DatabaseHelper(this);
 
         binding.signupButton.setOnClickListener(view -> {
+            String username = binding.signupUsername.getText().toString();
             String email = binding.signupEmail.getText().toString();
             String password = binding.signupPassword.getText().toString();
             String confirmPassword = binding.signupConfirm.getText().toString();
 
-            if(email.equals("")||password.equals("")||confirmPassword.equals(""))
+            if (username.equals("") || email.equals("") || password.equals("") || confirmPassword.equals("")) {
                 Toast.makeText(SignupActivity.this, "All fields are mandatory", Toast.LENGTH_SHORT).show();
-            else{
-                if(password.equals(confirmPassword)){
+            } else {
+                if (password.equals(confirmPassword)) {
                     Boolean checkUserEmail = databaseHelper.checkEmail(email);
+                    Boolean checkUsername = databaseHelper.checkUsername(username);
 
-                    if(!checkUserEmail){
-                        Boolean insert = databaseHelper.insertData(email, password);
+                    if (!checkUserEmail && !checkUsername) {
+                        Boolean insert = databaseHelper.insertData(username, email, password);
 
-                        if(insert){
+                        if (insert) {
                             Toast.makeText(SignupActivity.this, "Signup Successfully!", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+                            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                             startActivity(intent);
-                        }else{
+                        } else {
                             Toast.makeText(SignupActivity.this, "Signup Failed!", Toast.LENGTH_SHORT).show();
                         }
+                    } else {
+                        Toast.makeText(SignupActivity.this, "Username or Email already exists! Please try a different one.", Toast.LENGTH_SHORT).show();
                     }
-                    else{
-                        Toast.makeText(SignupActivity.this, "User already exists! Please login", Toast.LENGTH_SHORT).show();
-                    }
-                }else{
-                    Toast.makeText(SignupActivity.this, "Invalid Password!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(SignupActivity.this, "Passwords do not match!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -56,6 +57,5 @@ public class SignupActivity extends AppCompatActivity {
             Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
             startActivity(intent);
         });
-
     }
 }
