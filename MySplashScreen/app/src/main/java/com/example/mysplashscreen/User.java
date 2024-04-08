@@ -1,29 +1,31 @@
 package com.example.mysplashscreen;
-import java.util.HashMap;
 
 public class User {
-    private static final HashMap<String, User> instancesByEmail = new HashMap<>();
-
+    private static User instance;
     private String email;
+    private String username;
     private int xp;
     private int coins;
     private int loginStreak;
 
+  
     private User() {}
 
-    // Static method to obtain the singleton instance by email
-    public static synchronized User getInstance(String email) {
-        if (!instancesByEmail.containsKey(email)) {
-            User newUser = new User();
-            newUser.setEmail(email);
-            instancesByEmail.put(email, newUser);
+    // Static method to obtain the singleton instance
+    public static synchronized User getInstance() {
+        if (instance == null) {
+            instance = new User();
         }
-        return instancesByEmail.get(email);
+        return instance;
     }
 
     // Setters for fields
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public void setXp(int xp) {
@@ -43,6 +45,10 @@ public class User {
         return email;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
     public int getXp() {
         return xp;
     }
@@ -55,4 +61,3 @@ public class User {
         return loginStreak;
     }
 }
-

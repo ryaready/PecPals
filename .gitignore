@@ -42,3 +42,9 @@ obj/
 
 *.lock
 *.probe
+!MySplashScreen/.gradle/config.properties
+MySplashScreen/app/build.gradle.kts
+MySplashScreen/app/src/main/AndroidManifest.xml
+MySplashScreen/local.properties
+*.lock
+*.bin

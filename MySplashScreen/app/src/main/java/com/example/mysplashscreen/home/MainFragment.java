@@ -86,7 +86,9 @@ public class MainFragment extends Fragment {
         List<Creature> creatureList = new ArrayList<>();
 
         creatureList.add(new Creature(R.drawable.animation_splash, "Egg", 10, 2423));
-        creatureList.add(new Creature(R.drawable.animation_splash, "Egg 2", 100, 50));
+        creatureList.add(new Creature(R.drawable.baseline_question_mark_24, "???", 0, 0));
+        creatureList.add(new Creature(R.drawable.baseline_question_mark_24, "???", 0, 0));
+        creatureList.add(new Creature(R.drawable.baseline_question_mark_24, "???", 0, 0));
 
         CreatureAdapter creatureAdapter = new CreatureAdapter(creatureList);
         creatureRecyclerView.setAdapter(creatureAdapter);
@@ -133,13 +135,13 @@ public class MainFragment extends Fragment {
 
     List<Tasks> UpdateTasks(List<Tasks> taskList){
         tasksList.clear();
-        tasksList.add(new Tasks(10, "Task 1"));
-        tasksList.add(new Tasks(20, "Task 2"));
-        tasksList.add(new Tasks(30, "Task 3"));
-        tasksList.add(new Tasks(40, "Task 4"));
-        tasksList.add(new Tasks(80, "Task 8"));
-        tasksList.add(new Tasks(90, "Task 9"));
-        tasksList.add(new Tasks(100, "Task 10"));
+//        tasksList.add(new Tasks(10, "Task 1"));
+//        tasksList.add(new Tasks(20, "Task 2"));
+//        tasksList.add(new Tasks(30, "Task 3"));
+//        tasksList.add(new Tasks(40, "Task 4"));
+//        tasksList.add(new Tasks(80, "Task 8"));
+//        tasksList.add(new Tasks(90, "Task 9"));
+//        tasksList.add(new Tasks(100, "Task 10"));
         return taskList;
     }
 
