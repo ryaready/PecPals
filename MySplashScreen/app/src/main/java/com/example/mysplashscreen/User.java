@@ -2,16 +2,27 @@ package com.example.mysplashscreen;
 
 import java.util.ArrayList;
 import java.util.List;
-
 public class User {
     private static User instance;
     private String email;
     private int xp;
     private int coins;
     private int loginStreak;
+
+    private LevelState levelState;
     private List<UserObserver> observers = new ArrayList<>();
 
-    private User() {}
+    private User() {
+        levelState = new LevelBaseState();
+    }
+
+    public void setLevelState(LevelState levelState) {
+        this.levelState = levelState;
+    }
+
+    public LevelState getLevelState() {
+        return levelState;
+    }
 
     // Static method to obtain the singleton instance
     public static synchronized User getInstance() {
@@ -72,4 +83,10 @@ public class User {
             observer.onUserUpdated(this);
         }
     }
+
+    public void levelUp() {
+        // Logic to level up the user
+        notifyObservers();
+    }
 }
+
