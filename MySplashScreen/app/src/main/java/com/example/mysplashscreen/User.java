@@ -11,6 +11,8 @@ public class User {
     private int loginStreak;
     private List<UserObserver> observers = new ArrayList<>();
 
+    DatabaseHelper databaseHelper;
+
     private User() {}
 
     // Static method to obtain the singleton instance
@@ -72,4 +74,6 @@ public class User {
             observer.onUserUpdated(this);
         }
     }
+
+
 }

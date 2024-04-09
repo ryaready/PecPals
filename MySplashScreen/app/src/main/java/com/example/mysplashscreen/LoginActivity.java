@@ -34,7 +34,9 @@ public class LoginActivity extends AppCompatActivity {
                     Boolean checkCredentials = databaseHelper.checkEmailPassword(email, password);
 
                     User user = User.getInstance();
-                    user.setEmail(databaseHelper.fetchUsername(email));
+                    String email1 = databaseHelper.fetchUsername(email);
+                    user.setEmail(email1);
+
 
                     if (checkCredentials == true) {
                         Toast.makeText(LoginActivity.this, "Login Successfully!", Toast.LENGTH_SHORT).show();
