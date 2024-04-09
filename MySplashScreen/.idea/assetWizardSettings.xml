@@ -33,9 +33,10 @@
                         </option>
                         <option name="values">
                           <map>
+                            <entry key="assetSourceType" value="FILE" />
                             <entry key="color" value="ffffff" />
-                            <entry key="outputName" value="baseline_question_mark_24" />
-                            <entry key="sourceFile" value="C:\SUTD\TERM 4\ISP\1D\PecPals\MySplashScreen" />
+                            <entry key="outputName" value="star" />
+                            <entry key="sourceFile" value="C:\SUTD\TERM 4\ISP\1D\PecPals\MySplashScreen\app\src\main\res\drawable\star.svg" />
                           </map>
                         </option>
                       </PersistentState>
