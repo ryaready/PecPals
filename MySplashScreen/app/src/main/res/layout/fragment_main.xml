@@ -7,7 +7,7 @@
     android:background="@color/white"
     android:elevation="0dp"
     android:orientation="vertical"
-    android:theme="@style/Base.Theme.MySplashScreen"
+    android:theme="@style/Theme.LogSignSQLPractice"
     tools:context=".home.MainFragment">
 
     <!-- TODO: Update blank fragment layout -->
