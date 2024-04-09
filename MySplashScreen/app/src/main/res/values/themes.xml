@@ -24,7 +24,7 @@
            
      <style name="Theme.IconTrial1" parent="Base.Theme.IconTrial1" />
 
-    <style name="Base.Theme.Store1" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.Store1" parent="Theme.Material3.DayNight.NoActionBar"/>
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->    
     <style name="Button.Color" parent="Theme.LogSignSQLPractice">
