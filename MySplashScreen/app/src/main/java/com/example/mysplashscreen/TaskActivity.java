@@ -16,6 +16,8 @@ public class TaskActivity extends AppCompatActivity {
     ArrayList<ViewPagerItem> viewPagerItemArrayList;
     CountDownTimer countDownTimer;
 
+    User user = User.getInstance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +76,11 @@ public class TaskActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "Well Done!", Toast.LENGTH_SHORT).show();
         resetTimer(60000, 1000);
         if (i == viewPager2.getAdapter().getItemCount()-1){
+
+            int currCoin = user.getCoins();
+            int totalCoins = currCoin + 500;
+            user.setCoins(totalCoins);
+
             BottomNavActivity.startActivityWithIntent(this.getApplicationContext(), BottomNavActivity.class);
         }
     }

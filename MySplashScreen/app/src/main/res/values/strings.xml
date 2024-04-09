@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Splash Screen</string>
+     <string name="app_name">PecPals</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="long_descrption_testing">
         Lorem Ipsum is simply dummy text of the printing and typesetting industry.
@@ -61,7 +61,6 @@
     <string name ="NTUC1description">Can be redeemed after ___ level</string>
     
     <string name="page_name">Settings Page</string>
-    <string name="username">"@"chimkon</string>
     <string name="email">chimkonnuggies@gmail.com</string>
     <string name="account_settings">Account Settings</string>
     <string name="billing_information">Billing Information</string>

@@ -1,17 +1,16 @@
 package com.example.mysplashscreen;
 
+import java.util.ArrayList;
+import java.util.List;
 
 public class User {
     private static User instance;
     private String email;
-    private String username;
     private int xp;
     private int coins;
     private int loginStreak;
+    private List<UserObserver> observers = new ArrayList<>();
 
-    DatabaseHelper databaseHelper;
-
-  
     private User() {}
 
     // Static method to obtain the singleton instance
@@ -27,31 +26,24 @@ public class User {
         this.email = email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     public void setXp(int xp) {
-        databaseHelper.updateXp(email, xp);
         this.xp = xp;
+        notifyObservers();
     }
 
     public void setCoins(int coins) {
-        databaseHelper.updateCoins(email, coins);
         this.coins = coins;
+        notifyObservers();
     }
 
     public void setLoginStreak(int loginStreak) {
         this.loginStreak = loginStreak;
+        notifyObservers();
     }
 
     // Getters for fields
     public String getEmail() {
         return email;
-    }
-
-    public String getUsername() {
-        return username;
     }
 
     public int getXp() {
@@ -64,5 +56,20 @@ public class User {
 
     public int getLoginStreak() {
         return loginStreak;
+    }
+
+    // Observer methods
+    public void addObserver(UserObserver observer) {
+        observers.add(observer);
+    }
+
+    public void removeObserver(UserObserver observer) {
+        observers.remove(observer);
+    }
+
+    private void notifyObservers() {
+        for (UserObserver observer : observers) {
+            observer.onUserUpdated(this);
+        }
     }
 }
