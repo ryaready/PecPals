@@ -31,6 +31,13 @@ public class ShopFragment extends Fragment {
         coinFragment = new CoinFragment();
         realFragment = new RealFragment();
         replaceChildFragment(coinFragment);
+
+        ImageButton coinshopbutton = v.findViewById(R.id.coinshopbutton);
+        ImageButton realshopbutton = v.findViewById(R.id.realshopbutton);
+
+        realshopbutton.setImageResource(R.drawable.virtual_shop_icon_default);
+        coinshopbutton.setImageResource(R.drawable.voucher_shop_icon_clicked);
+
         return v;
     }
 
