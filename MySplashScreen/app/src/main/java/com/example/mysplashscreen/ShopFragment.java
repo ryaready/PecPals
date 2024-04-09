@@ -4,7 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -30,25 +31,40 @@ public class ShopFragment extends Fragment {
         coinFragment = new CoinFragment();
         realFragment = new RealFragment();
         replaceChildFragment(coinFragment);
+
+        ImageButton coinshopbutton = v.findViewById(R.id.coinshopbutton);
+        ImageButton realshopbutton = v.findViewById(R.id.realshopbutton);
+
+        realshopbutton.setImageResource(R.drawable.virtual_shop_icon_default);
+        coinshopbutton.setImageResource(R.drawable.voucher_shop_icon_clicked);
+
         return v;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
-        Button coinshopbutton = view.findViewById(R.id.coinshopbutton);
+        ImageButton coinshopbutton = view.findViewById(R.id.coinshopbutton);
+        ImageButton realshopbutton = view.findViewById(R.id.realshopbutton);
+        TextView shopname = view.findViewById(R.id.shop_name);
         coinshopbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                realshopbutton.setImageResource(R.drawable.virtual_shop_icon_default);
+                coinshopbutton.setImageResource(R.drawable.voucher_shop_icon_clicked);
+                shopname.setText("Virtual Shop");
                 replaceChildFragment(coinFragment);
             }
 
         });
 
-        Button realshopbutton = view.findViewById(R.id.realshopbutton);
+
         realshopbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                coinshopbutton.setImageResource(R.drawable.voucher_shop_icon_default);
+                realshopbutton.setImageResource(R.drawable.virtual_shop_icon_clicked);
+                shopname.setText("Voucher Shop");
                 replaceChildFragment(realFragment);
             }
         });

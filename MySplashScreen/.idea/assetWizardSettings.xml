@@ -33,9 +33,10 @@
                         </option>
                         <option name="values">
                           <map>
+                            <entry key="assetSourceType" value="FILE" />
                             <entry key="color" value="ffffff" />
-                            <entry key="outputName" value="baseline_question_mark_24" />
-                            <entry key="sourceFile" value="C:\SUTD\TERM 4\ISP\1D\PecPals\MySplashScreen" />
+                            <entry key="outputName" value="shop_line_between_icons" />
+                            <entry key="sourceFile" value="C:\SUTD\TERM 4\ISP\assets\Shop res files\Shop Line between icons.svg" />
                           </map>
                         </option>
                       </PersistentState>
