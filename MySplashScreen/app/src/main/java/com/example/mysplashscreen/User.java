@@ -60,11 +60,6 @@ public class User {
         return loginStreak;
     }
 
-    // Observer methods
-    public void addObserver(UserObserver observer) {
-        observers.add(observer);
-    }
-
     public void removeObserver(UserObserver observer) {
         observers.remove(observer);
     }

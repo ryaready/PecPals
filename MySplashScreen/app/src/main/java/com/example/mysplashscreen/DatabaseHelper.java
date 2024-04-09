@@ -11,10 +11,10 @@ import androidx.annotation.Nullable;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    public static final String databaseName = "SignLog.db";
+    public static final String databaseName = "NEW.db";
 
     public DatabaseHelper(@Nullable Context context) {
-        super(context, "SignLog.db", null, 1);
+        super(context, "NEW.db", null, 1);
     }
 
     @Override
@@ -70,6 +70,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return cursor.getString(0);
     }
 
+    public void updateXP(String email, int xp) {
+        SQLiteDatabase MyDatabase = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("XP", xp);
+        long result = MyDatabase.update("users", contentValues, "email=?", new String[]{email});
+    }
+
+    public void updateCoins(String email, int coins) {
+        SQLiteDatabase MyDatabase = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("coins", coins);
+        long result = MyDatabase.update("users", contentValues, "email=?", new String[]{email});
+    }
+
+
+}
+
 
 //    public void updateXp(String email, int xp) {
 //        SQLiteDatabase MyDatabase = this.getWritableDatabase();
@@ -87,5 +104,3 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 //
 //    }
 
-
-}
