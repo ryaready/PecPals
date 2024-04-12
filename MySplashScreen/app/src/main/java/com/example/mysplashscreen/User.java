@@ -24,6 +24,10 @@ public class User {
         return levelState;
     }
 
+    DatabaseHelper databaseHelper;
+
+    private User() {}
+
     // Static method to obtain the singleton instance
     public static synchronized User getInstance() {
         if (instance == null) {
@@ -69,11 +73,6 @@ public class User {
         return loginStreak;
     }
 
-    // Observer methods
-    public void addObserver(UserObserver observer) {
-        observers.add(observer);
-    }
-
     public void removeObserver(UserObserver observer) {
         observers.remove(observer);
     }
@@ -83,6 +82,7 @@ public class User {
             observer.onUserUpdated(this);
         }
     }
+
 
     public void levelUp() {
         // Logic to level up the user

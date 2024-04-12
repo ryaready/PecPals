@@ -15,7 +15,7 @@
         <item name="colorOnSecondary">@color/black</item>
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <item name="android:textColorPrimary">@color/black</item>
-        <item name="fontFamily">@font/kode_mono</item>
+        <item name="fontFamily">@font/roboto</item>
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
@@ -24,11 +24,12 @@
            
      <style name="Theme.IconTrial1" parent="Base.Theme.IconTrial1" />
 
-    <style name="Base.Theme.Store1" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.Store1" parent="Theme.Material3.DayNight.NoActionBar"/>
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->    
+    <style name="Button.Color" parent="Theme.LogSignSQLPractice">
+         <item name="colorAccent">@color/dark_pink</item>
     </style>
 
-    <style name="Theme.Store1" parent="Base.Theme.Store1" />
     
 </resources>

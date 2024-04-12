@@ -57,17 +57,24 @@ public class ProfileFragment extends Fragment implements UserObserver {
         });
     }
 
-    // Update UI with current user data
     private void updateUI() {
-
         String coins = String.valueOf(user.getCoins());
         TextView coinTextView = binding.textView2;
-        coinTextView.setText("coins: " + coins);
+        coinTextView.setText(coins);
+
+        String xp = String.valueOf(user.getXp());
+        TextView xpTextView = binding.textView3;
+        xpTextView.setText(xp);
+
+        String ls = String.valueOf(user.getLoginStreak());
+        TextView lsTextView = binding.textView4;
+        lsTextView.setText(ls);
     }
 
-    // Implement observer methods to handle updates
+
     @Override
     public void onUserUpdated(User user) {
+
         updateUI();
     }
 

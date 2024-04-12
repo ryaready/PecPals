@@ -20,6 +20,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
  */
 public class BottomNavActivity extends AppCompatActivity {
 
+
     public static Context context;
     BottomNavigationView bottomNavigationView;
     FloatingActionButton floatingActionButton;
@@ -32,6 +33,7 @@ public class BottomNavActivity extends AppCompatActivity {
     TaskModalFragment taskModalFragment = new TaskModalFragment();
 
     MainFragment mainFragment = new MainFragment();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
