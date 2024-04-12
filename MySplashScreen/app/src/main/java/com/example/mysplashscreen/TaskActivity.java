@@ -81,6 +81,10 @@ public class TaskActivity extends AppCompatActivity {
             int totalCoins = currCoin + 500;
             user.setCoins(totalCoins);
 
+            int a = user.getXp();
+            int totala = a + 500;
+            user.setXp(totala);
+
             BottomNavActivity.startActivityWithIntent(this.getApplicationContext(), BottomNavActivity.class);
         }
     }

@@ -123,6 +123,10 @@ public class CoinFragment extends Fragment implements RecyclerViewClickListener{
         // pos represents each item with 0 being the 1st item
         switch (pos){
             case 0: Toast.makeText(getActivity().getApplicationContext(), "Purchased!", Toast.LENGTH_SHORT).show();
+            User user = User.getInstance();
+            int cn = user.getCoins();
+            cn -= 10;
+            user.setCoins(cn);
             break;
             case 1: Toast.makeText(getActivity().getApplicationContext(), "Not Purchasable Yet!", Toast.LENGTH_SHORT).show();
         }

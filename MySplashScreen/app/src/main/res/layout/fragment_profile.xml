@@ -24,7 +24,7 @@
             app:srcCompat="@drawable/profilepic" />
 
         <TextView
-            android:id="@+id/mainprofileusername"
+            android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
@@ -83,19 +83,6 @@
                             app:layout_constraintTop_toBottomOf="@+id/imageView2"
                             tools:layout_editor_absoluteX="8dp" />
 
-                        <TextView
-                            android:id="@+id/username_profile"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:paddingStart="16dp"
-                            android:paddingEnd="16dp"
-                            android:text="TextView"
-                            android:gravity="center_horizontal"
-
-                            app:layout_constraintEnd_toEndOf="@+id/useridprofile_placeholder"
-                            app:layout_constraintStart_toStartOf="@+id/useridprofile_placeholder"
-                            app:layout_constraintTop_toBottomOf="@+id/useridprofile_placeholder" />
-
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -140,17 +127,6 @@
                             app:layout_constraintTop_toBottomOf="@+id/profile_icon"
                             tools:layout_editor_absoluteX="8dp" />
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:paddingStart="16dp"
-                            android:paddingEnd="16dp"
-                            android:text="TextView"
-                            android:gravity="center_horizontal"
-
-                            app:layout_constraintEnd_toEndOf="@+id/profile_placeholder"
-                            app:layout_constraintStart_toStartOf="@+id/profile_placeholder"
-                            app:layout_constraintTop_toBottomOf="@+id/profile_placeholder" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -203,7 +179,7 @@
                             tools:layout_editor_absoluteX="8dp" />
 
                         <TextView
-                            android:id="@+id/coin_balance"
+                            android:id="@+id/textView2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:paddingStart="16dp"
@@ -260,7 +236,7 @@
                             tools:layout_editor_absoluteX="8dp" />
 
                         <TextView
-                            android:id="@+id/current_xp"
+                            android:id="@+id/textView3"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:paddingStart="16dp"
@@ -323,7 +299,7 @@
                             tools:layout_editor_absoluteX="8dp" />
 
                         <TextView
-                            android:id="@+id/current_streak"
+                            android:id="@+id/textView4"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:paddingStart="16dp"
