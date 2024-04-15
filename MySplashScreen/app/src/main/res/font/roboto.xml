@@ -7,9 +7,9 @@
     <font
         android:fontStyle="normal"
         android:fontWeight="500"
-        android:font="@font/roboto_medium" />
+        android:font="@font/roboto_regular" />
     <font
         android:fontStyle="normal"
-        android:fontWeight="400"
-        android:font="@font/roboto_regular" />
+        android:fontWeight="300"
+        android:font="@font/roboto_thin" />
 </font-family>

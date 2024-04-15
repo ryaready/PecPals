@@ -3,11 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".RealFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/real_list_item"/>
+        android:layout_margin="20dp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="2"
+        tools:listitem="@layout/real_list_item" />
 </FrameLayout>

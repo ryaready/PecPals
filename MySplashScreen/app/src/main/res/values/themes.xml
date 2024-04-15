@@ -22,15 +22,13 @@
     
     <style name="Button.Color" parent="Theme.LogSignSQLPractice">
          <item name="colorAccent">@color/dark_pink</item>
-     <style name="Base.Theme.IconTrial1" parent="Theme.Material3.DayNight.NoActionBar">
      </style>
-           
-     <style name="Theme.IconTrial1" parent="Base.Theme.IconTrial1" />
 
-    <style name="Base.Theme.Store1" parent="Theme.Material3.DayNight.NoActionBar"/>
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-    </style>
+
+<!--    <style name="Base.Theme.Store1" parent="Theme.Material3.DayNight.NoActionBar"/>-->
+<!--        &lt;!&ndash; Customize your light theme here. &ndash;&gt;-->
+<!--        &lt;!&ndash; <item name="colorPrimary">@color/my_light_primary</item> &ndash;&gt;-->
+<!--    </style>-->
 
     
 </resources>
