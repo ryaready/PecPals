@@ -57,10 +57,11 @@ public class TaskActivity extends AppCompatActivity {
         push_ups.setDesc(getString(R.string.pushup_desc));
         push_ups.setImageID(R.drawable.e);
 
-
-
         exercisePlan.clearExerciseDatabase();
         exercisePlan.insertExercise(push_ups);
+        exercisePlan.insertExercise(bicep_curls);
+        exercisePlan.insertExercise(bent_over_rows);
+        exercisePlan.insertExercise(bench_press);
 
         exerciseArrayList = exercisePlan.getAllExercises();
         Log.d("array", String.valueOf(exerciseArrayList));
