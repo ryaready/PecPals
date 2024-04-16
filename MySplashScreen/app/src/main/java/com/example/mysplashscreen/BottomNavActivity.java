@@ -80,10 +80,11 @@ public class BottomNavActivity extends AppCompatActivity {
         return BottomNavActivity.context;
     }
 
-    public static void startActivityWithIntent(Context first, Class second){
+    public static Intent startActivityTaskActivity(Context first, Class second, int pos){
         Intent intent = new Intent(first, second);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("task", pos);
         first.startActivity(intent);
+        return intent;
     }
-
 }
