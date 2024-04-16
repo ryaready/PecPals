@@ -121,12 +121,25 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center_horizontal"
-                            android:text="Profile"
-                            android:textStyle="bold"
                             android:paddingStart="16dp"
                             android:paddingEnd="16dp"
+                            android:text="Level"
+                            android:textStyle="bold"
                             app:layout_constraintTop_toBottomOf="@+id/profile_icon"
                             tools:layout_editor_absoluteX="8dp" />
+
+                        <TextView
+                            android:id="@+id/level_value"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
+                            android:text="TextView"
+                            android:gravity="center_horizontal"
+
+                            app:layout_constraintEnd_toEndOf="@+id/profile_placeholder"
+                            app:layout_constraintStart_toStartOf="@+id/profile_placeholder"
+                            app:layout_constraintTop_toBottomOf="@+id/profile_placeholder" />
 
 
                     </androidx.constraintlayout.widget.ConstraintLayout>

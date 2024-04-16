@@ -82,6 +82,7 @@
                     android:layout_marginEnd="16dp"
                     android:gravity="right"
                     android:text="+300xp"
+                    android:textColor="@color/off_white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/taskText">
 

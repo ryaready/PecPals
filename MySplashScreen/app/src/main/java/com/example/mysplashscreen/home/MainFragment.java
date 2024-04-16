@@ -43,6 +43,7 @@ public class MainFragment extends Fragment implements UserObserver {
     public static CreatureAdapter creatureAdapter;
     List<Creature> creatureTasksList = new ArrayList<>();
     List<Tasks> tasksList = new ArrayList<>();
+
     TaskAdapter taskAdapter;
     TextView tasktodo;
     private User user = User.getInstance();
@@ -95,7 +96,6 @@ public class MainFragment extends Fragment implements UserObserver {
         creatureInfoRV.setHasFixedSize(true);
         creatureInfoRV.setLayoutManager(new LinearLayoutManager(this.getActivity()));
 
-
         creatureList.add(new Creature("pinko", levelState));
         creatureList.add(new Creature1("chickie", levelState));
         creatureList.add(new Creature2("treevor", levelState));
@@ -107,7 +107,10 @@ public class MainFragment extends Fragment implements UserObserver {
         tasksList.add(new Tasks("Task: " + exerciseList.get(0).getName()));
         tasksList.add(new Tasks("Task: " + exerciseList.get(1).getName()));
 
+        tasksList.add(new Tasks(500, "Task: " + exerciseList.get(0).getName()));
+        tasksList.add(new Tasks(500, "Task: " + exerciseList.get(1).getName()));
 
+//        taskAdapter = new TaskAdapter(exerciseList);
         taskAdapter = new TaskAdapter(tasksList);
         creatureInfoRV.setAdapter(taskAdapter);
         creatureRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -132,6 +135,16 @@ public class MainFragment extends Fragment implements UserObserver {
 
                 else if (activePosition == 1 && levelState <=13){
                     tasktodo.setVisibility(View.INVISIBLE);
+
+                    tasksList.add(new Tasks(500, "Task: " + exerciseList.get(0).getName()));
+                    tasksList.add(new Tasks(500, "Task: " + exerciseList.get(1).getName()));
+                    taskAdapter.notifyDataSetChanged();
+                }
+                // if page 2
+                // add in more conditions here to represent each page/creature
+                else if (activePosition == 1 && levelState <=13){
+                    tasktodo.setVisibility(View.INVISIBLE);
+                    tasksList.clear();
                     taskAdapter.notifyDataSetChanged();
 
                 }
@@ -141,6 +154,10 @@ public class MainFragment extends Fragment implements UserObserver {
 
                     tasksList.add(new Tasks("Task: " + exerciseList.get(2).getName()));
                     tasksList.add(new Tasks("Task: " + exerciseList.get(3).getName()));
+
+                    tasksList.add(new Tasks(500,"Task: " + exerciseList.get(2).getName()));
+                    tasksList.add(new Tasks(500,"Task: " + exerciseList.get(3).getName()));
+
                     taskAdapter.notifyDataSetChanged();
 
                 }
@@ -150,12 +167,16 @@ public class MainFragment extends Fragment implements UserObserver {
                     tasktodo.setVisibility(View.VISIBLE);
                     tasksList.add(new Tasks("Task: " + exerciseList.get(4).getName()));
                     tasksList.add(new Tasks("Task: " + exerciseList.get(2).getName()));
+
+                    tasksList.add(new Tasks(500,"Task: " + exerciseList.get(4).getName()));
+                    tasksList.add(new Tasks(500,"Task: " + exerciseList.get(2).getName()));
                     taskAdapter.notifyDataSetChanged();
 
                 }
                 else{
                     tasktodo.setVisibility(View.INVISIBLE);
-                    //UpdateTasks(tasksList);
+//                    UpdateTasks(tasksList);
+                    tasksList.clear();
                     taskAdapter.notifyDataSetChanged();
                 }
             }
@@ -189,5 +210,17 @@ public class MainFragment extends Fragment implements UserObserver {
     @Override
     public void onUserUpdated(User user) {
     }
+
+//    List<Exercise> updateExerciseList(List<Exercise> exerciseList){
+//
+//        List<Exercise> exercises = new ArrayList<>();
+//        for (Exercise e: exerciseList){
+//            if (!e.getCompleted()){
+//                ad
+//            }
+//        }
+//        return
+//    }
+
 
 }

@@ -72,7 +72,6 @@ public class ProfileFragment extends Fragment implements UserObserver {
         lvlTextView = binding.levelValue;
         lvlTextView.setText(level);
 
-
     }
 
 

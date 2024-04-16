@@ -111,7 +111,6 @@ public class User {
         }
     }
 
-
     public void updateLogin() {
         long currentTime = System.currentTimeMillis();
         long oneDayInMillis = 24 * 60 * 60 * 1000;
