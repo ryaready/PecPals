@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "495516368895",
+    "project_id": "pecpals-84281",
+    "storage_bucket": "pecpals-84281.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:495516368895:android:bc8d8c2e27a35dfc9bf1ca",
+        "android_client_info": {
+          "package_name": "com.example.mysplashscreen"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcXzWrXWmFo6Qc-gmYOuDlSqwBd2Lrgvw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
