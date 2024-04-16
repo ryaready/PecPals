@@ -96,9 +96,9 @@ public class MainFragment extends Fragment {
         CreatureAdapter creatureAdapter = new CreatureAdapter(creatureList);
         creatureRecyclerView.setAdapter(creatureAdapter);
 
-        tasksList.add(new Tasks(50, "Task 5"));
-        tasksList.add(new Tasks(60, "Task 6"));
-        tasksList.add(new Tasks(70, "Task 7"));
+        tasksList.add(new Tasks(50, "Task 1: Do 5 push ups"));
+        tasksList.add(new Tasks(60, "Task 2: Do 10 push ups"));
+        tasksList.add(new Tasks(70, "Task 3: Do 15 push ups"));
 
         taskAdapter = new TaskAdapter(tasksList);
         creatureInfoRV.setAdapter(taskAdapter);
@@ -116,9 +116,9 @@ public class MainFragment extends Fragment {
                 if(activePosition == 0){
                     tasktodo.setVisibility(View.VISIBLE);
                     tasksList.clear();
-                    tasksList.add(new Tasks(50, "Task 5"));
-                    tasksList.add(new Tasks(60, "Task 6"));
-                    tasksList.add(new Tasks(70, "Task 7"));
+                    tasksList.add(new Tasks(50, "Task 1: Do 5 push ups"));
+                    tasksList.add(new Tasks(60, "Task 2: Do 10 push ups"));
+                    tasksList.add(new Tasks(70, "Task 3: Do 15 push ups"));
                     taskAdapter.notifyDataSetChanged();
                 }
                 // if page 2
