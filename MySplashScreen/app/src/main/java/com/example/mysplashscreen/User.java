@@ -107,7 +107,7 @@ public class User {
 
 
     public void levelUp() {
-        if (checkLvlUp == true){
+        if (checkLvlUp() == true){
             int next = xp/50;
             setLevelState(next);
             notifyObservers();

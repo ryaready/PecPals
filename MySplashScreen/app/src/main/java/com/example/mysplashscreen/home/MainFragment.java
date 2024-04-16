@@ -21,6 +21,8 @@ import com.example.mysplashscreen.UserObserver;
 import com.example.mysplashscreen.home.adapters.CreatureAdapter;
 import com.example.mysplashscreen.home.adapters.TaskAdapter;
 import com.example.mysplashscreen.home.models.Creature;
+import com.example.mysplashscreen.home.models.Creature1;
+import com.example.mysplashscreen.home.models.Creature2;
 import com.example.mysplashscreen.home.models.Tasks;
 
 import java.util.ArrayList;
@@ -42,7 +44,7 @@ public class MainFragment extends Fragment implements UserObserver {
     TextView tasktodo;
     private User user = User.getInstance();
 
-    List<Creature> creatureList = new ArrayList<>();
+    List<Object> creatureList = new ArrayList<>();
 
     int levelState = user.getLevelState();
 
@@ -59,6 +61,8 @@ public class MainFragment extends Fragment implements UserObserver {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
         helper = new LinearSnapHelper();
 
         View v = inflater.inflate(R.layout.fragment_main, container, false);
@@ -88,8 +92,8 @@ public class MainFragment extends Fragment implements UserObserver {
 
 
         creatureList.add(new Creature("pinko", levelState));
-        creatureList.add(new Creature("chickie", levelState));
-        creatureList.add(new Creature("treevor", levelState));
+        creatureList.add(new Creature1("chickie", levelState));
+        creatureList.add(new Creature2("treevor", levelState));
 
         CreatureAdapter creatureAdapter = new CreatureAdapter(creatureList);
         creatureRecyclerView.setAdapter(creatureAdapter);
@@ -156,17 +160,6 @@ public class MainFragment extends Fragment implements UserObserver {
 
     @Override
     public void onUserUpdated(User user) {
-        updateUI();
-
     }
 
-    private void updateUI() {
-        creatureTasksList.clear();
-        creatureList.add(new Creature("pinko", levelState));
-        creatureList.add(new Creature("chickie", levelState));
-        creatureList.add(new Creature("treevor", levelState));
-
-
-
-    }
 }

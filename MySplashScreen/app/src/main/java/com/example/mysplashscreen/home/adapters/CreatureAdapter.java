@@ -1,3 +1,5 @@
+package com.example.mysplashscreen.home.adapters;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,14 +20,13 @@ import java.util.List;
 
 public class CreatureAdapter extends RecyclerView.Adapter<CreatureAdapter.CreatureViewHolder> implements UserObserver {
 
-    private List<Object> creatureList; // List of Objects to hold different types of creatures
-    private User user; // Reference to the user object
+    private List<Object> creatureList;
+    private User user = User.getInstance();
 
-    public CreatureAdapter(List<Object> creatureList, User user) {
+    public CreatureAdapter(List<Object> creatureList) {
         this.creatureList = creatureList;
-        this.user = user;
-        user.addObserver(this); // Register this adapter as an observer of the user object
     }
+
 
     @NonNull
     @Override
@@ -36,15 +37,15 @@ public class CreatureAdapter extends RecyclerView.Adapter<CreatureAdapter.Creatu
 
     @Override
     public void onBindViewHolder(@NonNull CreatureViewHolder holder, int position) {
-        if (position == 0 && creatureList.get(position) instanceof Creature) {
+        if (creatureList.get(position) instanceof Creature) {
             Creature creature = (Creature) creatureList.get(position);
             holder.textViewName.setText(creature.getName());
             holder.imageView.setImageResource(creature.getImage());
-        } else if (position == 1 && creatureList.get(position) instanceof Creature1) {
+        } else if (creatureList.get(position) instanceof Creature1) {
             Creature1 creature = (Creature1) creatureList.get(position);
             holder.textViewName.setText(creature.getName());
             holder.imageView.setImageResource(creature.getImage());
-        } else if (position == 2 && creatureList.get(position) instanceof Creature2) {
+        } else if (creatureList.get(position) instanceof Creature2) {
             Creature2 creature = (Creature2) creatureList.get(position);
             holder.textViewName.setText(creature.getName());
             holder.imageView.setImageResource(creature.getImage());
