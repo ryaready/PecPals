@@ -18,6 +18,7 @@ public class User {
     private List<UserObserver> observers = new ArrayList<>();
 
     private DatabaseReference databaseReference;
+    private boolean checkLvlUp;
 
     protected User() {
     }
@@ -67,6 +68,7 @@ public class User {
     }
 
     public int getXp() {
+
         return xp;
     }
 
@@ -89,13 +91,30 @@ public class User {
             observer.onUserUpdated(this);
         }
     }
-    public void levelUp() {
-        notifyObservers();
-    }
 
     public int getLevelState() {
         return levelState;
     }
+
+    public boolean checkLvlUp(){
+        if(xp%50 == 0 && xp!= 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+
+    public void levelUp() {
+        if (checkLvlUp == true){
+            int next = xp/50;
+            setLevelState(next);
+            notifyObservers();
+        }
+
+    }
+
 
     public void saveUserData(User user) {
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://pecpals-84281-default-rtdb.asia-southeast1.firebasedatabase.app");

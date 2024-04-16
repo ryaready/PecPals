@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.SnapHelper;
 import com.example.mysplashscreen.CirclePagerIndicatorDecoration;
 import com.example.mysplashscreen.R;
 import com.example.mysplashscreen.User;
+import com.example.mysplashscreen.UserObserver;
 import com.example.mysplashscreen.home.adapters.CreatureAdapter;
 import com.example.mysplashscreen.home.adapters.TaskAdapter;
 import com.example.mysplashscreen.home.models.Creature;
@@ -29,7 +30,7 @@ import java.util.List;
     Implementation is inspired by and taken from CodingSTUFF:
     https://www.youtube.com/watch?v=CXfXFHuQIWo
  */
-public class MainFragment extends Fragment {
+public class MainFragment extends Fragment implements UserObserver {
 
     private static RecyclerView creatureRecyclerView;
     private RecyclerView creatureInfoRV;
@@ -40,6 +41,10 @@ public class MainFragment extends Fragment {
     TaskAdapter taskAdapter;
     TextView tasktodo;
     private User user = User.getInstance();
+
+    List<Creature> creatureList = new ArrayList<>();
+
+    int levelState = user.getLevelState();
 
     public MainFragment() {
         // Required empty public constructor
@@ -62,7 +67,6 @@ public class MainFragment extends Fragment {
 
 
         String username = user.getInstance().getEmail();
-        int levelState = user.getLevelState();
 
         usernameTextView.setText("Hello " + username + "!");
 
@@ -82,7 +86,6 @@ public class MainFragment extends Fragment {
         creatureInfoRV.setHasFixedSize(true);
         creatureInfoRV.setLayoutManager(new LinearLayoutManager(this.getActivity()));
 
-        List<Creature> creatureList = new ArrayList<>();
 
         creatureList.add(new Creature("pinko", levelState));
         creatureList.add(new Creature("chickie", levelState));
@@ -148,6 +151,22 @@ public class MainFragment extends Fragment {
     public static void UpdateUIForFirstItem(){
         LinearLayoutManager layoutManager = (LinearLayoutManager) creatureRecyclerView.getLayoutManager();
         layoutManager.scrollToPosition(0);
+
+    }
+
+    @Override
+    public void onUserUpdated(User user) {
+        updateUI();
+
+    }
+
+    private void updateUI() {
+        creatureTasksList.clear();
+        creatureList.add(new Creature("pinko", levelState));
+        creatureList.add(new Creature("chickie", levelState));
+        creatureList.add(new Creature("treevor", levelState));
+
+
 
     }
 }
