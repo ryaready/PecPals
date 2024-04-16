@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4966beec-d272-4da2-b6f5-d8e7484d26aa" name="Changes" comment="">
+
       <change afterPath="$PROJECT_DIR$/MySplashScreen/app/src/main/java/com/example/mysplashscreen/ExerciseDatabaseHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MySplashScreen/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/MySplashScreen/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
@@ -14,6 +15,9 @@
       <change beforePath="$PROJECT_DIR$/MySplashScreen/app/src/main/java/com/example/mysplashscreen/ExercisePlan.java" beforeDir="false" afterPath="$PROJECT_DIR$/MySplashScreen/app/src/main/java/com/example/mysplashscreen/ExercisePlan.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MySplashScreen/app/src/main/java/com/example/mysplashscreen/TaskActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/MySplashScreen/app/src/main/java/com/example/mysplashscreen/TaskActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MySplashScreen/app/src/main/java/com/example/mysplashscreen/VPAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/MySplashScreen/app/src/main/java/com/example/mysplashscreen/VPAdapter.java" afterDir="false" />
+
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

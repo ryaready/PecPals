@@ -23,6 +23,8 @@ public class TaskActivity extends AppCompatActivity {
     Exercise push_ups = new Exercise();
     ExercisePlan exercisePlan = new ExercisePlan(this);
 
+    User user = User.getInstance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -99,6 +101,15 @@ public class TaskActivity extends AppCompatActivity {
         Log.d("HELP", String.valueOf(viewPager2.getAdapter().getItemCount()-1));
         Log.d("array", String.valueOf(exerciseArrayList));
         if (i == viewPager2.getAdapter().getItemCount()-1){
+
+            int currCoin = user.getCoins();
+            int totalCoins = currCoin + 500;
+            user.setCoins(totalCoins);
+
+            int a = user.getXp();
+            int totala = a + 500;
+            user.setXp(totala);
+
             BottomNavActivity.startActivityWithIntent(this.getApplicationContext(), BottomNavActivity.class);
         }
     }

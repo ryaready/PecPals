@@ -20,10 +20,10 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        // Get reference to ImageView
+        //reference to ImageView
         ImageView imageView = findViewById(R.id.animatedImageView);
 
-        // Set animation to ImageView
+        //Seting animation to ImageView
         imageView.setBackgroundResource(R.drawable.animation_splash); // Use the scaled animation drawable
 
         // Get AnimationDrawable object
@@ -44,7 +44,7 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(() -> {
             // Start BottomNavActivity after SPLASH_TIME
 //            Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
-            Intent intent = new Intent(SplashActivity.this, BottomNavActivity.class);
+            Intent intent = new Intent(SplashActivity.this, OnboardingActivity.class);
             startActivity(intent);
             finish(); // Finish SplashActivity
         }, SPLASH_TIME);

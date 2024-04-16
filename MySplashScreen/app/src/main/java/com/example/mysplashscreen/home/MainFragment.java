@@ -38,6 +38,7 @@ public class MainFragment extends Fragment {
     List<Creature> creatureTasksList = new ArrayList<>();
     List<Tasks> tasksList = new ArrayList<>();
     TaskAdapter taskAdapter;
+    TextView tasktodo;
     private User User;
 
     public MainFragment() {
@@ -55,14 +56,14 @@ public class MainFragment extends Fragment {
                              Bundle savedInstanceState) {
         helper = new LinearSnapHelper();
 
-
-
-        // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_main, container, false);
-
+        tasktodo = v.findViewById(R.id.taskstodo);
         TextView usernameTextView = v.findViewById(R.id.userName);
 
-        String username = User.getInstance().getUsername();
+
+        User user = User.getInstance();
+
+        String username = user.getInstance().getEmail();
 
         usernameTextView.setText("Hello " + username + "!");
 
@@ -84,15 +85,17 @@ public class MainFragment extends Fragment {
 
         List<Creature> creatureList = new ArrayList<>();
 
-        creatureList.add(new Creature(R.drawable.animation_splash, "Egg", 10, 2423));
-        creatureList.add(new Creature(R.drawable.animation_splash, "Egg 2", 100, 50));
+        creatureList.add(new Creature(R.drawable.animation_splash, "", 10, 2423));
+        creatureList.add(new Creature(R.drawable.baseline_question_mark_24, "", 0, 0));
+        creatureList.add(new Creature(R.drawable.baseline_question_mark_24, "", 0, 0));
+        creatureList.add(new Creature(R.drawable.baseline_question_mark_24, "", 0, 0));
 
         CreatureAdapter creatureAdapter = new CreatureAdapter(creatureList);
         creatureRecyclerView.setAdapter(creatureAdapter);
 
-        tasksList.add(new Tasks(50, "Task 5"));
-        tasksList.add(new Tasks(60, "Task 6"));
-        tasksList.add(new Tasks(70, "Task 7"));
+        tasksList.add(new Tasks(50, "Task 1: Do 5 push ups"));
+        tasksList.add(new Tasks(60, "Task 2: Do 10 push ups"));
+        tasksList.add(new Tasks(70, "Task 3: Do 15 push ups"));
 
         taskAdapter = new TaskAdapter(tasksList);
         creatureInfoRV.setAdapter(taskAdapter);
@@ -108,15 +111,17 @@ public class MainFragment extends Fragment {
 
                 // activePosition = 0 -> page 1
                 if(activePosition == 0){
+                    tasktodo.setVisibility(View.VISIBLE);
                     tasksList.clear();
-                    tasksList.add(new Tasks(50, "Task 5"));
-                    tasksList.add(new Tasks(60, "Task 6"));
-                    tasksList.add(new Tasks(70, "Task 7"));
+                    tasksList.add(new Tasks(50, "Task 1: Do 5 push ups"));
+                    tasksList.add(new Tasks(60, "Task 2: Do 10 push ups"));
+                    tasksList.add(new Tasks(70, "Task 3: Do 15 push ups"));
                     taskAdapter.notifyDataSetChanged();
                 }
                 // if page 2
                 // add in more conditions here to represent each page/creature
                 else{
+                    tasktodo.setVisibility(View.INVISIBLE);
                     UpdateTasks(tasksList);
                     taskAdapter.notifyDataSetChanged();
                 }
@@ -132,13 +137,13 @@ public class MainFragment extends Fragment {
 
     List<Tasks> UpdateTasks(List<Tasks> taskList){
         tasksList.clear();
-        tasksList.add(new Tasks(10, "Task 1"));
-        tasksList.add(new Tasks(20, "Task 2"));
-        tasksList.add(new Tasks(30, "Task 3"));
-        tasksList.add(new Tasks(40, "Task 4"));
-        tasksList.add(new Tasks(80, "Task 8"));
-        tasksList.add(new Tasks(90, "Task 9"));
-        tasksList.add(new Tasks(100, "Task 10"));
+//        tasksList.add(new Tasks(10, "Task 1"));
+//        tasksList.add(new Tasks(20, "Task 2"));
+//        tasksList.add(new Tasks(30, "Task 3"));
+//        tasksList.add(new Tasks(40, "Task 4"));
+//        tasksList.add(new Tasks(80, "Task 8"));
+//        tasksList.add(new Tasks(90, "Task 9"));
+//        tasksList.add(new Tasks(100, "Task 10"));
         return taskList;
     }
 
