@@ -100,7 +100,7 @@ public class BottomNavActivity extends AppCompatActivity {
         return intent;
     }
 
-    private ArrayList<Exercise> instantiateExercises(){
+    private List<Exercise> instantiateExercises(){
         Exercise bicep_curls = new Exercise();
         Exercise shoulder_press = new Exercise();
         Exercise bent_over_rows = new Exercise();
@@ -138,7 +138,15 @@ public class BottomNavActivity extends AppCompatActivity {
         exercisePlan.insertExercise(bench_press);
         exercisePlan.insertExercise(bent_over_rows);
 
-        return exercisePlan.getAllExercises();
+        List<Exercise> exercises =  new ArrayList<>();
+        exercises.add(bicep_curls);
+        exercises.add(shoulder_press);
+        exercises.add(bent_over_rows);
+        exercises.add(bench_press);
+        exercises.add(push_ups);
+
+//        return exercisePlan.getAllExercises();
+        return exercises;
     }
 
 }
