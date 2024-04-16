@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class RewardsGeneral extends AppCompatActivity {
 
-    DatabaseHelper databaseHelper;
     private final double egg_1 = 1;
     private final double egg_2 = 1.1;
     private final double egg_3 = 1.3;
