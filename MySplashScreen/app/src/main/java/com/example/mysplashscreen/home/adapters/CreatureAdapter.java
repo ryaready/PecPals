@@ -11,11 +11,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mysplashscreen.R;
+import com.example.mysplashscreen.User;
+import com.example.mysplashscreen.UserObserver;
 import com.example.mysplashscreen.home.models.Creature;
 
 import java.util.List;
 
-public class CreatureAdapter extends RecyclerView.Adapter<CreatureAdapter.CreatureViewHolder> {
+public class CreatureAdapter extends RecyclerView.Adapter<CreatureAdapter.CreatureViewHolder> implements UserObserver{
 
     private List<Creature> creatureList;
     public CreatureAdapter(List<Creature> creatureList){
@@ -33,16 +35,8 @@ public class CreatureAdapter extends RecyclerView.Adapter<CreatureAdapter.Creatu
 
     @Override
     public void onBindViewHolder(@NonNull CreatureViewHolder holder, int position) {
-//        holder.textViewCoins.setText(String.valueOf(creatureList.get(position).getCoins()));
         holder.textViewName.setText(creatureList.get(position).getName());
         holder.imageView.setImageResource(creatureList.get(position).getImage());
-//        holder.textViewXP.setText(String.valueOf((creatureList.get(position).getXP())));
-//        holder.taskButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivityWithIntent(getAppContext(), TaskActivity.class);
-//           }
-//       });
     }
 
     @Override
@@ -55,9 +49,16 @@ public class CreatureAdapter extends RecyclerView.Adapter<CreatureAdapter.Creatu
         return super.getItemViewType(position);
     }
 
+    @Override
+    public void onUserUpdated(User user) {
+
+
+
+    }
+
     public class CreatureViewHolder extends RecyclerView.ViewHolder{
 
-        private ImageView imageView;
+        public ImageView imageView;
         private TextView textViewName;
         private TextView textViewCoins;
         private TextView textViewXP;
@@ -66,11 +67,9 @@ public class CreatureAdapter extends RecyclerView.Adapter<CreatureAdapter.Creatu
 
         public CreatureViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageView = itemView.findViewById(R.id.creatureImage);
-//            textViewCoins = itemView.findViewById(R.id.userCoins);
+            imageView = itemView.findViewById(R.id.creatureImage);;
             textViewName = itemView.findViewById(R.id.creatureName2);
-//            textViewXP = itemView.findViewById(R.id.creatureXP);
-//            taskButton = itemView.findViewById(R.id.taskButton);
+
         }
     }
 
