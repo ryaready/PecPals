@@ -43,7 +43,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         holder.taskButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BottomNavActivity.startActivityWithIntent(getAppContext(), TaskActivity.class);
+                BottomNavActivity.startActivityTaskActivity(getAppContext(), TaskActivity.class, holder.getLayoutPosition());
             }
         });
 

@@ -1,5 +1,7 @@
 package com.example.mysplashscreen.home;
 
+import static com.example.mysplashscreen.BottomNavActivity.exerciseList;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,6 +40,7 @@ public class MainFragment extends Fragment implements UserObserver {
     private RecyclerView creatureInfoRV;
     SnapHelper helper;
 
+    public static CreatureAdapter creatureAdapter;
     List<Creature> creatureTasksList = new ArrayList<>();
     List<Tasks> tasksList = new ArrayList<>();
     TaskAdapter taskAdapter;
@@ -48,7 +51,7 @@ public class MainFragment extends Fragment implements UserObserver {
 
     int levelState = user.getLevelState();
 
-    public static CreatureAdapter creatureAdapter;
+//    public static CreatureAdapter creatureAdapter;
 
     public MainFragment() {
         // Required empty public constructor
@@ -103,6 +106,9 @@ public class MainFragment extends Fragment implements UserObserver {
         tasksList.add(new Tasks("Task 1"));
         tasksList.add(new Tasks("Task 2"));
         tasksList.add(new Tasks("Task 3"));
+        tasksList.add(new Tasks(500, "Task: " + exerciseList.get(0).getName()));
+        tasksList.add(new Tasks(500, "Task: " + exerciseList.get(1).getName()));
+        tasksList.add(new Tasks(500, "Task: " + exerciseList.get(2).getName()));
 
         taskAdapter = new TaskAdapter(tasksList);
         creatureInfoRV.setAdapter(taskAdapter);
@@ -123,13 +129,17 @@ public class MainFragment extends Fragment implements UserObserver {
                     tasksList.add(new Tasks("Task 1"));
                     tasksList.add(new Tasks("Task 2"));
                     tasksList.add(new Tasks("Task 3"));
+
+                    tasksList.add(new Tasks(500, "Task: " + exerciseList.get(0).getName()));
+                    tasksList.add(new Tasks(500, "Task: " + exerciseList.get(1).getName()));
+                    tasksList.add(new Tasks(500, "Task: " + exerciseList.get(2).getName()));
                     taskAdapter.notifyDataSetChanged();
                 }
                 // if page 2
                 // add in more conditions here to represent each page/creature
                 else{
                     tasktodo.setVisibility(View.INVISIBLE);
-                    UpdateTasks(tasksList);
+                    //UpdateTasks(tasksList);
                     taskAdapter.notifyDataSetChanged();
                 }
             }
