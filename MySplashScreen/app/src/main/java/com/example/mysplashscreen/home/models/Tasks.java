@@ -2,11 +2,11 @@ package com.example.mysplashscreen.home.models;
 
 public class Tasks {
 
-    private int taskXP;
+    private int taskNumber;
     private String taskName;
 
-    public Tasks(int xp, String task){
-        taskXP = xp;
+    public Tasks(int taskNumber, String task){
+        this.taskNumber = taskNumber;
         taskName = task;
     }
 
@@ -14,7 +14,7 @@ public class Tasks {
         return taskName;
     }
 
-    public int getTaskXP(){
-        return taskXP;
+    public int getTaskNumber(){
+        return taskNumber;
     }
 }

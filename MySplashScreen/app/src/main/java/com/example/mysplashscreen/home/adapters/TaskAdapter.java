@@ -37,13 +37,15 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull TaskViewHolder holder, int position) {
-        Log.d("creature_tasks", String.valueOf(taskList.get(position).getTaskXP()));
-        holder.taskXpText.setText("+" + String.valueOf(taskList.get(position).getTaskXP()));
+        Log.d("creature_tasks", String.valueOf(taskList.get(position).getTaskNumber()));
+        holder.taskXpText.setText("+" + String.valueOf(taskList.get(position).getTaskNumber()));
         holder.taskText.setText(taskList.get(position).getTaskName());
         holder.taskButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BottomNavActivity.startActivityTaskActivity(getAppContext(), TaskActivity.class, holder.getLayoutPosition());
+
+//                BottomNavActivity.startActivityTaskActivity(getAppContext(), TaskActivity.class, holder.getLayoutPosition());
+                BottomNavActivity.startActivityTaskActivity(getAppContext(), TaskActivity.class, taskList.get(holder.getLayoutPosition()).getTaskNumber());
             }
         });
 
