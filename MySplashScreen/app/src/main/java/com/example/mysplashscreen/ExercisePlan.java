@@ -101,9 +101,9 @@ public class ExercisePlan {
 
         Cursor cursor = db.query(
                 ExerciseDatabaseHelper.TABLE_EXERCISES,
-                null,
-                null,
-                null,
+                projection,
+                selection,
+                selectionArgs,
                 null,
                 null,
                 null
