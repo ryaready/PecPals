@@ -10,14 +10,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mysplashscreen.R;
+import com.example.mysplashscreen.User;
+import com.example.mysplashscreen.UserObserver;
 import com.example.mysplashscreen.home.models.Creature;
 import com.example.mysplashscreen.home.models.Creature1;
 import com.example.mysplashscreen.home.models.Creature2;
 
 import java.util.List;
 
-
-public class CreatureAdapter extends RecyclerView.Adapter<CreatureAdapter.CreatureViewHolder> {
 
 public class CreatureAdapter extends RecyclerView.Adapter<CreatureAdapter.CreatureViewHolder> implements UserObserver {
 
@@ -63,7 +63,6 @@ public class CreatureAdapter extends RecyclerView.Adapter<CreatureAdapter.Creatu
             holder.textViewName.setText(creature.getName());
             holder.imageView.setImageResource(creature.getImage());
         }
-
     }
 
     @Override
