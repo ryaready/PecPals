@@ -10,7 +10,7 @@ public class Creature {
     private User user = User.getInstance();
 
     private int levelState = user.getLevelState();
-    
+
 
 
     public Creature(String name, int levelState){
