@@ -4,22 +4,23 @@ import com.example.mysplashscreen.home.models.Creature;
 
 import java.util.List;
 
-public class CreatureStateLevel {
+public class CreatureLevelState {
 
     private LevelState state;
     List<Creature> creatureArrayList;
     User user;
 
-    int current_level = user.getXp();
+    int current_xp = user.getXp();
+    int currentUserState = user.getCurrentUserState();
 
-    public CreatureStateLevel() {
+    public CreatureLevelState() {
         this.state = new Egg1State1();
     }
     public void setState(LevelState state) {
         this.state = state;
     }
     public void levelUp() {
-        state.levelUp();
+        user.upgradeCurrentUserState();
     }
 
     private class Egg1State1 implements LevelState {
@@ -67,7 +68,7 @@ public class CreatureStateLevel {
 
         @Override
         public int getImageId() {
-            return 0;
+            return R.drawable.pos13;
         }
 
     }
@@ -79,7 +80,7 @@ public class CreatureStateLevel {
 
         @Override
         public int getImageId() {
-            return 0;
+            return R.drawable.animation_splash;
         }
 
     }
@@ -91,7 +92,7 @@ public class CreatureStateLevel {
 
         @Override
         public int getImageId() {
-            return 0;
+            return R.drawable.egg3;
         }
 
     }
@@ -103,7 +104,7 @@ public class CreatureStateLevel {
 
         @Override
         public int getImageId() {
-            return 0;
+            return R.drawable.animation_splash;
         }
 
     }
@@ -115,7 +116,7 @@ public class CreatureStateLevel {
 
         @Override
         public int getImageId() {
-            return 0;
+            return R.drawable.egg4;
         }
 
     }

@@ -14,12 +14,18 @@ public class User {
     private int xp;
     private int coins;
     private int loginStreak;
-    private LevelState levelState;
+    private int currentUserState;
     private List<UserObserver> observers = new ArrayList<>();
 
     private DatabaseReference databaseReference;
 
     protected User() {
+<<<<<<< Updated upstream
+=======
+        FirebaseDatabase database = FirebaseDatabase.getInstance("https://pecpals-84281-default-rtdb.asia-southeast1.firebasedatabase.app");
+        databaseReference = database.getReference().child("users");
+        currentUserState = 1;
+>>>>>>> Stashed changes
     }
 
     public static synchronized User getInstance() {
@@ -73,6 +79,19 @@ public class User {
 
     public int getLoginStreak() {
         return loginStreak;
+    }
+
+    public int getCurrentUserState() {
+        return currentUserState;
+    }
+    public void upgradeCurrentUserState() {
+        if( (200 <= getXp()) && (getXp() < 300)){
+            currentUserState = 2;
+        } else if((300 <= getXp()) && (getXp() <= 400)) {
+            currentUserState = 3;
+        } else {
+            currentUserState = 4;
+        }
     }
 
     public void removeObserver(UserObserver observer) {
