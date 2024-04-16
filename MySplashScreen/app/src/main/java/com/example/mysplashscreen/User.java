@@ -20,8 +20,6 @@ public class User {
     private DatabaseReference databaseReference;
 
     protected User() {
-        FirebaseDatabase database = FirebaseDatabase.getInstance("https://pecpals-84281-default-rtdb.asia-southeast1.firebasedatabase.app");
-        databaseReference = database.getReference().child("users");
     }
 
     public static synchronized User getInstance() {
@@ -47,13 +45,11 @@ public class User {
     public void setCoins(int coins) {
         this.coins = coins;
         notifyObservers();
-        saveUserData(this);
     }
 
     public void setLoginStreak(int loginStreak) {
         this.loginStreak = loginStreak;
         notifyObservers();
-        saveUserData(this);
     }
 
     public String getEmail() {
@@ -95,6 +91,8 @@ public class User {
 //    }
 
     public void saveUserData(User user) {
+        FirebaseDatabase database = FirebaseDatabase.getInstance("https://pecpals-84281-default-rtdb.asia-southeast1.firebasedatabase.app");
+        databaseReference = database.getReference().child("users");
         String email = getEmail();
         if (email != null) {
             databaseReference.child(email).setValue(user);

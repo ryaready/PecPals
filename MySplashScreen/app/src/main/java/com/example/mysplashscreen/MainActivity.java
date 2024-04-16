@@ -30,10 +30,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         if (email != null) {
             user.saveUserData(user);
         }
+        super.onDestroy();
     }
 
 

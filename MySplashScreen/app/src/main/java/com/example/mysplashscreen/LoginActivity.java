@@ -49,13 +49,16 @@ public class LoginActivity extends AppCompatActivity {
                 if (dataSnapshot.exists()) {
                     User user = dataSnapshot.getValue(User.class);
                     if (user != null && user.getPassword() != null && user.getPassword().equals(password)) {
+
                         User.getInstance().setEmail(email);
+                        User.getInstance().setPassword(password);
                         User.getInstance().setCoins(user.getCoins());
                         User.getInstance().setXp(user.getXp());
                         int ls = user.getLoginStreak();
                         int newLs = ls + 1;
                         User.getInstance().setLoginStreak(newLs);
-                        User.getInstance().setPassword(user.getPassword());
+
+
                         Toast.makeText(LoginActivity.this, "Login Successfully!", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), BottomNavActivity.class);
                         startActivity(intent);
