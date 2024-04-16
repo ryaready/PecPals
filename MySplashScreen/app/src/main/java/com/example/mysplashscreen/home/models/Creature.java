@@ -1,47 +1,31 @@
 package com.example.mysplashscreen.home.models;
 
-
-import com.example.mysplashscreen.User;
-
 public class Creature {
     private int image;
     private String name;
+    private int coins;
+    private int XP;
     private Tasks tasks;
-    private User user = User.getInstance();
 
-    private int levelState = user.getLevelState();
-    
-
-
-    public Creature(String name, int levelState){
+    public Creature(int image, String name, int coins, int XP){
+        this.image = image;
         this.name = name;
-        this.levelState = levelState;
+        this.coins = coins;
+        this.XP = XP;
     }
 
-    public void setImg(int a){
-
-        if (levelState  >= 13){
-            this.image = getLevelStateImageResource(13);
-        }
-        else{
-            this.image = getLevelStateImageResource(a);
-        }
+    public Creature(int image, String name, int coins, int XP, Tasks task){
+        this(image, name, coins, XP);
+        tasks = task;
     }
 
-    private int getLevelStateImageResource(int i) {
-        return i;
+    public int getImage(){ return image; }
+    public int getCoins(){ return coins; }
 
-    }
+    public String getName(){ return name; }
 
+    public int getXP() {return XP;}
 
-    public int getImage(){
-        return image;
-    }
-    public String getName(){
-        return name;
-    }
-    public Tasks getTasks(){
-        return tasks;
-    }
+    public Tasks getTasks(){return tasks;}
 
 }

@@ -4,6 +4,7 @@ import static java.lang.Math.ceil;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,35 +16,57 @@ import java.util.ArrayList;
 
 public class TaskActivity extends AppCompatActivity {
     ViewPager2 viewPager2;
-    ArrayList<ViewPagerItem> viewPagerItemArrayList;
+    ArrayList<Exercise> exerciseArrayList;
     CountDownTimer countDownTimer;
+    Exercise bicep_curls = new Exercise();
+    Exercise shoulder_press = new Exercise();
+    Exercise bent_over_rows = new Exercise();
+    Exercise bench_press = new Exercise();
+    Exercise push_ups = new Exercise();
+    ExercisePlan exercisePlan = new ExercisePlan(this);
 
     User user = User.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.task_activity);
 
         viewPager2 = findViewById(R.id.viewpager);
-        int[] images = {R.drawable.a, R.drawable.b, R.drawable.c, R.drawable.d, R.drawable.e};
-        String[] heading = {getString(R.string.bicepcurl_name),getString(R.string.shoulderpress_name),getString(R.string.bentoverrows_name),getString(R.string.benchpress_name),getString(R.string.pushup_name)};
-        String[] desc = {getString(R.string.bicepcurl_desc),
-                getString(R.string.shoulderpress_desc),
-                getString(R.string.bentoverrows_desc),
-                getString(R.string.benchpress_desc)
-                ,getString(R.string.pushup_desc)};
 
-        viewPagerItemArrayList = new ArrayList<>();
+        bicep_curls.setName(getString(R.string.bicepcurl_name));
+        bicep_curls.setDesc(getString(R.string.bicepcurl_desc));
+        bicep_curls.setImageID(R.drawable.a);
 
-        for (int i =0; i< images.length ; i++){
+        shoulder_press.setName(getString(R.string.shoulderpress_name));
+        shoulder_press.setDesc(getString(R.string.shoulderpress_desc));
+        shoulder_press.setImageID(R.drawable.b);
 
-            ViewPagerItem viewPagerItem = new ViewPagerItem(images[i],heading[i],desc[i]);
-            viewPagerItemArrayList.add(viewPagerItem);
+        bent_over_rows.setName(getString(R.string.bentoverrows_name));
+        bent_over_rows.setDesc(getString(R.string.bentoverrows_desc));
+        bent_over_rows.setImageID(R.drawable.c);
 
-        }
+        bench_press.setName(getString(R.string.benchpress_name));
+        bench_press.setDesc(getString(R.string.benchpress_desc));
+        bench_press.setImageID(R.drawable.d);
 
-        VPAdapter vpAdapter = new VPAdapter(viewPagerItemArrayList);
+        push_ups.setName(getString(R.string.pushup_name));
+        push_ups.setDesc(getString(R.string.pushup_desc));
+        push_ups.setImageID(R.drawable.e);
+
+        exercisePlan.clearExerciseDatabase();
+        exercisePlan.insertExercise(push_ups);
+        exercisePlan.insertExercise(bicep_curls);
+        exercisePlan.insertExercise(shoulder_press);
+        exercisePlan.insertExercise(bench_press);
+        exercisePlan.insertExercise(bent_over_rows);
+
+        exerciseArrayList = exercisePlan.getAllExercises();
+        Log.d("array", String.valueOf(exerciseArrayList));
+
+        Log.d("check database", String.valueOf(exercisePlan.getAllExercises()));
+        VPAdapter vpAdapter = new VPAdapter(exerciseArrayList);
 
         viewPager2.setAdapter(vpAdapter);
 
@@ -77,6 +100,8 @@ public class TaskActivity extends AppCompatActivity {
         viewPager2.setCurrentItem(i+1);
         Toast.makeText(getApplicationContext(), "Well Done!", Toast.LENGTH_SHORT).show();
         resetTimer(60000, 1000);
+        Log.d("HELP", String.valueOf(viewPager2.getAdapter().getItemCount()-1));
+        Log.d("array", String.valueOf(exerciseArrayList));
         if (i == viewPager2.getAdapter().getItemCount()-1){
 
             int currCoin = user.getCoins();
