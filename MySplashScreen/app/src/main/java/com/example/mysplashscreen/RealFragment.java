@@ -4,11 +4,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ import java.util.ArrayList;
  * Use the {@link RealFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class RealFragment extends Fragment {
+public class RealFragment extends Fragment{
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -29,10 +29,13 @@ public class RealFragment extends Fragment {
     public String mParam1;
     public String mParam2;
     public ArrayList<RealItems> realItemsArrayList;
-    public String[] rewardHeadings;
-    public String[] rewardDetails;
+    public int[] rewardCosts;
+    public String[] rewardDuration;
     public int[] imageResourceID;
     public RecyclerView recyclerview;
+    TextView coinsDisplay;
+
+    User user;
 
     public RealFragment() {
         // Required empty public constructor
@@ -78,47 +81,70 @@ public class RealFragment extends Fragment {
 
         dataInitialize();
 
+        coinsDisplay = view.findViewById(R.id.shop_coin);
+        user = User.getInstance();
+
         recyclerview = view.findViewById(R.id.recyclerview1);
-        recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
+//        recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerview.setHasFixedSize(true);
-        MyAdapter1 myAdapter = new MyAdapter1(getContext(), realItemsArrayList);
-        recyclerview.setAdapter(myAdapter);
-        myAdapter.notifyDataSetChanged();
+//        MyAdapter1 myAdapter = new MyAdapter1(getContext(), realItemsArrayList, this);
+//        recyclerview.setAdapter(myAdapter);
+//        myAdapter.notifyDataSetChanged();
     }
 
     public void dataInitialize() {
 
         realItemsArrayList = new ArrayList<>();
 
-        rewardHeadings = new String[]{
-                getString(R.string.Gym0),
-                getString(R.string.Gym1),
-                getString(R.string.Gym2),
-                getString(R.string.Boost0),
-                getString(R.string.NTUC0),
-                getString(R.string.NTUC1)
+        rewardCosts = new int[]{
+                100,
+                200,
+                300,
+                400,
+                500,
+                600
         };
-        rewardDetails = new String[]{
-                getString(R.string.Gym0description),
-                getString(R.string.Gym1description),
-                getString(R.string.Gym2description),
-                getString(R.string.Boost0description),
-                getString(R.string.NTUC0description),
-                getString(R.string.NTUC1description)
+
+        rewardDuration = new String[]{
+                "ActiveSG \n1 Month",
+                "ActiveSG \n2 Month",
+                "ActiveSG \n3 Month",
+                "ActiveSG \n4 Month",
+                "ActiveSG \n5 Month",
+                "ActiveSG \n6 Month"
 
         };
         imageResourceID = new int[]{
-                R.drawable.activesglogo,
-                R.drawable.activesglogo,
-                R.drawable.activesglogo,
-                R.drawable.boostlogo,
-                R.drawable.ntuclogo,
-                R.drawable.ntuclogo
+                R.drawable.active_sg,
+                R.drawable.active_sg,
+                R.drawable.active_sg,
+                R.drawable.active_sg,
+                R.drawable.active_sg,
+                R.drawable.active_sg
         };
-        for (int i = 0; i < rewardHeadings.length; i++){
+        for (int i = 0; i < rewardCosts.length; i++){
 
-            RealItems realitems = new RealItems(rewardHeadings[i], rewardDetails[i], imageResourceID[i] );
+            RealItems realitems = new RealItems(rewardCosts[i], rewardDuration[i], imageResourceID[i] );
             realItemsArrayList.add(realitems);
         }
     }
+
+    // listener for button clicks in the shop
+//    @Override
+//    public void recyclerViewListClicked(View v, int pos) {
+//        // pos represents each item with 0 being the 1st item
+//        switch (pos){
+//            case 0:
+//                Toast.makeText(getActivity().getApplicationContext(), "Purchased!", Toast.LENGTH_SHORT).show();
+//                User user = User.getInstance();
+//                int cn = user.getCoins();
+//                cn -= 10;
+//                user.setCoins(cn);
+////                coinsDisplay.setText(String.valueOf(user.getCoins()));
+//                FragmentContainer fragmentContainer;
+//
+//                break;
+//            case 1: Toast.makeText(getActivity().getApplicationContext(), "Not Purchasable Yet!", Toast.LENGTH_SHORT).show();
+//        }
+//    }
 }

@@ -27,13 +27,14 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
             android:gravity="center_horizontal"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
-            android:textStyle="bold"
-            android:textSize="24sp"
             android:text="TextView"
-            android:textColor="#FE5196"/>
+            android:textColor="#FE5196"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <TableLayout
             android:layout_width="match_parent"

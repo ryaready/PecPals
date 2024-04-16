@@ -17,9 +17,11 @@ public class MyAdapter1 extends RecyclerView.Adapter<MyAdapter1.MyViewHolder> {
 
     Context context;
     ArrayList<RealItems> realItemsArrayList;
+    private static RecyclerViewClickListener itemListener;
 
-    public MyAdapter1(Context context, ArrayList<RealItems> realItemsArrayList) {
+    public MyAdapter1(Context context, ArrayList<RealItems> realItemsArrayList, RecyclerViewClickListener itemListener) {
         this.context = context;
+        this.itemListener = itemListener;
         this.realItemsArrayList = realItemsArrayList;
     }
 
@@ -35,15 +37,17 @@ public class MyAdapter1 extends RecyclerView.Adapter<MyAdapter1.MyViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         com.example.mysplashscreen.RealItems realitems = realItemsArrayList.get(position);
-        holder.reward.setText(realitems.reward);
+        holder.reward.setText(realitems.reward + " coins");
         holder.description.setText(realitems.rewarddescription);
         holder.image.setImageResource(realitems.rewardimage);
-        holder.image.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+//        holder.image.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(context, "hi", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
-            }
-        });
+
     }
 
     @Override
@@ -58,12 +62,22 @@ public class MyAdapter1 extends RecyclerView.Adapter<MyAdapter1.MyViewHolder> {
         TextView description;
         Button buyButton;
 
+//        CardView cardButton;
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            image = itemView.findViewById(R.id.rewardimage);
-            description = itemView.findViewById(R.id.rewarddescription);
-            reward = itemView.findViewById(R.id.reward);
-            buyButton = itemView.findViewById(R.id.buybutton);
+            image = itemView.findViewById(R.id.rewardImage);
+            description = itemView.findViewById(R.id.voucher_duration);
+            reward = itemView.findViewById(R.id.voucher_cost);
+            buyButton = itemView.findViewById(R.id.buy_button);
+//            cardButton = itemView.findViewById(R.id.card_button);
+
+            buyButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    itemListener.recyclerViewListClicked(v, getLayoutPosition());
+                }
+            });
         }
     }
 }
