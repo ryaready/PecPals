@@ -17,7 +17,6 @@ import androidx.recyclerview.widget.SnapHelper;
 import com.example.mysplashscreen.CirclePagerIndicatorDecoration;
 import com.example.mysplashscreen.R;
 import com.example.mysplashscreen.User;
-import com.example.mysplashscreen.UserObserver;
 import com.example.mysplashscreen.home.adapters.CreatureAdapter;
 import com.example.mysplashscreen.home.adapters.TaskAdapter;
 import com.example.mysplashscreen.home.models.Creature;
@@ -30,7 +29,7 @@ import java.util.List;
     Implementation is inspired by and taken from CodingSTUFF:
     https://www.youtube.com/watch?v=CXfXFHuQIWo
  */
-public class MainFragment extends Fragment implements UserObserver {
+public class MainFragment extends Fragment {
 
     private static RecyclerView creatureRecyclerView;
     private RecyclerView creatureInfoRV;
@@ -41,10 +40,6 @@ public class MainFragment extends Fragment implements UserObserver {
     TaskAdapter taskAdapter;
     TextView tasktodo;
     private User User;
-
-    List<Creature> creatureList = new ArrayList<>();
-
-    int levelState = user.getLevelState();
 
     public MainFragment() {
         // Required empty public constructor
@@ -88,6 +83,7 @@ public class MainFragment extends Fragment implements UserObserver {
         creatureInfoRV.setHasFixedSize(true);
         creatureInfoRV.setLayoutManager(new LinearLayoutManager(this.getActivity()));
 
+        List<Creature> creatureList = new ArrayList<>();
 
         creatureList.add(new Creature(R.drawable.animation_splash, "", 10, 2423));
         creatureList.add(new Creature(R.drawable.baseline_question_mark_24, "", 0, 0));
@@ -154,22 +150,6 @@ public class MainFragment extends Fragment implements UserObserver {
     public static void UpdateUIForFirstItem(){
         LinearLayoutManager layoutManager = (LinearLayoutManager) creatureRecyclerView.getLayoutManager();
         layoutManager.scrollToPosition(0);
-
-    }
-
-    @Override
-    public void onUserUpdated(User user) {
-        updateUI();
-
-    }
-
-    private void updateUI() {
-        creatureTasksList.clear();
-        creatureList.add(new Creature("pinko", levelState));
-        creatureList.add(new Creature("chickie", levelState));
-        creatureList.add(new Creature("treevor", levelState));
-
-
 
     }
 }

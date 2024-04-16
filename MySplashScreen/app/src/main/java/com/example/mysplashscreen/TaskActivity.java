@@ -115,8 +115,6 @@ public class TaskActivity extends AppCompatActivity {
             int totala = a + 50*mula;
             user.setXp(totala);
 
-            user.levelUp();
-
             BottomNavActivity.startActivityWithIntent(this.getApplicationContext(), BottomNavActivity.class);
         }
     }
