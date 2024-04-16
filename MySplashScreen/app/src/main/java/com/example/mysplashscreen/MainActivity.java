@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     String email = user.getEmail();
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         databaseReference = database.getReference().child("users");
 
         loadUserData();
+
     }
 
     @Override
