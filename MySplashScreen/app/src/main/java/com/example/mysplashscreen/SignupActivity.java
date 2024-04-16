@@ -54,7 +54,7 @@ public class SignupActivity extends AppCompatActivity {
                 user.setPassword(password);
                 user.setCoins(0);
                 user.setXp(0);
-                user.setLoginStreak(1);
+                user.setLoginStreak(0);
 
                 databaseReference.child(email).setValue(user)
                         .addOnSuccessListener(aVoid -> {
