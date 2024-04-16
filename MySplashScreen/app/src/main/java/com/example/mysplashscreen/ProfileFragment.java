@@ -45,7 +45,7 @@ public class ProfileFragment extends Fragment implements UserObserver {
             @Override
             public void onClick(View v) {
 
-                // Mark user as logged out
+                user.saveUserData(user);
 
                 // Redirect to Login Activity
                 Intent intent = new Intent(requireActivity(), LoginActivity.class);
@@ -82,7 +82,6 @@ public class ProfileFragment extends Fragment implements UserObserver {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        // Unregister this fragment as an observer of the User class
         User.getInstance().removeObserver(this);
     }
 }

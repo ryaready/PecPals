@@ -10,9 +10,9 @@ public class LevelBaseState implements LevelState {
 
     @Override
     public void levelUp(User user) {
-        int xp = user.getXp();
-        if(xp >= 500){
-            user.setLevelState(new Level1State());
-        }
+//        int xp = user.getXp();
+//        if(xp >= 500){
+//            user.setLevelState(new Level1State());
+//        }
     }
 }
