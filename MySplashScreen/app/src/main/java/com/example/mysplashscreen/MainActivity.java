@@ -22,13 +22,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Initialize Firebase Realtime Database
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://pecpals-84281-default-rtdb.asia-southeast1.firebasedatabase.app");
         databaseReference = database.getReference().child("users");
 
-        // Get the singleton instance of the User
-
-        // Load user data from Firebase Realtime Database
         loadUserData();
     }
 

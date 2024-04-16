@@ -90,10 +90,9 @@ public class User {
         }
     }
 
-    public void levelUp() {
-        // Logic to level up the user
-        notifyObservers();
-    }
+//    public void levelUp() {
+//        notifyObservers();
+//    }
 
     public void saveUserData(User user) {
         String email = getEmail();
