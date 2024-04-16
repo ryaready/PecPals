@@ -10,8 +10,7 @@ public class ExerciseDatabaseHelper extends  SQLiteOpenHelper {
     private static ExerciseDatabaseHelper instance;
 
     private static final String DATABASE_NAME = "exercise_database";
-    private static final int DATABASE_VERSION = 7;
-
+    private static final int DATABASE_VERSION = 10;
     public static final String TABLE_EXERCISES = "exercises";
     public static final String COLUMN_ID = "id";
     public static final String COLUMN_NAME = "name";
@@ -59,8 +58,8 @@ public class ExerciseDatabaseHelper extends  SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        if (oldVersion < 7) {
-            db.execSQL("ALTER TABLE exercises ADD COLUMN reps INTEGER");
+        if (oldVersion < 10) {
+            db.execSQL("ALTER TABLE exercises ADD COLUMN sets INTEGER");
         }
     }
 

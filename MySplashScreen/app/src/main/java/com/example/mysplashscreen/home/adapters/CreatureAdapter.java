@@ -45,6 +45,7 @@ public class CreatureAdapter extends RecyclerView.Adapter<CreatureAdapter.Creatu
 //       });
     }
 
+
     @Override
     public int getItemCount() {
         return creatureList.size();

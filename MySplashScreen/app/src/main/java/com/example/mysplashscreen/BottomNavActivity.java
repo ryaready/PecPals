@@ -14,12 +14,14 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /*
     Implementation is inspired by and taken from Android Knowledege:
     https://www.youtube.com/watch?v=0x5kmLY16qE
  */
 public class BottomNavActivity extends AppCompatActivity {
-
 
     public static Context context;
     BottomNavigationView bottomNavigationView;
@@ -34,6 +36,7 @@ public class BottomNavActivity extends AppCompatActivity {
 
     MainFragment mainFragment = new MainFragment();
 
+    public static List<Exercise> exerciseList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,10 +65,15 @@ public class BottomNavActivity extends AppCompatActivity {
 //                replaceFragment(mainFragment);
 //                MainFragment.UpdateUIForFirstItem();
             }
+
+
+
             return true;
         });
 
         BottomNavActivity.context = getApplicationContext();
+
+        exerciseList = instantiateExercises();
     }
 
     // replaces the fragments currently on screen with the given fragment
@@ -87,4 +95,46 @@ public class BottomNavActivity extends AppCompatActivity {
         first.startActivity(intent);
         return intent;
     }
+
+    private ArrayList<Exercise> instantiateExercises(){
+        Exercise bicep_curls = new Exercise();
+        Exercise shoulder_press = new Exercise();
+        Exercise bent_over_rows = new Exercise();
+        Exercise bench_press = new Exercise();
+        Exercise push_ups = new Exercise();
+        ExercisePlan exercisePlan = new ExercisePlan(this);
+
+        //viewPager2 = findViewById(R.id.viewpager);
+
+        bicep_curls.setName(getString(R.string.bicepcurl_name));
+        bicep_curls.setDesc(getString(R.string.bicepcurl_desc));
+        bicep_curls.setImageID(R.drawable.a);
+
+        shoulder_press.setName(getString(R.string.shoulderpress_name));
+        shoulder_press.setDesc(getString(R.string.shoulderpress_desc));
+        shoulder_press.setImageID(R.drawable.b);
+
+        bent_over_rows.setName(getString(R.string.bentoverrows_name));
+        bent_over_rows.setDesc(getString(R.string.bentoverrows_desc));
+        bent_over_rows.setImageID(R.drawable.c);
+
+        bench_press.setName(getString(R.string.benchpress_name));
+        bench_press.setDesc(getString(R.string.benchpress_desc));
+        bench_press.setImageID(R.drawable.d);
+
+        push_ups.setName(getString(R.string.pushup_name));
+        push_ups.setDesc(getString(R.string.pushup_desc));
+        push_ups.setImageID(R.drawable.e);
+
+        exercisePlan.clearExerciseDatabase();
+        exercisePlan.insertExercise(push_ups);
+//        Log.d("check push ups", String.valueOf(exercisePlan.insertExercise(push_ups)));
+        exercisePlan.insertExercise(bicep_curls);
+        exercisePlan.insertExercise(shoulder_press);
+        exercisePlan.insertExercise(bench_press);
+        exercisePlan.insertExercise(bent_over_rows);
+
+        return exercisePlan.getAllExercises();
+    }
+
 }
