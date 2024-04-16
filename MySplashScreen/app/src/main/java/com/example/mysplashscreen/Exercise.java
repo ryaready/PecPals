@@ -10,6 +10,8 @@ public class Exercise {
     private int difficulty;
     private String muscleGroup;
 
+    private Boolean completed;
+
     public Exercise() {}
 
     public Exercise(String id, String name, String desc, int set, int rep, int difficulty, String muscleGroup) {
@@ -20,6 +22,7 @@ public class Exercise {
         this.desc = desc;
         setCount = set;
         repCount = rep;
+        completed = false;
     }
 
     public String getId() {
@@ -84,5 +87,13 @@ public class Exercise {
 
     public void setImageID(int imageID) {
         this.imageID = imageID;
+    }
+
+    public void setCompleted(Boolean completed) {
+        this.completed = completed;
+    }
+
+    public Boolean getCompleted() {
+        return completed;
     }
 }

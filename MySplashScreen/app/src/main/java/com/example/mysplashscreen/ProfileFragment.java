@@ -66,6 +66,10 @@ public class ProfileFragment extends Fragment implements UserObserver {
         String ls = String.valueOf(user.getLoginStreak());
         TextView lsTextView = binding.textView4;
         lsTextView.setText(ls);
+
+        String level = String.valueOf(user.getLevelState());
+        TextView lvlTextView = binding.levelValue;
+        lvlTextView.setText(level);
     }
 
 

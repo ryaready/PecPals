@@ -162,14 +162,17 @@ public class TaskActivity extends AppCompatActivity{
 //
 //        }
 
+        int ls = user.getLoginStreak();
+        double mul = ls * 0.5;
+
 
         int currCoin = user.getCoins();
-        int totalCoins = currCoin + 500;
+        int totalCoins = (int)(currCoin + 50*mul);
         user.setCoins(totalCoins);
 
-        int a = user.getXp();
-        int totala = a + 500;
-        user.setXp(totala);
+        int currXP = user.getXp();
+        int totalXP = (int)(currXP + 50*mul);
+        user.setXp(totalXP);
 
         user.levelUp();
         Intent intent = new Intent(this.getApplicationContext(), BottomNavActivity.class);
