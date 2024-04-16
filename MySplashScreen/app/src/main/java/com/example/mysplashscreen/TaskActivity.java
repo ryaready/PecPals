@@ -1,5 +1,7 @@
 package com.example.mysplashscreen;
 
+import static java.lang.Math.ceil;
+
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -78,11 +80,14 @@ public class TaskActivity extends AppCompatActivity {
         if (i == viewPager2.getAdapter().getItemCount()-1){
 
             int currCoin = user.getCoins();
-            int totalCoins = currCoin + 500;
+            int ls = user.getLoginStreak();
+            int mul = (int) ceil( ls * 0.5);
+            int totalCoins = currCoin + 10*mul;
             user.setCoins(totalCoins);
 
             int a = user.getXp();
-            int totala = a + 500;
+            int mula = (int) ceil( ls * 0.7);
+            int totala = a + 50*mula;
             user.setXp(totala);
 
             BottomNavActivity.startActivityWithIntent(this.getApplicationContext(), BottomNavActivity.class);
