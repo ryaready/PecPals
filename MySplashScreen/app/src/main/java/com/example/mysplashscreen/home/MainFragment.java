@@ -85,10 +85,9 @@ public class MainFragment extends Fragment {
 
         List<Creature> creatureList = new ArrayList<>();
 
-        creatureList.add(new Creature(R.drawable.animation_splash, "", 10, 2423));
-        creatureList.add(new Creature(R.drawable.baseline_question_mark_24, "", 0, 0));
-        creatureList.add(new Creature(R.drawable.baseline_question_mark_24, "", 0, 0));
-        creatureList.add(new Creature(R.drawable.baseline_question_mark_24, "", 0, 0));
+        creatureList.add(new Creature(R.drawable.lockedegg, "pinko", 0, 0));
+        creatureList.add(new Creature(R.drawable.lockedegg, "chickie", 0, 0));
+        creatureList.add(new Creature(R.drawable.lockedegg, "treevor", 0, 0));
 
         CreatureAdapter creatureAdapter = new CreatureAdapter(creatureList);
         creatureRecyclerView.setAdapter(creatureAdapter);

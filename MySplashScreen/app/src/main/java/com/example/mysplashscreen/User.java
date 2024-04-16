@@ -1,5 +1,7 @@
 package com.example.mysplashscreen;
 
+import com.example.mysplashscreen.home.levelDP.LevelBaseState;
+import com.example.mysplashscreen.home.levelDP.LevelState;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -20,6 +22,7 @@ public class User {
     private DatabaseReference databaseReference;
 
     protected User() {
+        LevelState levelState = new LevelBaseState();
     }
 
     public static synchronized User getInstance() {
@@ -27,6 +30,10 @@ public class User {
             instance = new User();
         }
         return instance;
+    }
+
+    public void setLevelState(LevelState levelState){
+        this.levelState = levelState;
     }
 
     public void setEmail(String email) {
@@ -85,10 +92,13 @@ public class User {
             observer.onUserUpdated(this);
         }
     }
+    public void levelUp() {
+        notifyObservers();
+    }
 
-//    public void levelUp() {
-//        notifyObservers();
-//    }
+    public LevelState getLevelState() {
+        return levelState;
+    }
 
     public void saveUserData(User user) {
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://pecpals-84281-default-rtdb.asia-southeast1.firebasedatabase.app");
