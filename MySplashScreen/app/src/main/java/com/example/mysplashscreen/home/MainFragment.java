@@ -103,12 +103,10 @@ public class MainFragment extends Fragment implements UserObserver {
         creatureAdapter = new CreatureAdapter(creatureList);
         creatureRecyclerView.setAdapter(creatureAdapter);
 
-        tasksList.add(new Tasks("Task 1"));
-        tasksList.add(new Tasks("Task 2"));
-        tasksList.add(new Tasks("Task 3"));
-        tasksList.add(new Tasks(500, "Task: " + exerciseList.get(0).getName()));
-        tasksList.add(new Tasks(500, "Task: " + exerciseList.get(1).getName()));
-        tasksList.add(new Tasks(500, "Task: " + exerciseList.get(2).getName()));
+
+        tasksList.add(new Tasks("Task: " + exerciseList.get(0).getName()));
+        tasksList.add(new Tasks("Task: " + exerciseList.get(1).getName()));
+
 
         taskAdapter = new TaskAdapter(tasksList);
         creatureInfoRV.setAdapter(taskAdapter);
@@ -126,17 +124,35 @@ public class MainFragment extends Fragment implements UserObserver {
                 if(activePosition == 0){
                     tasktodo.setVisibility(View.VISIBLE);
                     tasksList.clear();
-                    tasksList.add(new Tasks("Task 1"));
-                    tasksList.add(new Tasks("Task 2"));
-                    tasksList.add(new Tasks("Task 3"));
 
-                    tasksList.add(new Tasks(500, "Task: " + exerciseList.get(0).getName()));
-                    tasksList.add(new Tasks(500, "Task: " + exerciseList.get(1).getName()));
-                    tasksList.add(new Tasks(500, "Task: " + exerciseList.get(2).getName()));
+                    tasksList.add(new Tasks("Task: " + exerciseList.get(0).getName()));
+                    tasksList.add(new Tasks("Task: " + exerciseList.get(1).getName()));
                     taskAdapter.notifyDataSetChanged();
                 }
-                // if page 2
-                // add in more conditions here to represent each page/creature
+
+                else if (activePosition == 1 && levelState <=13){
+                    tasktodo.setVisibility(View.INVISIBLE);
+                    taskAdapter.notifyDataSetChanged();
+
+                }
+                else if(activePosition == 1 && levelState >13){
+                    tasktodo.setVisibility(View.VISIBLE);
+                    tasksList.clear();
+
+                    tasksList.add(new Tasks("Task: " + exerciseList.get(2).getName()));
+                    tasksList.add(new Tasks("Task: " + exerciseList.get(3).getName()));
+                    taskAdapter.notifyDataSetChanged();
+
+                }
+
+                else if(activePosition == 2 && levelState >25){
+                    tasksList.clear();
+                    tasktodo.setVisibility(View.VISIBLE);
+                    tasksList.add(new Tasks("Task: " + exerciseList.get(4).getName()));
+                    tasksList.add(new Tasks("Task: " + exerciseList.get(2).getName()));
+                    taskAdapter.notifyDataSetChanged();
+
+                }
                 else{
                     tasktodo.setVisibility(View.INVISIBLE);
                     //UpdateTasks(tasksList);
