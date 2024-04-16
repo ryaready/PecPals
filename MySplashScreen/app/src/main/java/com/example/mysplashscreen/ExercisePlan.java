@@ -42,8 +42,7 @@ public class ExercisePlan {
         ArrayList<Exercise> exercises = new ArrayList<>();
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
-<<<<<<< Updated upstream
-=======
+
         Cursor cursor = db.query(
                 ExerciseDatabaseHelper.TABLE_EXERCISES,
                 null,
@@ -86,7 +85,7 @@ public class ExercisePlan {
     public ArrayList<Exercise> getLevelExercises() {
         ArrayList<Exercise> exercises = new ArrayList<>();
         SQLiteDatabase db = dbHelper.getReadableDatabase();
->>>>>>> Stashed changes
+
 
         String[] projection = {
                 ExerciseDatabaseHelper.COLUMN_ID,
@@ -103,10 +102,10 @@ public class ExercisePlan {
 
         Cursor cursor = db.query(
                 ExerciseDatabaseHelper.TABLE_EXERCISES,
-                TABLE_EXERCISES,   // The table to query
-                projection,        // The columns to return
-                selection,         // The columns for the WHERE clause
-                selectionArgs,
+                null,
+                null,
+                null,
+                null,
                 null,
                 null
         );
