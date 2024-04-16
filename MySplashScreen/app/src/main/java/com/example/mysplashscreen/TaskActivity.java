@@ -22,12 +22,6 @@ public class TaskActivity extends AppCompatActivity {
     Exercise bench_press = new Exercise();
     Exercise push_ups = new Exercise();
     ExercisePlan exercisePlan = new ExercisePlan(this);
-    ////
-    //long bicep_curls_ID = exercisePlan.insertExercise(bicep_curls);
-   // long shoulder_press_ID = exercisePlan.insertExercise(shoulder_press);
-    //long bent_over_rows_ID = exercisePlan.insertExercise(bent_over_rows);
-    //long bench_press_ID = exercisePlan.insertExercise(bench_press);
-    //long push_ups_ID = exercisePlan.insertExercise(push_ups);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,8 +54,9 @@ public class TaskActivity extends AppCompatActivity {
         exercisePlan.clearExerciseDatabase();
         exercisePlan.insertExercise(push_ups);
         exercisePlan.insertExercise(bicep_curls);
-        exercisePlan.insertExercise(bent_over_rows);
+        exercisePlan.insertExercise(shoulder_press);
         exercisePlan.insertExercise(bench_press);
+        exercisePlan.insertExercise(bent_over_rows);
 
         exerciseArrayList = exercisePlan.getAllExercises();
         Log.d("array", String.valueOf(exerciseArrayList));

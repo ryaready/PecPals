@@ -22,7 +22,6 @@ public class Exercise {
         repCount = rep;
     }
 
-    // Getters and Setters
     public String getId() {
         return id;
     }
