@@ -15,6 +15,7 @@ public class Creature {
     public Creature(String name, int levelState){
         this.name = name;
         this.levelState = levelState;
+        setImg(levelState);
     }
 
     public static HashMap getImageHashMapC1() {
