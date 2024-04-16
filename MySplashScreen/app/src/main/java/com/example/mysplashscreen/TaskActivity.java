@@ -184,7 +184,7 @@ public class TaskActivity extends AppCompatActivity{
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        exercisePlan.clearExerciseDatabase();
+        //exercisePlan.clearExerciseDatabase();
 //        Log.d("ExerciseDatabase", String.valueOf(exerciseArrayList.size()));
     }
 }
