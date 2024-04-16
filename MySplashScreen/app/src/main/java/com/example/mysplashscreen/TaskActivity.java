@@ -174,7 +174,10 @@ public class TaskActivity extends AppCompatActivity{
         int totalXP = (int)(currXP + 50*mul);
         user.setXp(totalXP);
 
-        user.levelUp();
+        if (user.checkLvlUp() == true){
+            Toast.makeText(getApplicationContext(), "Level Up !!!!", Toast.LENGTH_SHORT).show();
+            user.levelUp();
+        }
         Intent intent = new Intent(this.getApplicationContext(), BottomNavActivity.class);
         startActivity(intent);
     }

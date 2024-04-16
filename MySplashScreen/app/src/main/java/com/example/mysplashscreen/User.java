@@ -111,7 +111,6 @@ public class User {
         }
     }
 
-    // Method to update last login timestamp and increase login streak if 24 hours have passed
     public void updateLogin() {
         long currentTime = System.currentTimeMillis();
         long oneDayInMillis = 24 * 60 * 60 * 1000;
