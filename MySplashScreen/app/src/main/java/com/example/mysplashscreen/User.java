@@ -6,7 +6,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class User {
     private static User instance;
     private String email;
@@ -14,14 +13,14 @@ public class User {
     private int xp;
     private int coins;
     private int loginStreak;
-    private LevelState levelState;
+    private long lastLoginTimestamp;
+    private int levelState;
     private List<UserObserver> observers = new ArrayList<>();
 
     private DatabaseReference databaseReference;
+    private boolean checkLvlUp;
 
     protected User() {
-        FirebaseDatabase database = FirebaseDatabase.getInstance("https://pecpals-84281-default-rtdb.asia-southeast1.firebasedatabase.app");
-        databaseReference = database.getReference().child("users");
     }
 
     public static synchronized User getInstance() {
@@ -29,6 +28,9 @@ public class User {
             instance = new User();
         }
         return instance;
+    }
+    public void setLevelState(int levelState){
+        this.levelState = levelState;
     }
 
     public void setEmail(String email) {
@@ -47,22 +49,18 @@ public class User {
     public void setCoins(int coins) {
         this.coins = coins;
         notifyObservers();
-        saveUserData(this);
     }
 
     public void setLoginStreak(int loginStreak) {
         this.loginStreak = loginStreak;
         notifyObservers();
-        saveUserData(this);
     }
 
     public String getEmail() {
-
         return email;
     }
 
     public String getPassword() {
-
         return password;
     }
 
@@ -71,7 +69,6 @@ public class User {
     }
 
     public int getCoins() {
-
         return coins;
     }
 
@@ -80,7 +77,6 @@ public class User {
     }
 
     public void removeObserver(UserObserver observer) {
-
         observers.remove(observer);
     }
 
@@ -90,15 +86,39 @@ public class User {
         }
     }
 
-//    public void levelUp() {
-//        notifyObservers();
-//    }
+    public int getLevelState() {
+        return levelState;
+    }
+
+    public boolean checkLvlUp() {
+        return xp % 50 == 0 && xp != 0;
+    }
+
+    public void levelUp() {
+        if (checkLvlUp()) {
+            int next = xp / 50;
+            setLevelState(next);
+            notifyObservers();
+        }
+    }
 
     public void saveUserData(User user) {
+        FirebaseDatabase database = FirebaseDatabase.getInstance("https://pecpals-84281-default-rtdb.asia-southeast1.firebasedatabase.app");
+        databaseReference = database.getReference().child("users");
         String email = getEmail();
         if (email != null) {
             databaseReference.child(email).setValue(user);
         }
     }
-}
 
+    // Method to update last login timestamp and increase login streak if 24 hours have passed
+    public void updateLogin() {
+        long currentTime = System.currentTimeMillis();
+        long oneDayInMillis = 24 * 60 * 60 * 1000;
+        if (currentTime - lastLoginTimestamp >= oneDayInMillis) {
+            loginStreak++;
+            lastLoginTimestamp = currentTime;
+            saveUserData(this);
+        }
+    }
+}

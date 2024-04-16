@@ -49,11 +49,16 @@ public class LoginActivity extends AppCompatActivity {
                 if (dataSnapshot.exists()) {
                     User user = dataSnapshot.getValue(User.class);
                     if (user != null && user.getPassword() != null && user.getPassword().equals(password)) {
+
                         User.getInstance().setEmail(email);
+                        User.getInstance().setPassword(password);
                         User.getInstance().setCoins(user.getCoins());
                         User.getInstance().setXp(user.getXp());
                         User.getInstance().setLoginStreak(user.getLoginStreak());
-                        User.getInstance().setPassword(user.getPassword());
+                        User.getInstance().setLevelState(user.getLevelState());
+                        User.getInstance().levelUp();
+                        User.getInstance().updateLogin();
+
                         Toast.makeText(LoginActivity.this, "Login Successfully!", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), BottomNavActivity.class);
                         startActivity(intent);
@@ -71,5 +76,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
 
 }

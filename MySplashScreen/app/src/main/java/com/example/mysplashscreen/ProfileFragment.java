@@ -46,12 +46,9 @@ public class ProfileFragment extends Fragment implements UserObserver {
             public void onClick(View v) {
 
                 user.saveUserData(user);
-
-                // Redirect to Login Activity
                 Intent intent = new Intent(requireActivity(), LoginActivity.class);
                 startActivity(intent);
 
-                // Finish all activities and exit the app
                 requireActivity().finishAffinity();
             }
         });
@@ -69,6 +66,10 @@ public class ProfileFragment extends Fragment implements UserObserver {
         String ls = String.valueOf(user.getLoginStreak());
         TextView lsTextView = binding.textView4;
         lsTextView.setText(ls);
+
+        String level = String.valueOf(user.getLevelState());
+        TextView lvlTextView = binding.levelValue;
+        lvlTextView.setText(level);
     }
 
 
@@ -78,9 +79,9 @@ public class ProfileFragment extends Fragment implements UserObserver {
         updateUI();
     }
 
-    // Don't forget to unregister the observer when the fragment is destroyed
     @Override
     public void onDestroyView() {
+        user.saveUserData(user);
         super.onDestroyView();
         User.getInstance().removeObserver(this);
     }
