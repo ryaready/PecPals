@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--Implementation is taken from StackOverFlow user Henry Twist:
+https://stackoverflow.com/questions/66961142/change-the-icon-color-in-a-bottomnavigationview-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_checked="true" android:color="@color/dark_pink" />
+    <item android:color="@color/grey" android:state_checked="false" />
+</selector>

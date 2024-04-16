@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_checked="true">
+        <layer-list>
+            <item android:gravity="top|center_horizontal">
+                <shape android:shape="rectangle">
+                    <size android:width="50dp" android:height="5dp" />
+                    <solid android:color="@color/dark_pink" />
+                    <corners android:bottomLeftRadius="3dp" android:bottomRightRadius="3dp" />
+                </shape>
+            </item>
+<!--            <item android:gravity="top|center_horizontal">-->
+<!--                <rotate-->
+<!--                    android:fromDegrees="45"-->
+<!--                    android:toDegrees="0"-->
+<!--                    android:pivotX="140%"-->
+<!--                    android:pivotY="13%">-->
+<!--                    <shape android:shape="rectangle">-->
+<!--                        <size android:width="50dp" android:height="5dp" />-->
+<!--                        <solid android:color="@color/blue" />-->
+<!--                        <corners android:radius="50dp"/>-->
+<!--                    </shape>-->
+<!--                </rotate>-->
+<!--            </item>-->
+        </layer-list>
+    </item>
+</selector>

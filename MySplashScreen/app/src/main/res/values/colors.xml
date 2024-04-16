@@ -1,5 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
+    <color name="black">#0D0B26</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="blue">#89CFF0</color>
+    <color name="lavender">#8692f7</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="orange">#FF8637</color>
+    <color name="off_white">#ECECEC</color>
+    <color name="dark_grey">#ABB7C2</color>
+    <color name="light_grey">#CFD6DC</color>
+    <color name="grey">#96959e</color>
+    <color name="background">#0ECCED</color>
+    <color name="dark_pink">#FE5196</color>
+    <color name="_bg__home_page_ek2_color">#FFFFFF</color>
+    <color name="_bg__home_page_nav_bar_ek1_color">#000000</color>
+    <color name="today_s_tasks_color">#000000</color>
+    <color name="rectangle_3_color">#ECECEC</color>
+    <color name="excited_to_work_out_today__color">#0D0B26</color>
 </resources>
