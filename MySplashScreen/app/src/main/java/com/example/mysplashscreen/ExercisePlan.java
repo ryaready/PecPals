@@ -42,10 +42,6 @@ public class ExercisePlan {
         ArrayList<Exercise> exercises = new ArrayList<>();
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
         Cursor cursor = db.query(
                 ExerciseDatabaseHelper.TABLE_EXERCISES,
                 null,
@@ -85,7 +81,6 @@ public class ExercisePlan {
         return exercises;
     }
 
-<<<<<<< Updated upstream
     public ArrayList<Exercise> getLevelExercises() {
         ArrayList<Exercise> exercises = new ArrayList<>();
         SQLiteDatabase db = dbHelper.getReadableDatabase();
@@ -144,6 +139,5 @@ public class ExercisePlan {
         return exercises;
     }
 
-=======
->>>>>>> Stashed changes
+
 }

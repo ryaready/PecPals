@@ -57,6 +57,7 @@ public class TaskActivity extends AppCompatActivity {
 
         exercisePlan.clearExerciseDatabase();
         exercisePlan.insertExercise(push_ups);
+        Log.d("check push ups", String.valueOf(exercisePlan.insertExercise(push_ups)));
         exercisePlan.insertExercise(bicep_curls);
         exercisePlan.insertExercise(shoulder_press);
         exercisePlan.insertExercise(bench_press);

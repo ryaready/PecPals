@@ -20,12 +20,11 @@ public class User {
     private DatabaseReference databaseReference;
 
     protected User() {
-<<<<<<< Updated upstream
-=======
+
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://pecpals-84281-default-rtdb.asia-southeast1.firebasedatabase.app");
         databaseReference = database.getReference().child("users");
         currentUserState = 1;
->>>>>>> Stashed changes
+
     }
 
     public static synchronized User getInstance() {
