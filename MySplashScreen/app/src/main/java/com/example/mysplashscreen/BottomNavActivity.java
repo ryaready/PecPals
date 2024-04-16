@@ -1,5 +1,7 @@
 package com.example.mysplashscreen;
 
+import static com.example.mysplashscreen.home.MainFragment.creatureAdapter;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -34,6 +36,8 @@ public class BottomNavActivity extends AppCompatActivity {
 
     MainFragment mainFragment = new MainFragment();
 
+    User user = User.getInstance();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +66,9 @@ public class BottomNavActivity extends AppCompatActivity {
 //                replaceFragment(mainFragment);
 //                MainFragment.UpdateUIForFirstItem();
             }
+
+            user.levelUp();
+            creatureAdapter.notifyDataSetChanged();
             return true;
         });
 

@@ -6,7 +6,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class User {
     private static User instance;
     private String email;
@@ -14,6 +13,7 @@ public class User {
     private int xp;
     private int coins;
     private int loginStreak;
+    private long lastLoginTimestamp;
     private int levelState;
     private List<UserObserver> observers = new ArrayList<>();
 
@@ -29,7 +29,6 @@ public class User {
         }
         return instance;
     }
-
     public void setLevelState(int levelState){
         this.levelState = levelState;
     }
@@ -58,22 +57,18 @@ public class User {
     }
 
     public String getEmail() {
-
         return email;
     }
 
     public String getPassword() {
-
         return password;
     }
 
     public int getXp() {
-
         return xp;
     }
 
     public int getCoins() {
-
         return coins;
     }
 
@@ -82,7 +77,6 @@ public class User {
     }
 
     public void removeObserver(UserObserver observer) {
-
         observers.remove(observer);
     }
 
@@ -96,25 +90,17 @@ public class User {
         return levelState;
     }
 
-    public boolean checkLvlUp(){
-        if(xp%50 == 0 && xp!= 0){
-            return true;
-        }
-        else{
-            return false;
-        }
+    public boolean checkLvlUp() {
+        return xp % 50 == 0 && xp != 0;
     }
 
-
     public void levelUp() {
-        if (checkLvlUp() == true){
-            int next = xp/50;
+        if (checkLvlUp()) {
+            int next = xp / 50;
             setLevelState(next);
             notifyObservers();
         }
-
     }
-
 
     public void saveUserData(User user) {
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://pecpals-84281-default-rtdb.asia-southeast1.firebasedatabase.app");
@@ -124,5 +110,15 @@ public class User {
             databaseReference.child(email).setValue(user);
         }
     }
-}
 
+    // Method to update last login timestamp and increase login streak if 24 hours have passed
+    public void updateLogin() {
+        long currentTime = System.currentTimeMillis();
+        long oneDayInMillis = 24 * 60 * 60 * 1000;
+        if (currentTime - lastLoginTimestamp >= oneDayInMillis) {
+            loginStreak++;
+            lastLoginTimestamp = currentTime;
+            saveUserData(this);
+        }
+    }
+}
