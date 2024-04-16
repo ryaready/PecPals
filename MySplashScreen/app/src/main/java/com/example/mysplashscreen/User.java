@@ -15,6 +15,9 @@ public class User {
     private int coins;
     private int loginStreak;
     private int currentUserState;
+
+    private int levelState;
+
     private List<UserObserver> observers = new ArrayList<>();
 
     private DatabaseReference databaseReference;
@@ -32,6 +35,10 @@ public class User {
             instance = new User();
         }
         return instance;
+    }
+
+    public void setLevelState(int levelState){
+        this.levelState = levelState;
     }
 
     public void setEmail(String email) {
@@ -103,10 +110,13 @@ public class User {
             observer.onUserUpdated(this);
         }
     }
+    public void levelUp() {
+        notifyObservers();
+    }
 
-//    public void levelUp() {
-//        notifyObservers();
-//    }
+    public int getLevelState() {
+        return levelState;
+    }
 
     public void saveUserData(User user) {
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://pecpals-84281-default-rtdb.asia-southeast1.firebasedatabase.app");

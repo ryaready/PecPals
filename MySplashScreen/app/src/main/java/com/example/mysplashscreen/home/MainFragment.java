@@ -39,7 +39,7 @@ public class MainFragment extends Fragment {
     List<Tasks> tasksList = new ArrayList<>();
     TaskAdapter taskAdapter;
     TextView tasktodo;
-    private User User;
+    private User user = User.getInstance();
 
     public MainFragment() {
         // Required empty public constructor
@@ -61,9 +61,8 @@ public class MainFragment extends Fragment {
         TextView usernameTextView = v.findViewById(R.id.userName);
 
 
-        User user = User.getInstance();
-
         String username = user.getInstance().getEmail();
+        int levelState = user.getLevelState();
 
         usernameTextView.setText("Hello " + username + "!");
 
@@ -85,10 +84,9 @@ public class MainFragment extends Fragment {
 
         List<Creature> creatureList = new ArrayList<>();
 
-        creatureList.add(new Creature(R.drawable.animation_splash, "", 10, 2423));
-        creatureList.add(new Creature(R.drawable.baseline_question_mark_24, "", 0, 0));
-        creatureList.add(new Creature(R.drawable.baseline_question_mark_24, "", 0, 0));
-        creatureList.add(new Creature(R.drawable.baseline_question_mark_24, "", 0, 0));
+        creatureList.add(new Creature("pinko", levelState));
+        creatureList.add(new Creature("chickie", levelState));
+        creatureList.add(new Creature("treevor", levelState));
 
         CreatureAdapter creatureAdapter = new CreatureAdapter(creatureList);
         creatureRecyclerView.setAdapter(creatureAdapter);
