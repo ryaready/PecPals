@@ -1,9 +1,6 @@
-package com.example.mysplashscreen.home.adapters;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,29 +11,44 @@ import com.example.mysplashscreen.R;
 import com.example.mysplashscreen.User;
 import com.example.mysplashscreen.UserObserver;
 import com.example.mysplashscreen.home.models.Creature;
+import com.example.mysplashscreen.home.models.Creature1;
+import com.example.mysplashscreen.home.models.Creature2;
 
 import java.util.List;
 
-public class CreatureAdapter extends RecyclerView.Adapter<CreatureAdapter.CreatureViewHolder> implements UserObserver{
+public class CreatureAdapter extends RecyclerView.Adapter<CreatureAdapter.CreatureViewHolder> implements UserObserver {
 
-    private List<Creature> creatureList;
-    public CreatureAdapter(List<Creature> creatureList){
+    private List<Object> creatureList; // List of Objects to hold different types of creatures
+    private User user; // Reference to the user object
+
+    public CreatureAdapter(List<Object> creatureList, User user) {
         this.creatureList = creatureList;
+        this.user = user;
+        user.addObserver(this); // Register this adapter as an observer of the user object
     }
 
     @NonNull
     @Override
     public CreatureViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.creature_layout, parent, false);
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.creature_image, parent, false);
-//        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.creature, parent, false);
         return new CreatureViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CreatureViewHolder holder, int position) {
-        holder.textViewName.setText(creatureList.get(position).getName());
-        holder.imageView.setImageResource(creatureList.get(position).getImage());
+        if (position == 0 && creatureList.get(position) instanceof Creature) {
+            Creature creature = (Creature) creatureList.get(position);
+            holder.textViewName.setText(creature.getName());
+            holder.imageView.setImageResource(creature.getImage());
+        } else if (position == 1 && creatureList.get(position) instanceof Creature1) {
+            Creature1 creature = (Creature1) creatureList.get(position);
+            holder.textViewName.setText(creature.getName());
+            holder.imageView.setImageResource(creature.getImage());
+        } else if (position == 2 && creatureList.get(position) instanceof Creature2) {
+            Creature2 creature = (Creature2) creatureList.get(position);
+            holder.textViewName.setText(creature.getName());
+            holder.imageView.setImageResource(creature.getImage());
+        }
     }
 
     @Override
@@ -45,36 +57,26 @@ public class CreatureAdapter extends RecyclerView.Adapter<CreatureAdapter.Creatu
     }
 
     @Override
-    public int getItemViewType(int position) {
-        return super.getItemViewType(position);
-    }
-
-    @Override
     public void onUserUpdated(User user) {
-
-
-
+        // Update the user reference
+        this.user = user;
+        // Notify the adapter that the data has changed
+        notifyDataSetChanged();
     }
 
-    public class CreatureViewHolder extends RecyclerView.ViewHolder{
+    public class CreatureViewHolder extends RecyclerView.ViewHolder {
 
         public ImageView imageView;
         private TextView textViewName;
-        private TextView textViewCoins;
-        private TextView textViewXP;
-
-        private Button taskButton;
 
         public CreatureViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageView = itemView.findViewById(R.id.creatureImage);;
+            imageView = itemView.findViewById(R.id.creatureImage);
             textViewName = itemView.findViewById(R.id.creatureName2);
-
         }
     }
 
-    public Creature getItem(int position){
+    public Object getItem(int position) {
         return creatureList.get(position);
     }
-
 }
