@@ -19,14 +19,8 @@ import java.util.List;
 
 public class TaskActivity extends AppCompatActivity{
     ViewPager2 viewPager2;
-    ArrayList<Exercise> exerciseArrayList;
+    ArrayList<ViewPagerItem> viewPagerItemArrayList;
     CountDownTimer countDownTimer;
-    Exercise bicep_curls = new Exercise();
-    Exercise shoulder_press = new Exercise();
-    Exercise bent_over_rows = new Exercise();
-    Exercise bench_press = new Exercise();
-    Exercise push_ups = new Exercise();
-    ExercisePlan exercisePlan = new ExercisePlan(this);
 
     ImageView exerciseImage;
     TextView exerciseName, exerciseDesc;
@@ -41,7 +35,6 @@ public class TaskActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.task_activity);
 
@@ -178,6 +171,7 @@ public class TaskActivity extends AppCompatActivity{
         int totala = a + 500;
         user.setXp(totala);
 
+        user.levelUp();
         Intent intent = new Intent(this.getApplicationContext(), BottomNavActivity.class);
         startActivity(intent);
     }

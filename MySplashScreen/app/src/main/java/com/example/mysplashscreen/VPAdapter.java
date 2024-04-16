@@ -13,15 +13,12 @@ import java.util.ArrayList;
 
 public class VPAdapter extends RecyclerView.Adapter<VPAdapter.ViewHolder> {
 
-    //ArrayList<ViewPagerItem> viewPagerItemArrayList;
-    ArrayList<Exercise> exerciseArrayList;
+    ArrayList<ViewPagerItem> viewPagerItemArrayList;
 
-    //public VPAdapter(ArrayList<ViewPagerItem> viewPagerItemArrayList) {
-     //   this.viewPagerItemArrayList = viewPagerItemArrayList;
-    //}
-    public VPAdapter(ArrayList<Exercise> exerciseArrayList) {
-        this.exerciseArrayList =  exerciseArrayList;
+    public VPAdapter(ArrayList<ViewPagerItem> viewPagerItemArrayList) {
+        this.viewPagerItemArrayList = viewPagerItemArrayList;
     }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -32,30 +29,22 @@ public class VPAdapter extends RecyclerView.Adapter<VPAdapter.ViewHolder> {
         return new ViewHolder(view);
     }
 
-    //@Override
-    //public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
-        //ViewPagerItem viewPagerItem = viewPagerItemArrayList.get(position);
-
-       // holder.imageView.setImageResource(viewPagerItem.imageID);
-       // holder.tcHeading.setText(viewPagerItem.heading);
-       // holder.tvDesc.setText(viewPagerItem.description);
-
-    //}
+    @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-         Exercise exercise = exerciseArrayList.get(position);
-         holder.imageView.setImageResource(exercise.getImageID());
-         holder.tcHeading.setText(exercise.getName());
-         holder.tvDesc.setText(exercise.getDesc());
+
+        ViewPagerItem viewPagerItem = viewPagerItemArrayList.get(position);
+
+        holder.imageView.setImageResource(viewPagerItem.imageID);
+        holder.tcHeading.setText(viewPagerItem.heading);
+        holder.tvDesc.setText(viewPagerItem.description);
+
     }
-    //@Override
-    //public int getItemCount() {
-    //    return viewPagerItemArrayList.size();
-    //}
+
     @Override
     public int getItemCount() {
-          return exerciseArrayList.size();
+        return viewPagerItemArrayList.size();
     }
+
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         ImageView imageView;

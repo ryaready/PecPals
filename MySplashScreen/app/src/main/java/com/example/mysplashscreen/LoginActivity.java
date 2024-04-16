@@ -57,6 +57,7 @@ public class LoginActivity extends AppCompatActivity {
                         int ls = user.getLoginStreak();
                         int newLs = ls + 1;
                         User.getInstance().setLoginStreak(newLs);
+                        User.getInstance().setLevelState(user.getLevelState());
 
 
                         Toast.makeText(LoginActivity.this, "Login Successfully!", Toast.LENGTH_SHORT).show();

@@ -1,38 +1,22 @@
 package com.example.mysplashscreen;
 
-import android.annotation.SuppressLint;
-import android.content.ContentValues;
-import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-
-import java.util.ArrayList;
-
+import java.util.List;
+import java.util.stream.Collectors;
 public class ExercisePlan {
-    private ExerciseDatabaseHelper dbHelper;
+    private List<Exercise> exercisesDatabase;
 
-    public ExercisePlan(Context context)  {
-        this.dbHelper = new ExerciseDatabaseHelper(context);
+    ExercisePlan(List<Exercise> exercisesDatabase) {
+        this.exercisesDatabase = exercisesDatabase;
     }
 
-    public long insertExercise(Exercise exercise) {
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-
-        ContentValues values = new ContentValues();
-        values.put(ExerciseDatabaseHelper.COLUMN_ID, exercise.getId());
-        values.put(ExerciseDatabaseHelper.COLUMN_NAME, exercise.getName());
-        values.put(ExerciseDatabaseHelper.COLUMN_DESCRIPTION, exercise.getDesc());
-        values.put(ExerciseDatabaseHelper.COLUMN_IMAGE, exercise.getImageID());
-        values.put(ExerciseDatabaseHelper.COLUMN_REPS, exercise.getRepCount());
-        values.put(ExerciseDatabaseHelper.COLUMN_SETS, exercise.getSetCount());
-        values.put(ExerciseDatabaseHelper.COLUMN_MUSCLE_GROUP, exercise.getMuscleGroup());
-        values.put(ExerciseDatabaseHelper.COLUMN_DIFFICULTY, exercise.getDifficulty());
-
-
-        long id = db.insert(ExerciseDatabaseHelper.TABLE_EXERCISES, null, values);
-        db.close();
-        return id;
+    List<Exercise> generateExercisePlan(int difficulty, List<String> targetMuscleGroups) {
+        return exercisesDatabase.stream()
+                .filter(e -> e.difficultyLevel == difficulty)
+                .filter(e -> e.muscleGroups.stream().anyMatch(targetMuscleGroups::contains))
+                .limit(5)
+                .collect(Collectors.toList());
     }
+    
     public void clearExerciseDatabase() {
         dbHelper.deleteAllEntries();
     }

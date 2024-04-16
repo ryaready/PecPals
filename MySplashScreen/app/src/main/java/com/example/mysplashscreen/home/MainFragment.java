@@ -19,9 +19,12 @@ import androidx.recyclerview.widget.SnapHelper;
 import com.example.mysplashscreen.CirclePagerIndicatorDecoration;
 import com.example.mysplashscreen.R;
 import com.example.mysplashscreen.User;
+import com.example.mysplashscreen.UserObserver;
 import com.example.mysplashscreen.home.adapters.CreatureAdapter;
 import com.example.mysplashscreen.home.adapters.TaskAdapter;
 import com.example.mysplashscreen.home.models.Creature;
+import com.example.mysplashscreen.home.models.Creature1;
+import com.example.mysplashscreen.home.models.Creature2;
 import com.example.mysplashscreen.home.models.Tasks;
 
 import java.util.ArrayList;
@@ -31,7 +34,7 @@ import java.util.List;
     Implementation is inspired by and taken from CodingSTUFF:
     https://www.youtube.com/watch?v=CXfXFHuQIWo
  */
-public class MainFragment extends Fragment {
+public class MainFragment extends Fragment implements UserObserver {
 
     private static RecyclerView creatureRecyclerView;
     private RecyclerView creatureInfoRV;
@@ -42,7 +45,11 @@ public class MainFragment extends Fragment {
     List<Tasks> tasksList = new ArrayList<>();
     TaskAdapter taskAdapter;
     TextView tasktodo;
-    private User User;
+    private User user = User.getInstance();
+
+    List<Object> creatureList = new ArrayList<>();
+
+    int levelState = user.getLevelState();
 
     public MainFragment() {
         // Required empty public constructor
@@ -57,14 +64,14 @@ public class MainFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
         helper = new LinearSnapHelper();
 
         View v = inflater.inflate(R.layout.fragment_main, container, false);
         tasktodo = v.findViewById(R.id.taskstodo);
         TextView usernameTextView = v.findViewById(R.id.userName);
 
-
-        User user = User.getInstance();
 
         String username = user.getInstance().getEmail();
 
@@ -86,12 +93,10 @@ public class MainFragment extends Fragment {
         creatureInfoRV.setHasFixedSize(true);
         creatureInfoRV.setLayoutManager(new LinearLayoutManager(this.getActivity()));
 
-        List<Creature> creatureList = new ArrayList<>();
 
-        creatureList.add(new Creature(R.drawable.animation_splash, "", 10, 2423));
-        creatureList.add(new Creature(R.drawable.baseline_question_mark_24, "", 0, 0));
-        creatureList.add(new Creature(R.drawable.baseline_question_mark_24, "", 0, 0));
-        creatureList.add(new Creature(R.drawable.baseline_question_mark_24, "", 0, 0));
+        creatureList.add(new Creature("pinko", levelState));
+        creatureList.add(new Creature1("chickie", levelState));
+        creatureList.add(new Creature2("treevor", levelState));
 
        // CreatureAdapter creatureAdapter = new CreatureAdapter(creatureList);
         creatureAdapter = new CreatureAdapter(creatureList);
@@ -156,4 +161,9 @@ public class MainFragment extends Fragment {
         layoutManager.scrollToPosition(0);
 
     }
+
+    @Override
+    public void onUserUpdated(User user) {
+    }
+
 }
