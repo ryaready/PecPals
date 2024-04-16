@@ -348,15 +348,15 @@
 
                         <ImageView
                             android:id="@+id/logout_icon"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="45dp"
+                            android:layout_height="48dp"
                             app:layout_constraintBottom_toBottomOf="@+id/logoutButton"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.494"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_bias="0.273"
-                            app:srcCompat="@drawable/logout"/>
+                            app:srcCompat="@drawable/logout" />
 
                         <TextView
                             android:id="@+id/textView7"

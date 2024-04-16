@@ -107,9 +107,6 @@ public class MainFragment extends Fragment implements UserObserver {
         tasksList.add(new Tasks("Task: " + exerciseList.get(0).getName()));
         tasksList.add(new Tasks("Task: " + exerciseList.get(1).getName()));
 
-        tasksList.add(new Tasks(500, "Task: " + exerciseList.get(0).getName()));
-        tasksList.add(new Tasks(500, "Task: " + exerciseList.get(1).getName()));
-
 //        taskAdapter = new TaskAdapter(exerciseList);
         taskAdapter = new TaskAdapter(tasksList);
         creatureInfoRV.setAdapter(taskAdapter);
@@ -135,15 +132,6 @@ public class MainFragment extends Fragment implements UserObserver {
 
                 else if (activePosition == 1 && levelState <=13){
                     tasktodo.setVisibility(View.INVISIBLE);
-
-                    tasksList.add(new Tasks(500, "Task: " + exerciseList.get(0).getName()));
-                    tasksList.add(new Tasks(500, "Task: " + exerciseList.get(1).getName()));
-                    taskAdapter.notifyDataSetChanged();
-                }
-                // if page 2
-                // add in more conditions here to represent each page/creature
-                else if (activePosition == 1 && levelState <=13){
-                    tasktodo.setVisibility(View.INVISIBLE);
                     tasksList.clear();
                     taskAdapter.notifyDataSetChanged();
 
@@ -155,8 +143,6 @@ public class MainFragment extends Fragment implements UserObserver {
                     tasksList.add(new Tasks("Task: " + exerciseList.get(2).getName()));
                     tasksList.add(new Tasks("Task: " + exerciseList.get(3).getName()));
 
-                    tasksList.add(new Tasks(500,"Task: " + exerciseList.get(2).getName()));
-                    tasksList.add(new Tasks(500,"Task: " + exerciseList.get(3).getName()));
 
                     taskAdapter.notifyDataSetChanged();
 
@@ -168,8 +154,6 @@ public class MainFragment extends Fragment implements UserObserver {
                     tasksList.add(new Tasks("Task: " + exerciseList.get(4).getName()));
                     tasksList.add(new Tasks("Task: " + exerciseList.get(2).getName()));
 
-                    tasksList.add(new Tasks(500,"Task: " + exerciseList.get(4).getName()));
-                    tasksList.add(new Tasks(500,"Task: " + exerciseList.get(2).getName()));
                     taskAdapter.notifyDataSetChanged();
 
                 }
