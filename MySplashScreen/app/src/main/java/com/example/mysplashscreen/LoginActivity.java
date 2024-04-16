@@ -52,7 +52,9 @@ public class LoginActivity extends AppCompatActivity {
                         User.getInstance().setEmail(email);
                         User.getInstance().setCoins(user.getCoins());
                         User.getInstance().setXp(user.getXp());
-                        User.getInstance().setLoginStreak(user.getLoginStreak());
+                        int ls = user.getLoginStreak();
+                        int newLs = ls + 1;
+                        User.getInstance().setLoginStreak(newLs);
                         User.getInstance().setPassword(user.getPassword());
                         Toast.makeText(LoginActivity.this, "Login Successfully!", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), BottomNavActivity.class);
