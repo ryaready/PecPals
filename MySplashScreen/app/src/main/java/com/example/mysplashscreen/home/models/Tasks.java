@@ -2,11 +2,9 @@ package com.example.mysplashscreen.home.models;
 
 public class Tasks {
 
-    private int taskXP;
     private String taskName;
 
-    public Tasks(int xp, String task){
-        taskXP = xp;
+    public Tasks(String task){
         taskName = task;
     }
 
@@ -15,6 +13,6 @@ public class Tasks {
     }
 
     public int getTaskXP(){
-        return taskXP;
+        return 10;
     }
 }

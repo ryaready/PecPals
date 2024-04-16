@@ -100,9 +100,9 @@ public class MainFragment extends Fragment implements UserObserver {
         creatureAdapter = new CreatureAdapter(creatureList);
         creatureRecyclerView.setAdapter(creatureAdapter);
 
-        tasksList.add(new Tasks(50, "Task 1: Do 5 push ups"));
-        tasksList.add(new Tasks(60, "Task 2: Do 10 push ups"));
-        tasksList.add(new Tasks(70, "Task 3: Do 15 push ups"));
+        tasksList.add(new Tasks("Task 1"));
+        tasksList.add(new Tasks("Task 2"));
+        tasksList.add(new Tasks("Task 3"));
 
         taskAdapter = new TaskAdapter(tasksList);
         creatureInfoRV.setAdapter(taskAdapter);
@@ -120,9 +120,9 @@ public class MainFragment extends Fragment implements UserObserver {
                 if(activePosition == 0){
                     tasktodo.setVisibility(View.VISIBLE);
                     tasksList.clear();
-                    tasksList.add(new Tasks(50, "Task 1: Do 5 push ups"));
-                    tasksList.add(new Tasks(60, "Task 2: Do 10 push ups"));
-                    tasksList.add(new Tasks(70, "Task 3: Do 15 push ups"));
+                    tasksList.add(new Tasks("Task 1"));
+                    tasksList.add(new Tasks("Task 2"));
+                    tasksList.add(new Tasks("Task 3"));
                     taskAdapter.notifyDataSetChanged();
                 }
                 // if page 2

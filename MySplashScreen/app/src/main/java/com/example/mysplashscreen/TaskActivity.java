@@ -87,7 +87,7 @@ public class TaskActivity extends AppCompatActivity {
 
             int a = user.getXp();
             int mula = (int) ceil( ls * 0.7);
-            int totala = a + 50*mula;
+            int totala = a + 10*mula;
             user.setXp(totala);
 
             user.levelUp();
