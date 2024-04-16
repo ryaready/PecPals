@@ -19,7 +19,6 @@ import com.example.mysplashscreen.R;
 import com.example.mysplashscreen.User;
 import com.example.mysplashscreen.home.adapters.CreatureAdapter;
 import com.example.mysplashscreen.home.adapters.TaskAdapter;
-import com.example.mysplashscreen.home.levelDP.LevelState;
 import com.example.mysplashscreen.home.models.Creature;
 import com.example.mysplashscreen.home.models.Tasks;
 
@@ -63,7 +62,7 @@ public class MainFragment extends Fragment {
 
 
         String username = user.getInstance().getEmail();
-        LevelState levelState = user.getLevelState();
+        int levelState = user.getLevelState();
 
         usernameTextView.setText("Hello " + username + "!");
 

@@ -1,7 +1,5 @@
 package com.example.mysplashscreen;
 
-import com.example.mysplashscreen.home.levelDP.LevelBaseState;
-import com.example.mysplashscreen.home.levelDP.LevelState;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -16,13 +14,12 @@ public class User {
     private int xp;
     private int coins;
     private int loginStreak;
-    private LevelState levelState;
+    private int levelState;
     private List<UserObserver> observers = new ArrayList<>();
 
     private DatabaseReference databaseReference;
 
     protected User() {
-        LevelState levelState = new LevelBaseState();
     }
 
     public static synchronized User getInstance() {
@@ -32,7 +29,7 @@ public class User {
         return instance;
     }
 
-    public void setLevelState(LevelState levelState){
+    public void setLevelState(int levelState){
         this.levelState = levelState;
     }
 
@@ -96,7 +93,7 @@ public class User {
         notifyObservers();
     }
 
-    public LevelState getLevelState() {
+    public int getLevelState() {
         return levelState;
     }
 

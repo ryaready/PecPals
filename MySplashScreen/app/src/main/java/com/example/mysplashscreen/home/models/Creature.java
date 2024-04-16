@@ -2,8 +2,6 @@ package com.example.mysplashscreen.home.models;
 
 
 import com.example.mysplashscreen.User;
-import com.example.mysplashscreen.home.levelDP.Level13State;
-import com.example.mysplashscreen.home.levelDP.LevelState;
 
 public class Creature {
     private int image;
@@ -11,36 +9,28 @@ public class Creature {
     private Tasks tasks;
     private User user = User.getInstance();
 
-    private LevelState levelState = user.getLevelState();
-
-    private Level13State level13State = new Level13State();
-    private int currLevel;
+    private int levelState = user.getLevelState();
+    
 
 
-
-
-    public Creature(String name, LevelState levelState){
+    public Creature(String name, int levelState){
         this.name = name;
         this.levelState = levelState;
     }
 
-    public void setCurrLevel(){
-        if (levelState.currLevel() >=13){
-            currLevel = 13
+    public void setImg(int a){
+
+        if (levelState  >= 13){
+            this.image = getLevelStateImageResource(13);
         }
         else{
-            currLevel = levelState.currLevel();
+            this.image = getLevelStateImageResource(a);
         }
     }
 
-    public void setImg(){
+    private int getLevelStateImageResource(int i) {
+        return i;
 
-        if (currLevel  >= 13){
-            this.image = level13State.getLevelStateImageResource();
-        }
-        else{
-            this.image = levelState.getLevelStateImageResource();
-        }
     }
 
 
