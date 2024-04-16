@@ -13,20 +13,18 @@ public class User {
     private List<UserObserver> observers = new ArrayList<>();
 
     private User() {
-        levelState = new LevelBaseState();
     }
 
-    public void setLevelState(LevelState levelState) {
-        this.levelState = levelState;
-    }
-
-    public LevelState getLevelState() {
-        return levelState;
-    }
+//    public void setLevelState(LevelState levelState) {
+//        this.levelState = levelState;
+//    }
+//
+//    public LevelState getLevelState() {
+//        return levelState;
+//    }
 
     DatabaseHelper databaseHelper;
 
-    private User() {}
 
     // Static method to obtain the singleton instance
     public static synchronized User getInstance() {
