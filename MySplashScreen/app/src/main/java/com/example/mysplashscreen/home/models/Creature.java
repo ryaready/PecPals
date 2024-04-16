@@ -25,13 +25,8 @@ public class Creature {
     public Creature(String name, int levelState){
 
         this.name = name;
-
         this.coins = coins;
         this.XP = XP;
-
-        this.levelState = levelState;
-        setImg(levelState);
-
     }
 
 
