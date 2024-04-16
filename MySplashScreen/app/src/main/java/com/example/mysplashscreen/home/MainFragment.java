@@ -51,6 +51,8 @@ public class MainFragment extends Fragment implements UserObserver {
 
     int levelState = user.getLevelState();
 
+//    public static CreatureAdapter creatureAdapter;
+
     public MainFragment() {
         // Required empty public constructor
     }
@@ -98,7 +100,6 @@ public class MainFragment extends Fragment implements UserObserver {
         creatureList.add(new Creature1("chickie", levelState));
         creatureList.add(new Creature2("treevor", levelState));
 
-       // CreatureAdapter creatureAdapter = new CreatureAdapter(creatureList);
         creatureAdapter = new CreatureAdapter(creatureList);
         creatureRecyclerView.setAdapter(creatureAdapter);
 

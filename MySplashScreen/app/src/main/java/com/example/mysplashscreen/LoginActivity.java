@@ -54,11 +54,10 @@ public class LoginActivity extends AppCompatActivity {
                         User.getInstance().setPassword(password);
                         User.getInstance().setCoins(user.getCoins());
                         User.getInstance().setXp(user.getXp());
-                        int ls = user.getLoginStreak();
-                        int newLs = ls + 1;
-                        User.getInstance().setLoginStreak(newLs);
+                        User.getInstance().setLoginStreak(user.getLoginStreak());
                         User.getInstance().setLevelState(user.getLevelState());
-
+                        User.getInstance().levelUp();
+                        User.getInstance().updateLogin();
 
                         Toast.makeText(LoginActivity.this, "Login Successfully!", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), BottomNavActivity.class);
@@ -77,5 +76,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
 
 }
