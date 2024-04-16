@@ -19,6 +19,7 @@ import com.example.mysplashscreen.R;
 import com.example.mysplashscreen.User;
 import com.example.mysplashscreen.home.adapters.CreatureAdapter;
 import com.example.mysplashscreen.home.adapters.TaskAdapter;
+import com.example.mysplashscreen.home.levelDP.LevelState;
 import com.example.mysplashscreen.home.models.Creature;
 import com.example.mysplashscreen.home.models.Tasks;
 
@@ -39,7 +40,7 @@ public class MainFragment extends Fragment {
     List<Tasks> tasksList = new ArrayList<>();
     TaskAdapter taskAdapter;
     TextView tasktodo;
-    private User User;
+    private User user = User.getInstance();
 
     public MainFragment() {
         // Required empty public constructor
@@ -61,9 +62,8 @@ public class MainFragment extends Fragment {
         TextView usernameTextView = v.findViewById(R.id.userName);
 
 
-        User user = User.getInstance();
-
         String username = user.getInstance().getEmail();
+        LevelState levelState = user.getLevelState();
 
         usernameTextView.setText("Hello " + username + "!");
 
@@ -85,9 +85,9 @@ public class MainFragment extends Fragment {
 
         List<Creature> creatureList = new ArrayList<>();
 
-        creatureList.add(new Creature(R.drawable.lockedegg, "pinko", 0, 0));
-        creatureList.add(new Creature(R.drawable.lockedegg, "chickie", 0, 0));
-        creatureList.add(new Creature(R.drawable.lockedegg, "treevor", 0, 0));
+        creatureList.add(new Creature("pinko", levelState));
+        creatureList.add(new Creature("chickie", levelState));
+        creatureList.add(new Creature("treevor", levelState));
 
         CreatureAdapter creatureAdapter = new CreatureAdapter(creatureList);
         creatureRecyclerView.setAdapter(creatureAdapter);

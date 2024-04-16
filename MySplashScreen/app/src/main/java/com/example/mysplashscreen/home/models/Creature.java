@@ -1,31 +1,57 @@
 package com.example.mysplashscreen.home.models;
 
+
+import com.example.mysplashscreen.User;
+import com.example.mysplashscreen.home.levelDP.Level13State;
+import com.example.mysplashscreen.home.levelDP.LevelState;
+
 public class Creature {
     private int image;
     private String name;
-    private int coins;
-    private int XP;
     private Tasks tasks;
+    private User user = User.getInstance();
 
-    public Creature(int image, String name, int coins, int XP){
-        this.image = image;
+    private LevelState levelState = user.getLevelState();
+
+    private Level13State level13State = new Level13State();
+    private int currLevel;
+
+
+
+
+    public Creature(String name, LevelState levelState){
         this.name = name;
-        this.coins = coins;
-        this.XP = XP;
+        this.levelState = levelState;
     }
 
-    public Creature(int image, String name, int coins, int XP, Tasks task){
-        this(image, name, coins, XP);
-        tasks = task;
+    public void setCurrLevel(){
+        if (levelState.currLevel() >=13){
+            currLevel = 13
+        }
+        else{
+            currLevel = levelState.currLevel();
+        }
     }
 
-    public int getImage(){ return image; }
-    public int getCoins(){ return coins; }
+    public void setImg(){
 
-    public String getName(){ return name; }
+        if (currLevel  >= 13){
+            this.image = level13State.getLevelStateImageResource();
+        }
+        else{
+            this.image = levelState.getLevelStateImageResource();
+        }
+    }
 
-    public int getXP() {return XP;}
 
-    public Tasks getTasks(){return tasks;}
+    public int getImage(){
+        return image;
+    }
+    public String getName(){
+        return name;
+    }
+    public Tasks getTasks(){
+        return tasks;
+    }
 
 }

@@ -13,9 +13,15 @@ public class LevelBaseState implements LevelState {
     }
 
     @Override
+    public int currLevel() {
+        return 0;
+    }
+
+
+    @Override
     public void levelUp(User user) {
         int xp = user.getXp();
-        if(xp >= 50){
+        if(xp >= 10){
             user.setLevelState(new Level1State());
         }
     }
