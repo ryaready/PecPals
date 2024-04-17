@@ -45,6 +45,7 @@
                 android:layout_height="match_parent">
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/vote"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -77,7 +78,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center_horizontal"
-                            android:text="User ID"
+                            android:text="Vote For us! :)\n Thank you!"
                             android:textStyle="bold"
                             android:paddingStart="16dp"
                             android:paddingEnd="16dp"
