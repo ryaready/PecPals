@@ -104,8 +104,8 @@ public class MainFragment extends Fragment implements UserObserver {
         creatureRecyclerView.setAdapter(creatureAdapter);
 
 
-        tasksList.add(new Tasks("Task: " + exerciseList.get(0).getName()));
-        tasksList.add(new Tasks("Task: " + exerciseList.get(1).getName()));
+        tasksList.add(new Tasks(0,"Task: " + exerciseList.get(0).getName()));
+        tasksList.add(new Tasks(1,"Task: " + exerciseList.get(1).getName()));
 
 //        taskAdapter = new TaskAdapter(exerciseList);
         taskAdapter = new TaskAdapter(tasksList);
@@ -125,8 +125,8 @@ public class MainFragment extends Fragment implements UserObserver {
                     tasktodo.setVisibility(View.VISIBLE);
                     tasksList.clear();
 
-                    tasksList.add(new Tasks("Task: " + exerciseList.get(0).getName()));
-                    tasksList.add(new Tasks("Task: " + exerciseList.get(1).getName()));
+                    tasksList.add(new Tasks(0,"Task: " + exerciseList.get(0).getName()));
+                    tasksList.add(new Tasks(1,"Task: " + exerciseList.get(1).getName()));
                     taskAdapter.notifyDataSetChanged();
                 }
 
@@ -140,8 +140,8 @@ public class MainFragment extends Fragment implements UserObserver {
                     tasktodo.setVisibility(View.VISIBLE);
                     tasksList.clear();
 
-                    tasksList.add(new Tasks("Task: " + exerciseList.get(2).getName()));
-                    tasksList.add(new Tasks("Task: " + exerciseList.get(3).getName()));
+                    tasksList.add(new Tasks(2,"Task: " + exerciseList.get(2).getName()));
+                    tasksList.add(new Tasks(3,"Task: " + exerciseList.get(3).getName()));
 
 
                     taskAdapter.notifyDataSetChanged();
@@ -151,8 +151,8 @@ public class MainFragment extends Fragment implements UserObserver {
                 else if(activePosition == 2 && levelState >25){
                     tasksList.clear();
                     tasktodo.setVisibility(View.VISIBLE);
-                    tasksList.add(new Tasks("Task: " + exerciseList.get(4).getName()));
-                    tasksList.add(new Tasks("Task: " + exerciseList.get(2).getName()));
+                    tasksList.add(new Tasks(4,"Task: " + exerciseList.get(4).getName()));
+                    tasksList.add(new Tasks(2,"Task: " + exerciseList.get(2).getName()));
 
                     taskAdapter.notifyDataSetChanged();
 
