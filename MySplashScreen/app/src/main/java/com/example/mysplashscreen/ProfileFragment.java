@@ -1,10 +1,13 @@
 package com.example.mysplashscreen;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -52,6 +55,13 @@ public class ProfileFragment extends Fragment implements UserObserver {
                 requireActivity().finishAffinity();
             }
         });
+
+        binding.vote.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showVoteDialog(R.drawable.qrcodevote);
+            }
+        });
     }
 
     private void updateUI() {
@@ -68,8 +78,10 @@ public class ProfileFragment extends Fragment implements UserObserver {
         lsTextView.setText(ls);
 
         String level = String.valueOf(user.getLevelState());
-        TextView lvlTextView = binding.levelValue;
+        TextView lvlTextView;
+        lvlTextView = binding.levelValue;
         lvlTextView.setText(level);
+
     }
 
 
@@ -85,4 +97,27 @@ public class ProfileFragment extends Fragment implements UserObserver {
         super.onDestroyView();
         User.getInstance().removeObserver(this);
     }
+
+    private void showVoteDialog(int qrcode_drawable){
+        AlertDialog dialogBuilder = new AlertDialog.Builder(getActivity()).create();
+        LayoutInflater inflater = this.getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.qrcode_popup, null);
+        dialogBuilder.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+
+        ImageButton closeModalBtn = dialogView.findViewById(R.id.closeQRModal);
+
+        ImageView qrcode = dialogView.findViewById(R.id.QRcodeImage);
+        qrcode.setImageResource(qrcode_drawable);
+
+        closeModalBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogBuilder.dismiss();
+            }
+        });
+        dialogBuilder.setView(dialogView);
+        dialogBuilder.show();
+
+    }
+
 }

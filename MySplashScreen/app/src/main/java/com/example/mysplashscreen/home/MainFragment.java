@@ -52,8 +52,6 @@ public class MainFragment extends Fragment implements UserObserver {
 
     int levelState = user.getLevelState();
 
-//    public static CreatureAdapter creatureAdapter;
-
     public MainFragment() {
         // Required empty public constructor
     }
@@ -103,10 +101,10 @@ public class MainFragment extends Fragment implements UserObserver {
         creatureAdapter = new CreatureAdapter(creatureList);
         creatureRecyclerView.setAdapter(creatureAdapter);
 
-        tasksList.add(new Tasks(0, "Task: " + exerciseList.get(0).getName()));
-        tasksList.add(new Tasks(1, "Task: " + exerciseList.get(1).getName()));
 
-//        taskAdapter = new TaskAdapter(exerciseList);
+        tasksList.add(new Tasks(0,"Task: " + exerciseList.get(0).getName()));
+        tasksList.add(new Tasks(1,"Task: " + exerciseList.get(1).getName()));
+
         taskAdapter = new TaskAdapter(tasksList);
         creatureInfoRV.setAdapter(taskAdapter);
         creatureRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -123,12 +121,12 @@ public class MainFragment extends Fragment implements UserObserver {
                 if(activePosition == 0){
                     tasktodo.setVisibility(View.VISIBLE);
                     tasksList.clear();
-                    tasksList.add(new Tasks(0, "Task: " + exerciseList.get(0).getName()));
-                    tasksList.add(new Tasks(1, "Task: " + exerciseList.get(1).getName()));
+
+                    tasksList.add(new Tasks(0,"Task: " + exerciseList.get(0).getName()));
+                    tasksList.add(new Tasks(1,"Task: " + exerciseList.get(1).getName()));
                     taskAdapter.notifyDataSetChanged();
                 }
-                // if page 2
-                // add in more conditions here to represent each page/creature
+
                 else if (activePosition == 1 && levelState <=13){
                     tasktodo.setVisibility(View.INVISIBLE);
                     tasksList.clear();
@@ -141,6 +139,8 @@ public class MainFragment extends Fragment implements UserObserver {
 
                     tasksList.add(new Tasks(2,"Task: " + exerciseList.get(2).getName()));
                     tasksList.add(new Tasks(3,"Task: " + exerciseList.get(3).getName()));
+
+
                     taskAdapter.notifyDataSetChanged();
 
                 }
@@ -155,7 +155,6 @@ public class MainFragment extends Fragment implements UserObserver {
                 }
                 else{
                     tasktodo.setVisibility(View.INVISIBLE);
-//                    UpdateTasks(tasksList);
                     tasksList.clear();
                     taskAdapter.notifyDataSetChanged();
                 }
@@ -169,38 +168,10 @@ public class MainFragment extends Fragment implements UserObserver {
         super.onViewCreated(view, savedInstanceState);
     }
 
-    List<Tasks> UpdateTasks(List<Tasks> taskList){
-        tasksList.clear();
-//        tasksList.add(new Tasks(10, "Task 1"));
-//        tasksList.add(new Tasks(20, "Task 2"));
-//        tasksList.add(new Tasks(30, "Task 3"));
-//        tasksList.add(new Tasks(40, "Task 4"));
-//        tasksList.add(new Tasks(80, "Task 8"));
-//        tasksList.add(new Tasks(90, "Task 9"));
-//        tasksList.add(new Tasks(100, "Task 10"));
-        return taskList;
-    }
-
     public static void UpdateUIForFirstItem(){
         LinearLayoutManager layoutManager = (LinearLayoutManager) creatureRecyclerView.getLayoutManager();
         layoutManager.scrollToPosition(0);
 
     }
-
-    @Override
-    public void onUserUpdated(User user) {
-    }
-
-//    List<Exercise> updateExerciseList(List<Exercise> exerciseList){
-//
-//        List<Exercise> exercises = new ArrayList<>();
-//        for (Exercise e: exerciseList){
-//            if (!e.getCompleted()){
-//                ad
-//            }
-//        }
-//        return
-//    }
-
 
 }

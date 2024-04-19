@@ -2,19 +2,20 @@ package com.example.mysplashscreen.home.models;
 
 public class Tasks {
 
-    private int taskNumber;
     private String taskName;
+    private int taskNo;
 
-    public Tasks(int taskNumber, String task){
-        this.taskNumber = taskNumber;
+    public Tasks(int taskno, String task){
+
         taskName = task;
+        taskNo = taskno;
     }
 
     public String getTaskName(){
         return taskName;
     }
 
-    public int getTaskNumber(){
-        return taskNumber;
+    public int getTaskNo(){
+        return taskNo;
     }
 }

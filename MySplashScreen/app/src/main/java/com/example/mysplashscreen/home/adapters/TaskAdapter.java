@@ -2,7 +2,6 @@ package com.example.mysplashscreen.home.adapters;
 
 import static com.example.mysplashscreen.BottomNavActivity.getAppContext;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,15 +36,12 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull TaskViewHolder holder, int position) {
-        Log.d("creature_tasks", String.valueOf(taskList.get(position).getTaskNumber()));
-        holder.taskXpText.setText("+" + String.valueOf(taskList.get(position).getTaskNumber()));
+        holder.taskXpText.setText("+" + String.valueOf(taskList.get(position).getTaskNo()));
         holder.taskText.setText(taskList.get(position).getTaskName());
         holder.taskButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-//                BottomNavActivity.startActivityTaskActivity(getAppContext(), TaskActivity.class, holder.getLayoutPosition());
-                BottomNavActivity.startActivityTaskActivity(getAppContext(), TaskActivity.class, taskList.get(holder.getLayoutPosition()).getTaskNumber());
+                BottomNavActivity.startActivityTaskActivity(getAppContext(), TaskActivity.class, taskList.get(holder.getLayoutPosition()).getTaskNo());
             }
         });
 

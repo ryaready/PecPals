@@ -33,6 +33,8 @@ public class TaskActivity extends AppCompatActivity{
     User user = User.getInstance();
     int taskID;
 
+    boolean taskOver = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,51 +50,6 @@ public class TaskActivity extends AppCompatActivity{
         exerciseDesc = findViewById(R.id.tvDesc);
         completedButton = findViewById(R.id.completed_button);
 
-        //viewPager2 = findViewById(R.id.viewpager);
-
-//        bicep_curls.setName(getString(R.string.bicepcurl_name));
-//        bicep_curls.setDesc(getString(R.string.bicepcurl_desc));
-//        bicep_curls.setImageID(R.drawable.a);
-//
-//        shoulder_press.setName(getString(R.string.shoulderpress_name));
-//        shoulder_press.setDesc(getString(R.string.shoulderpress_desc));
-//        shoulder_press.setImageID(R.drawable.b);
-//
-//        bent_over_rows.setName(getString(R.string.bentoverrows_name));
-//        bent_over_rows.setDesc(getString(R.string.bentoverrows_desc));
-//        bent_over_rows.setImageID(R.drawable.c);
-//
-//        bench_press.setName(getString(R.string.benchpress_name));
-//        bench_press.setDesc(getString(R.string.benchpress_desc));
-//        bench_press.setImageID(R.drawable.d);
-//
-//        push_ups.setName(getString(R.string.pushup_name));
-//        push_ups.setDesc(getString(R.string.pushup_desc));
-//        push_ups.setImageID(R.drawable.e);
-
-//        exercisePlan.clearExerciseDatabase();
-//        exercisePlan.insertExercise(push_ups);
-//        exercisePlan.insertExercise(bicep_curls);
-//        exercisePlan.insertExercise(shoulder_press);
-//        exercisePlan.insertExercise(bench_press);
-//        exercisePlan.insertExercise(bent_over_rows);
-//
-//        exerciseArrayList = exercisePlan.getAllExercises();
-//        Log.d("array", String.valueOf(exerciseArrayList));
-
-//        Log.d("check database", String.valueOf(exercisePlan.getAllExercises()));
-
-//        Collections.addAll(images,R.drawable.a, R.drawable.b, R.drawable.c, R.drawable.d, R.drawable.e);
-//        Collections.addAll(heading, getString(R.string.bicepcurl_name),getString(R.string.shoulderpress_name),getString(R.string.bentoverrows_name),getString(R.string.benchpress_name),getString(R.string.pushup_name));
-//        Collections.addAll(desc, getString(R.string.bicepcurl_desc),
-//                getString(R.string.shoulderpress_desc),
-//                getString(R.string.bentoverrows_desc),
-//                getString(R.string.benchpress_desc)
-//                ,getString(R.string.pushup_desc));
-
-
-//        Log.d("ExerciseDatabase", String.valueOf(exerciseArrayList.size()));
-
         exerciseImage.setImageResource(exerciseList.get(taskID).getImageID());
         exerciseDesc.setText(exerciseList.get(taskID).getDesc());
         exerciseName.setText(exerciseList.get(taskID).getName());
@@ -103,39 +60,8 @@ public class TaskActivity extends AppCompatActivity{
                 jumpToPage();
             }
         });
-        // VPAdapter vpAdapter = new VPAdapter(exerciseArrayList);
 
-        // viewPager2.setAdapter(vpAdapter);
-
-        // viewPager2.setClipToPadding(false);
-
-        // viewPager2.setClipChildren(false);
-
-        // viewPager2.setOffscreenPageLimit(2);
-
-        // viewPager2.getChildAt(0).setOverScrollMode(View.OVER_SCROLL_NEVER);
-        //        viewPagerItemArrayList = new ArrayList<>();
-        //
-        //        for (int i =0; i< images.length ; i++){
-        //
-        //            ViewPagerItem viewPagerItem = new ViewPagerItem(images[i],heading[i],desc[i]);
-        //            viewPagerItemArrayList.add(viewPagerItem);
-        //
-        //        }
-
-        //        VPAdapter vpAdapter = new VPAdapter(viewPagerItemArrayList);
-        //
-        //        viewPager2.setAdapter(vpAdapter);
-        //
-        //        viewPager2.setClipToPadding(false);
-        //
-        //        viewPager2.setClipChildren(false);
-        //
-        //        viewPager2.setOffscreenPageLimit(2);
-        //
-        //        viewPager2.getChildAt(0).setOverScrollMode(View.OVER_SCROLL_NEVER);
-
-         TextView mTextField = findViewById(R.id.timer);
+        TextView mTextField = findViewById(R.id.timer);
         /*
         https://developer.android.com/reference/android/os/CountDownTimer
          */
@@ -175,6 +101,12 @@ public class TaskActivity extends AppCompatActivity{
         user.setXp(totalXP);
 
         user.levelUp();
+        taskOver = true;
+        if (user.checkLvlUp() == true){
+            Toast.makeText(getApplicationContext(), "Level Up !!!!", Toast.LENGTH_SHORT).show();
+            user.levelUp();
+        }
+
         Intent intent = new Intent(this.getApplicationContext(), BottomNavActivity.class);
         startActivity(intent);
     }
