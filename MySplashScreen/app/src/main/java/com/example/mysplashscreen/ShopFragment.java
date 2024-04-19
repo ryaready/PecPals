@@ -13,14 +13,11 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
 public class ShopFragment extends Fragment  implements RecyclerViewClickListener{
-
-    private Fragment coinFragment, realFragment;
 
     private RecyclerView voucherShopRV;
 
@@ -42,19 +39,12 @@ public class ShopFragment extends Fragment  implements RecyclerViewClickListener
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_shop, container, false);
-//        coinFragment = new CoinFragment();
-//        realFragment = new RealFragment();
-//        replaceChildFragment(coinFragment);
 
-        ImageButton coinshopbutton = v.findViewById(R.id.coinshopbutton);
-        ImageButton realshopbutton = v.findViewById(R.id.realshopbutton);
         coinsDisplay = v.findViewById(R.id.shop_coin);
         voucherShopRV = v.findViewById(R.id.voucherShopRecyclerView);
 
+        // get the User instance so that we have the user's data
         user = User.getInstance();
-
-        realshopbutton.setImageResource(R.drawable.virtual_shop_icon_default);
-        coinshopbutton.setImageResource(R.drawable.voucher_shop_icon_clicked);
 
         return v;
     }
@@ -62,9 +52,6 @@ public class ShopFragment extends Fragment  implements RecyclerViewClickListener
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
-        ImageButton coinshopbutton = view.findViewById(R.id.coinshopbutton);
-        ImageButton realshopbutton = view.findViewById(R.id.realshopbutton);
-        TextView shopname = view.findViewById(R.id.shop_name);
 
         coinsDisplay.setText(String.valueOf(user.getCoins()));
 
@@ -73,44 +60,10 @@ public class ShopFragment extends Fragment  implements RecyclerViewClickListener
         MyAdapter1 voucherShopAdapter = new MyAdapter1(getContext(), realItemsArrayList, this);
         voucherShopRV.setAdapter(voucherShopAdapter);
         voucherShopAdapter.notifyDataSetChanged();
-
-//        coinshopbutton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                realshopbutton.setImageResource(R.drawable.virtual_shop_icon_default);
-//                coinshopbutton.setImageResource(R.drawable.voucher_shop_icon_clicked);
-//                shopname.setText("Virtual Shop");
-//                replaceChildFragment(coinFragment);
-//            }
-//
-//        });
-//
-//
-//        realshopbutton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                coinshopbutton.setImageResource(R.drawable.voucher_shop_icon_default);
-//                realshopbutton.setImageResource(R.drawable.virtual_shop_icon_clicked);
-//                shopname.setText("Voucher Shop");
-//                replaceChildFragment(realFragment);
-//            }
-//        });
     }
 
-    /*
-    How to implement child fragments by user Suragch:
-        https://stackoverflow.com/questions/6672066/fragment-inside-fragment
-     */
-    private void replaceChildFragment(Fragment fragment){
-        FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.fragmentContainerView, fragment).setReorderingAllowed(true)
-                .addToBackStack(null).commit();
-    }
-
-
+    // initializes all items to be displayed in the voucher shop
     public void initializeVoucherShopArray() {
-
-//        Log.d("initialisevouchershoparray", "s");
         realItemsArrayList = new ArrayList<>();
 
         int[] rewardCosts = new int[]{
@@ -149,10 +102,12 @@ public class ShopFragment extends Fragment  implements RecyclerViewClickListener
 
         int current_coins = user.getCoins();
         int cost_of_current_item_clicked = realItemsArrayList.get(pos).reward;
+
         if (current_coins < cost_of_current_item_clicked){
             pos = -1;
         }
         else{
+            // if user has enough coins, deduct the cost of the item from the total coins
             current_coins -= realItemsArrayList.get(pos).reward;
             user.setCoins(current_coins);
             coinsDisplay.setText(String.valueOf(user.getCoins()));
@@ -165,7 +120,6 @@ public class ShopFragment extends Fragment  implements RecyclerViewClickListener
                 break;
             case 0:
             case 1:
-//                Toast.makeText(getActivity().getApplicationContext(), "First Item!", Toast.LENGTH_SHORT).show();
                 showDialog(R.drawable.activesg_qrcode);
                 break;
             case 2:
@@ -179,6 +133,12 @@ public class ShopFragment extends Fragment  implements RecyclerViewClickListener
         }
     }
 
+
+    /*
+    Shows the QR codes for the vouchers
+    Implementation of dialog pop up is taken from:
+    https://stackoverflow.com/questions/62304761/how-to-create-popup-form-on-android-studio
+     */
     private void showDialog(int qrcode_drawable){
         AlertDialog dialogBuilder = new AlertDialog.Builder(getActivity()).create();
         LayoutInflater inflater = this.getLayoutInflater();
@@ -200,6 +160,4 @@ public class ShopFragment extends Fragment  implements RecyclerViewClickListener
         dialogBuilder.show();
 
     }
-
-
 }

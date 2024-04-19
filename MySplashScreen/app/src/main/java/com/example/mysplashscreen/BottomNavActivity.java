@@ -13,28 +13,21 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.mysplashscreen.home.MainFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /*
-    Implementation is inspired by and taken from Android Knowledege:
+    Implementation of the bottom navigation bar is inspired by and taken from Android Knowledege:
     https://www.youtube.com/watch?v=0x5kmLY16qE
  */
 public class BottomNavActivity extends AppCompatActivity {
 
     public static Context context;
     BottomNavigationView bottomNavigationView;
-    FloatingActionButton floatingActionButton;
-
-    BottomSheetDialog bottomSheetDialog;
 
     ShopFragment shopFragment = new ShopFragment();
     ProfileFragment profileFragment = new ProfileFragment();
-
-    TaskModalFragment taskModalFragment = new TaskModalFragment();
 
     MainFragment mainFragment = new MainFragment();
 
@@ -49,7 +42,6 @@ public class BottomNavActivity extends AppCompatActivity {
 
         // get button components
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
-//        floatingActionButton = findViewById(R.id.homePage);
         bottomNavigationView.setBackground(null);
         bottomNavigationView.setSelectedItemId(R.id.homepage);
 
@@ -64,10 +56,6 @@ public class BottomNavActivity extends AppCompatActivity {
                 replaceFragment(profileFragment);
             } else if (item.getItemId() == R.id.homepage) {
                 replaceFragment(new MainFragment());
-
-                // TODO: if possible, try to find a way to recycle mainFragment instead of creating a new one everytime
-//                replaceFragment(mainFragment);
-//                MainFragment.UpdateUIForFirstItem();
             }
 
             user.levelUp();
@@ -92,6 +80,7 @@ public class BottomNavActivity extends AppCompatActivity {
         return BottomNavActivity.context;
     }
 
+    // intents to the task activity and sends information across from current activity to task activity
     public static Intent startActivityTaskActivity(Context first, Class second, int pos){
         Intent intent = new Intent(first, second);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -101,14 +90,14 @@ public class BottomNavActivity extends AppCompatActivity {
     }
 
     private List<Exercise> instantiateExercises(){
+
+        // SQLite implementation used for store exercises used in the game
         Exercise bicep_curls = new Exercise();
         Exercise shoulder_press = new Exercise();
         Exercise bent_over_rows = new Exercise();
         Exercise bench_press = new Exercise();
         Exercise push_ups = new Exercise();
         ExercisePlan exercisePlan = new ExercisePlan(this);
-
-        //viewPager2 = findViewById(R.id.viewpager);
 
         bicep_curls.setName(getString(R.string.bicepcurl_name));
         bicep_curls.setDesc(getString(R.string.bicepcurl_desc));
@@ -132,12 +121,12 @@ public class BottomNavActivity extends AppCompatActivity {
 
         exercisePlan.clearExerciseDatabase();
         exercisePlan.insertExercise(push_ups);
-//        Log.d("check push ups", String.valueOf(exercisePlan.insertExercise(push_ups)));
         exercisePlan.insertExercise(bicep_curls);
         exercisePlan.insertExercise(shoulder_press);
         exercisePlan.insertExercise(bench_press);
         exercisePlan.insertExercise(bent_over_rows);
 
+        // Arraylist implementation version as a fallback
         List<Exercise> exercises =  new ArrayList<>();
         exercises.add(bicep_curls);
         exercises.add(shoulder_press);
@@ -145,7 +134,6 @@ public class BottomNavActivity extends AppCompatActivity {
         exercises.add(bench_press);
         exercises.add(push_ups);
 
-//        return exercisePlan.getAllExercises();
         return exercises;
     }
 

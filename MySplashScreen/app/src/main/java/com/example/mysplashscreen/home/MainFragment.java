@@ -31,7 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /*
-    Implementation is inspired by and taken from CodingSTUFF:
+    Implementation of MainFragment/UI of the home page is inspired by and taken from CodingSTUFF:
     https://www.youtube.com/watch?v=CXfXFHuQIWo
  */
 public class MainFragment extends Fragment implements UserObserver {
@@ -41,9 +41,7 @@ public class MainFragment extends Fragment implements UserObserver {
     SnapHelper helper;
 
     public static CreatureAdapter creatureAdapter;
-    List<Creature> creatureTasksList = new ArrayList<>();
     List<Tasks> tasksList = new ArrayList<>();
-
     TaskAdapter taskAdapter;
     TextView tasktodo;
     private User user = User.getInstance();
@@ -58,7 +56,6 @@ public class MainFragment extends Fragment implements UserObserver {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
     }
 
@@ -66,9 +63,8 @@ public class MainFragment extends Fragment implements UserObserver {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-
+        // page snaper for recyclerview
         helper = new LinearSnapHelper();
-
         View v = inflater.inflate(R.layout.fragment_main, container, false);
         tasktodo = v.findViewById(R.id.taskstodo);
         TextView usernameTextView = v.findViewById(R.id.userName);
@@ -77,7 +73,6 @@ public class MainFragment extends Fragment implements UserObserver {
         String username = user.getInstance().getEmail();
 
         usernameTextView.setText("Hello " + username + "!");
-
 
         creatureRecyclerView = v.findViewById(R.id.creatureRecyclerView);
         creatureInfoRV = v.findViewById(R.id.creatureInfo);
@@ -168,10 +163,6 @@ public class MainFragment extends Fragment implements UserObserver {
         super.onViewCreated(view, savedInstanceState);
     }
 
-    public static void UpdateUIForFirstItem(){
-        LinearLayoutManager layoutManager = (LinearLayoutManager) creatureRecyclerView.getLayoutManager();
-        layoutManager.scrollToPosition(0);
-
-    }
-
+    @Override
+    public void onUserUpdated(User user) {}
 }

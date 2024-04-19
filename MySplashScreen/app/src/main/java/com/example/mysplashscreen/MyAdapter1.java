@@ -40,14 +40,6 @@ public class MyAdapter1 extends RecyclerView.Adapter<MyAdapter1.MyViewHolder> {
         holder.reward.setText(realitems.reward + " coins");
         holder.description.setText(realitems.rewarddescription);
         holder.image.setImageResource(realitems.rewardimage);
-//        holder.image.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Toast.makeText(context, "hi", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-
-
     }
 
     @Override
@@ -62,15 +54,12 @@ public class MyAdapter1 extends RecyclerView.Adapter<MyAdapter1.MyViewHolder> {
         TextView description;
         Button buyButton;
 
-//        CardView cardButton;
-
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             image = itemView.findViewById(R.id.rewardImage);
             description = itemView.findViewById(R.id.voucher_duration);
             reward = itemView.findViewById(R.id.voucher_cost);
             buyButton = itemView.findViewById(R.id.buy_button);
-//            cardButton = itemView.findViewById(R.id.card_button);
 
             buyButton.setOnClickListener(new View.OnClickListener() {
                 @Override

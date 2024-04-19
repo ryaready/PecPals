@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 * CirclePagerIndicatorDecoration is retrieved from StacKOverFlow and provided by the following users:
  * David Medenjak, lbgupta, JCDecary, and others
  * https://stackoverflow.com/questions/33841363/how-to-make-a-page-indicator-for-horizontal-recyclerview
- *
+ * Current implementation of Scroll Indicator is modified slightly from the one in StackOverFlow
 */
 public class CirclePagerIndicatorDecoration extends RecyclerView.ItemDecoration {
 
@@ -79,8 +79,6 @@ public class CirclePagerIndicatorDecoration extends RecyclerView.ItemDecoration 
         float indicatorTotalWidth = totalLength + paddingBetweenItems;
         float indicatorStartX = (parent.getWidth() - indicatorTotalWidth) / 2F;
 
-        // set indicator to be at the top
-//        float indicatorPosY = 100;
         float indicatorPosY = parent.getHeight() - mIndicatorHeight / 2F;
 
         drawInactiveIndicators(c, indicatorStartX, indicatorPosY, itemCount);

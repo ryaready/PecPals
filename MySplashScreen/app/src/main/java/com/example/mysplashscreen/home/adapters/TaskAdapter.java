@@ -20,7 +20,6 @@ import java.util.List;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder> {
 
-//    private List<Creature> creatureList;
     private List<Tasks> taskList;
 
     public TaskAdapter(List<Tasks> list){

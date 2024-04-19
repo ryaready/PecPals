@@ -12,23 +12,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager2.widget.ViewPager2;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class TaskActivity extends AppCompatActivity{
-    ViewPager2 viewPager2;
-    ArrayList<ViewPagerItem> viewPagerItemArrayList;
     CountDownTimer countDownTimer;
 
     ImageView exerciseImage;
     TextView exerciseName, exerciseDesc;
 
     Button completedButton;
-    List<Integer> images = new ArrayList<>();
-    List<String> heading = new ArrayList<>();
-    List<String> desc = new ArrayList<>();
 
     User user = User.getInstance();
     int taskID;
@@ -57,12 +48,13 @@ public class TaskActivity extends AppCompatActivity{
         completedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                jumpToPage();
+                completedExercise();
             }
         });
 
         TextView mTextField = findViewById(R.id.timer);
         /*
+        Countdown timer implementation taken from:
         https://developer.android.com/reference/android/os/CountDownTimer
          */
         countDownTimer = new CountDownTimer(60000, 1000) {
@@ -78,19 +70,11 @@ public class TaskActivity extends AppCompatActivity{
 
     }
 
-    public void jumpToPage() {
-//        int i = viewPager2.getCurrentItem();
-//        viewPager2.setCurrentItem(i+1);
+    public void completedExercise() {
         Toast.makeText(getApplicationContext(), "Well Done!", Toast.LENGTH_SHORT).show();
-//        resetTimer(60000, 1000);
-//        if (i == viewPager2.getAdapter().getItemCount()-1){
-//
-//
-//        }
 
         int ls = user.getLoginStreak();
         double mul = ls * 0.5;
-
 
         int currCoin = user.getCoins();
         int totalCoins = (int)(currCoin + 50*mul);
@@ -119,7 +103,5 @@ public class TaskActivity extends AppCompatActivity{
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        //exercisePlan.clearExerciseDatabase();
-//        Log.d("ExerciseDatabase", String.valueOf(exerciseArrayList.size()));
     }
 }

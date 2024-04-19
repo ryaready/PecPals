@@ -87,7 +87,6 @@ public class ProfileFragment extends Fragment implements UserObserver {
 
     @Override
     public void onUserUpdated(User user) {
-
         updateUI();
     }
 
